@@ -1,1547 +1,706 @@
-<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Frameset//EN">
 
 <html>
 
 <!--(==============================================================)-->
+
 <!--(Document created with RoboEditor. )============================-->
+
 <!--(==============================================================)-->
 
 <head>
-
-<title>Datatypes discovery</title>
-
-<!--(Meta)==========================================================-->
-
-<meta http-equiv=content-type content="text/html; charset=windows-1252">
-<meta name=generator content="RoboHELP by eHelp Corporation - www.ehelp.com">
-<meta name=generator-major-version content=0.1>
-<meta name=generator-minor-version content=1>
-<meta name=filetype content=kadov>
-<meta name=filetype-version content=1>
-<meta name=page-count content=1>
-<meta name=layout-height content=980>
-<meta name=layout-width content=968>
-
-
-<!--(Links)=========================================================-->
-
-<link rel="StyleSheet" href="..\default.css">
-
-
-
+    <title>Datatypes discovery</title>
+    <!--(Meta)==========================================================-->
+    <meta http-equiv="content-type" content="text/html; charset=us-ascii">
+    <meta name="generator" content="RoboHELP by eHelp Corporation - www.ehelp.com">
+    <meta name="generator-major-version" content="0.1">
+    <meta name="generator-minor-version" content="1">
+    <meta name="filetype" content="kadov">
+    <meta name="filetype-version" content="1">
+    <meta name="page-count" content="1">
+    <meta name="layout-height" content="980">
+    <meta name="layout-width" content="968">
+    <!--(Links)=========================================================-->
+    <link rel="StyleSheet" href="../default.css" type="text/css">
 </head>
-
 <!--(Body)==========================================================-->
 
-
 <body>
+    <h1>Datatypes discovery</h1>
 
-<h1>Datatypes discovery</h1>
+    <p>Which datatypes a database will support can be retrieved by way of the "SQLGetTypeInfo<span style="margin-left: 40px;">"
+    ODBC function. Strict portable applications will never attempt to use datatypes not reported back by this function. So in
+    order to allow for maximal portability an ODBC driver should report as much datatypes back to the application as it
+    can.</span></p>
+    <!--(Table)=========================================================-->
 
-<p>Which datatypes a database will support can be retrieved by way of the 
- &quot;SQLGetTypeInfo<span style="margin-left: 40px;">&quot; ODBC function. 
- Strict portable applications will never attempt to use datatypes not reported 
- back by this function. So in order to allow for maximal portability an 
- ODBC driver should report as much datatypes back to the application as 
- it can.</span></p>
+    <table color="#99CCFF" x-use-null-cells="" style=
+    "width: 100%; x-border-left: 1px table-solid; x-border-top: 1px table-solid; x-border-right: 1px table-solid; x-border-bottom: 1px table-solid; border-spacing: 0px; x-border-left: 1px table-solid; x-border-top: 1px table-solid; x-border-right: 1px table-solid; x-border-bottom: 1px table-solid; border-collapse: separate; border-spacing: 0px;"
+    cellspacing="0" width="100%" border="1">
+        <col style="width: 190px;">
+        <col style="width: 559px;">
+        <col style="width: 79px;">
+        <col style="width: 74px;">
 
-<!--(Table)=========================================================-->
-<table color=#99ccff
-		x-use-null-cells
-		style="width: 100%;
-				x-border-left: 1px table-solid;
-				x-border-top: 1px table-solid;
-				x-border-right: 1px table-solid;
-				x-border-bottom: 1px table-solid;
-				border-spacing: 0px;
-				x-border-left: 1px table-solid;
-				x-border-top: 1px table-solid;
-				x-border-right: 1px table-solid;
-				x-border-bottom: 1px table-solid;
-				border-collapse: separate;
-				border-spacing: 0px;"
-		cellspacing=0
-		width=100%
-		border=1>
-<col style="width: 190px;">
-<col style="width: 559px;">
-<col style="width: 79px;">
-<col style="width: 74px;">
+        <tr>
+            <td style=
+            "width: 190px; background-color: #99ccff; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" bgcolor="#99CCFF" width="190px">
+                <p>Datatype</p>
+            </td>
 
-<tr>
-<td style="width: 190px;
-			background-color: #99ccff;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	bgcolor=#99CCFF
-	width=190px>
-<p>Datatype</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			background-color: #99ccff;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	bgcolor=#99CCFF
-	width=559px>
-<p class=tab_header>Description</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			background-color: #99ccff;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	bgcolor=#99CCFF
-	width=79px>
-<p class=tab_header>Oracle</td>
-<td style="width: 74px;
-			background-color: #99ccff;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	bgcolor=#99CCFF
-	width=74px>
-<p class=tab_header>EDO</td></tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; background-color: #99ccff; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" bgcolor="#99CCFF" width="559px">
+                <p class="tab_header">Description</p>
+            </td>
 
-<tr>
-<td style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>BFILE</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>Binary file with a maximum of 2 GigaBytes of size. Implemented as SQL_LONGVARBINARY</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p class=tab_desc
-	style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td>
-<td style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p class=tab_desc
-	style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; background-color: #99ccff; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" bgcolor="#99CCFF" width="79px">
+                <p class="tab_header">Oracle</p>
+            </td>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>BINARY_DOUBLE</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>Binary approximate float number with 15 digits. Implemented as SQL_FLOAT 
- </td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p class=tab_desc
-	style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p class=tab_desc
-	style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
+            <td style=
+            "width: 74px; background-color: #99ccff; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" bgcolor="#99CCFF" width="74px">
+                <p class="tab_header">EDO</p>
+            </td>
+        </tr>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>BINARY_FLOAT</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>Binary approximate float number with 7 digits. Implemented as SQL_REAL</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
+        <tr>
+            <td style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>BFILE</p>
+            </td>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>BLOB</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>Binary large object with a maximum of 2 GigaBytes in size. Implemented 
- as SQL_LONGVARBINARY</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>Binary file with a maximum of 2 GigaBytes of size. Implemented as SQL_LONGVARBINARY</p>
+            </td>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>CHAR</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>Character string with a fixed length, and a maximum of 2000 chars. Implemented 
- as SQL_CHAR</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p class="tab_desc" style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp"
+                x-maintain-ratio="TRUE" style=
+                "border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width="24"
+                height="24" border="0"></p>
+            </td>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>CLOB</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>Character large object with a maximum of 2 GigaBytes in size. Implemented 
- as SQL_LONGVARCHAR</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
+            <td style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p class="tab_desc" style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp"
+                x-maintain-ratio="TRUE" style=
+                "border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width="24"
+                height="24" border="0"></p>
+            </td>
+        </tr>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>DATE</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>Date with optional time. Implemented as SQL_TYPE_TIMESTAMP</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>BINARY_DOUBLE</p>
+            </td>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>DECIMAL</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>Decimal number with maximum of 38 precision and scale. Implemented as 
- SQL_NUMERIC_STRUCT.</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p style="text-align: center;"
-	align=center>partly</td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>Binary approximate float number with 15 digits. Implemented as SQL_FLOAT</p>
+            </td>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>DOUBLE PRECISION</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>Binary approximate float number with 15 digits. Implemented as SQL_DOUBLE</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p class="tab_desc" style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp"
+                x-maintain-ratio="TRUE" style=
+                "border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width="24"
+                height="24" border="0"></p>
+            </td>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>INTERVAL DAY TO SECOND</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>Interval with day to second resolution. Implemented as SQL_INTERVAL_DAY_TO_SECOND</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p style="text-align: center;"
-	align=center><img src="../Images/delete-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p class="tab_desc" style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp"
+                x-maintain-ratio="TRUE" style=
+                "border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width="24"
+                height="24" border="0"></p>
+            </td>
+        </tr>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>INTERVAL YEAR TO MONTH</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>Interval with year to month resolution. Implemented as SQL_INTERVAL_YEAR_TO_MONTH</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p style="text-align: center;"
-	align=center><img src="../Images/delete-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>BINARY_FLOAT</p>
+            </td>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>LONG</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>Character string with a maximum of 2 GigaBytes in size. Implemented 
- as SQL_LONGVARCHAR. Only 1 column per table restriction. Use CLOB instead!</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>Binary approximate float number with 7 digits. Implemented as SQL_REAL</p>
+            </td>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>LONG RAW</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>Binary large object with a maximum of 2 GigaBytes in size. Implemented 
- as SQL_LONGVARBINARY. Only 1 column per table restriction. Use BLOB instead!</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>NCHAR</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>National character string with a fixed length, and a maximum of 1000 
- chars. Implemented as SQL_WCHAR</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+        </tr>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>NCLOB</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>National character large object with a maximum of 2 GigaBytes in size. 
- Implemented as SQL_WLONGVARCHAR</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>BLOB</p>
+            </td>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>NUMBER</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>Decimal number with maximum of 38 precision and scale. Implemented as 
- SQL_NUMERIC_STRUCT.</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p style="text-align: center;"
-	align=center>partly</td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>Binary large object with a maximum of 2 GigaBytes in size. Implemented as SQL_LONGVARBINARY</p>
+            </td>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>NVARCHAR2</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>National character string with variable length up to 2000 characters. 
- Implemented as SQL_WVARCHAR.</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>RAW</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>Binary data with a maximum upto 2000 bytes. Implemented as SQL_BINARY</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+        </tr>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>ROWID</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>Binary data converted to 18 characters to identify a row in the database. 
- Implemented as SQL_ROWID</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p style="text-align: center;"
-	align=center><img src="../Images/delete-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>CHAR</p>
+            </td>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>TIMESTAMP</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>Timestamp (date and time). Implemented as SQL_TYPE_TIMESTAMP</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p style="text-align: center;"
-	align=center><img src="../Images/delete-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>Character string with a fixed length, and a maximum of 2000 chars. Implemented as SQL_CHAR</p>
+            </td>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>VARCHAR2</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>Character string with variable length up to 2000 characters. Implemented 
- as SQL_VARCHAR.</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
-</table>
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
 
-<p style="margin-left: 40px;">&nbsp;</p>
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+        </tr>
 
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>CLOB</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>Character large object with a maximum of 2 GigaBytes in size. Implemented as SQL_LONGVARCHAR</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>DATE</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>Date with optional time. Implemented as SQL_TYPE_TIMESTAMP</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>DECIMAL</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>Decimal number with maximum of 38 precision and scale. Implemented as SQL_NUMERIC_STRUCT.</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p style="text-align: center;" align="center">partly</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>DOUBLE PRECISION</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>Binary approximate float number with 15 digits. Implemented as SQL_DOUBLE</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>INTERVAL DAY TO SECOND</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>Interval with day to second resolution. Implemented as SQL_INTERVAL_DAY_TO_SECOND</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p style="text-align: center;" align="center"><img src="../Images/delete-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>INTERVAL YEAR TO MONTH</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>Interval with year to month resolution. Implemented as SQL_INTERVAL_YEAR_TO_MONTH</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p style="text-align: center;" align="center"><img src="../Images/delete-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>LONG</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>Character string with a maximum of 2 GigaBytes in size. Implemented as SQL_LONGVARCHAR. Only 1 column per
+                table restriction. Use CLOB instead!</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>LONG RAW</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>Binary large object with a maximum of 2 GigaBytes in size. Implemented as SQL_LONGVARBINARY. Only 1 column
+                per table restriction. Use BLOB instead!</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>NCHAR</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>National character string with a fixed length, and a maximum of 1000 chars. Implemented as SQL_WCHAR</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>NCLOB</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>National character large object with a maximum of 2 GigaBytes in size. Implemented as SQL_WLONGVARCHAR</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>NUMBER</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>Decimal number with maximum of 38 precision and scale. Implemented as SQL_NUMERIC_STRUCT.</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p style="text-align: center;" align="center">partly</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>NVARCHAR2</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>National character string with variable length up to 2000 characters. Implemented as SQL_WVARCHAR.</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>RAW</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>Binary data with a maximum upto 2000 bytes. Implemented as SQL_BINARY</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>ROWID</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>Binary data converted to 18 characters to identify a row in the database. Implemented as SQL_ROWID</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p style="text-align: center;" align="center"><img src="../Images/delete-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>TIMESTAMP</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>Timestamp (date and time). Implemented as SQL_TYPE_TIMESTAMP</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p style="text-align: center;" align="center"><img src="../Images/delete-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>VARCHAR2</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>Character string with variable length up to 2000 characters. Implemented as SQL_VARCHAR.</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+        </tr>
+    </table>
+
+    <p style="margin-left: 40px;">&nbsp;</p>
 </body>
-
 </html>

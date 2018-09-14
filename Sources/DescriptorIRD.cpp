@@ -653,8 +653,8 @@ OracleItems::CopyFrom(OracleItems* p_source)
   m_desc_nullable         = p_source->m_desc_nullable;
   m_desc_octet_length     = p_source->m_desc_octet_length;
   // Names
-  SetDescName    (p_source->m_desc_name     ,strlen(p_source->m_desc_name));
-  SetDescTypeName(p_source->m_desc_type_name,strlen(p_source->m_desc_type_name));
+  SetDescName    (p_source->m_desc_name     ,(int)strlen(p_source->m_desc_name));
+  SetDescTypeName(p_source->m_desc_type_name,(int)strlen(p_source->m_desc_type_name));
   return SQL_SUCCESS;
 }
 
@@ -926,7 +926,7 @@ ODBC_IRD::BindAllParams(ODBC_ARD* p_ARD)
       {
         // Recalculate the total pending length from the indicator of the APD
         bindSize = 
-        record->m_pendingLength = -((*item->m_desc_indicator_ptr) - SQL_LEN_DATA_AT_EXEC_OFFSET);
+        record->m_pendingLength = (int)( -((*item->m_desc_indicator_ptr) - SQL_LEN_DATA_AT_EXEC_OFFSET));
       }
       else
       {
@@ -1314,8 +1314,8 @@ ODBC_IRD::SQLSetDescRec(SQLSMALLINT /*RecNumber     */
                        ,SQLSMALLINT /*Precision     */
                        ,SQLSMALLINT /*Scale         */
                        ,SQLPOINTER  /*Data          */
-                       ,SQLINTEGER* /*StringLength  */
-                       ,SQLINTEGER* /*Indicator     */)
+                       ,SQLLEN*     /*StringLength  */
+                       ,SQLLEN*     /*Indicator     */)
 {
   // Row descriptors are always read-only in ODBC 2.x
   // If you want to set an IPD, use SQLSetDescField

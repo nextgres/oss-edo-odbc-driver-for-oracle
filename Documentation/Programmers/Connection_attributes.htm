@@ -1,1109 +1,712 @@
-<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 
 <html>
-
-<!--(==============================================================)-->
-<!--(Document created with RoboEditor. )============================-->
-<!--(==============================================================)-->
-
 <head>
+    <title>Connection attributes</title>
+    <!--(==============================================================)-->
 
-<title>Connection attributes</title>
+    <!--(Document created with RoboEditor. )============================-->
 
-<!--(Meta)==========================================================-->
+    <!--(==============================================================)-->
 
-<meta http-equiv=content-type content="text/html; charset=windows-1252">
-<meta name=generator content="RoboHELP by eHelp Corporation - www.ehelp.com">
-<meta name=generator-major-version content=0.1>
-<meta name=generator-minor-version content=1>
-<meta name=filetype content=kadov>
-<meta name=filetype-version content=1>
-<meta name=page-count content=1>
-<meta name=layout-height content=1404>
-<meta name=layout-width content=968>
-
-
-<!--(Links)=========================================================-->
-
-<link rel="StyleSheet" href="..\default.css">
-
-
-
+    <!--(Meta)==========================================================-->
+    <meta content="text/html; charset=us-ascii" http-equiv="content-type">
+    <meta name="GENERATOR" content="AuthorDocumentation">
+    <meta name="generator-major-version" content="0.1">
+    <meta name="generator-minor-version" content="1">
+    <meta name="filetype" content="kadov">
+    <meta name="filetype-version" content="1">
+    <meta name="page-count" content="1">
+    <meta name="layout-height" content="1404">
+    <meta name="layout-width" content="968">
+    <!--(Links)=========================================================-->
+    <link rel="StyleSheet" type="text/css" href="../default.css">
+    <!--(Body)==========================================================-->
 </head>
 
-<!--(Body)==========================================================-->
-
-
 <body>
+    <h1>Connection attributes</h1>
 
-<h1>Connection attributes</h1>
+    <p>Datasources have four primary attributes (DSN, UID, PWD, SERVER) that account for the connection to the database.
+    Besides these four primary attributes there are a number of other attributes that serve to change the behaviour of the
+    connection. The table below list all attributes in the attribute string as well as in the MS-Windows registry.</p>
 
-<p>Datasources have four primary attributes (DSN, UID, PWD, SERVER) that 
- account for the connection to the database. Besides these four primary 
- attributes there are a number of other attributes that serve to change 
- the behaviour of the connection. The table below list all attributes in 
- the attribute string as well as in the MS-Windows registry.</p>
+    <h3>Connection strings</h3>
 
-<h3>Connection strings</h3>
+    <p>Connection strings can be used in calls like SQLConnect, SQLDriverConnect and SQLBrowseConnect. More than one attribute
+    can be strung together in the connection string to one of these three functions. They use following format:</p>
 
-<p>Connection strings can be used in calls like SQLConnect, SQLDriverConnect 
- and SQLBrowseConnect. More than one attribute can be strung together in 
- the connection string to one of these three functions. They use following 
- format:</p>
+    <p>"&lt;attribute&gt;=&lt;value&gt;;..."</p>
 
-<p>&quot;&lt;attribute&gt;=&lt;value&gt;;...&quot;</p>
+    <p>So a standard connection can be something like:</p>
 
-<p>So a standard connection can be something like:</p>
+    <p>"DSN=ORCL;UID=scott;PWD=tiger;SERVER=ORCL1"</p>
 
-<p>&quot;DSN=ORCL;UID=scott;PWD=tiger;SERVER=ORCL1&quot;</p>
+    <h3>Registry attributes</h3>
 
-<h3>Registry attributes</h3>
+    <p>Registry attributes are written in the MS-Windows registry under the
+    "HKEY_LOCAL_MACHINE\SOFTWARE\ODBC\ODBC_INI\&lt;datasource&gt;" for system wide datasourcenames, and under
+    "HKEY_CURRENT_USER\SOFTWARE\ODBC\ODBC_INI\&lt;datasource&gt;" for user datasources. These values can be managed with the
+    ODBC manager and the <a href="../Administration/Creating_a_datasource.htm">datasource setup dialog</a> of EDO.</p>
 
-<p>Registry attributes are written in the MS-Windows registry under the 
- &quot;HKEY_LOCAL_MACHINE\SOFTWARE\ODBC\ODBC_INI\&lt;datasource&gt;&quot; 
- for system wide datasourcenames, and under &quot;HKEY_CURRENT_USER\SOFTWARE\ODBC\ODBC_INI\&lt;datasource&gt;&quot; 
- for user datasources. These values can be managed with the ODBC manager 
- and the <a href="../Administration/Creating_a_datasource.htm">datasource 
- setup dialog</a> of EDO.</p>
+    <h3>Precedence</h3>
 
-<h3>Precedence</h3>
+    <p>What happens if an attribute is set in the registry and has a different value in the connection string? Well, all the
+    attributes in the registry are read in first, and after that the attribute values of the connection string are parsed. So
+    the later (attributes from the connection string) take precedence over those from the registry. An application programmer
+    can in this way always override local settings.</p>
+    <!--(Table)=========================================================-->
 
-<p>What happens if an attribute is set in the registry and has a different 
- value in the connection string? Well, all the attributes in the registry 
- are read in first, and after that the attribute values of the connection 
- string are parsed. So the later (attributes from the connection string) 
- take precedence over those from the registry. An application programmer 
- can in this way always override local settings.</p>
+    <table style=
+    "WIDTH: 100%; BORDER-COLLAPSE: separate; BORDER-SPACING: 0px; x-border-left: 1px table-solid; x-border-top: 1px table-solid; x-border-right: 1px table-solid; x-border-bottom: 1px table-solid"
+    cellspacing="0" width="100%" border="1" x-use-null-cells="" color="#99CCFF">
+        <colgroup>
+            <col style="WIDTH: 123px">
+            <col style="WIDTH: 146px">
+            <col style="WIDTH: 634px">
+        </colgroup>
 
-<!--(Table)=========================================================-->
-<table color=#99ccff
-		x-use-null-cells
-		style="width: 100%;
-				x-border-left: 1px table-solid;
-				x-border-top: 1px table-solid;
-				x-border-right: 1px table-solid;
-				x-border-bottom: 1px table-solid;
-				border-collapse: separate;
-				border-spacing: 0px;
-				x-border-left: 1px table-solid;
-				x-border-top: 1px table-solid;
-				x-border-right: 1px table-solid;
-				x-border-bottom: 1px table-solid;
-				border-collapse: separate;
-				border-spacing: 0px;"
-		cellspacing=0
-		width=100%
-		border=1>
-<col style="width: 123px;">
-<col style="width: 146px;">
-<col style="width: 634px;">
+        <tbody>
+            <tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; BACKGROUND-COLOR: #99ccff; x-cell-content-align: top"
+                bgcolor="#99CCFF" valign="top" width="123">
+                    <p>Connection string</p>
+                </td>
 
-<tr>
-<td style="background-color: #99ccff;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	bgcolor=#99CCFF
-	width=123>
-<p>Connection string</td>
-<td colspan=1
-	rowspan=1
-	style="background-color: #99ccff;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	bgcolor=#99CCFF
-	width=146>
-<p class=tab_header>ODBC Registry key</td>
-<td style="width: 634px;
-			background-color: #99ccff;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	bgcolor=#99CCFF
-	width=634px>
-<p class=tab_header>Explanation</td></tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; BACKGROUND-COLOR: #99ccff; x-cell-content-align: top"
+                bgcolor="#99CCFF" valign="top" width="146">
+                    <p class="tab_header">ODBC Registry key</p>
+                </td>
 
-<tr>
-<td style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=123>
-<p>DSN</td>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=146>
-<p>DSN</td>
-<td style="width: 634px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=634px>
-<p>Datasource name. This is the name application use to create a connection.</td></tr>
+                <td style=
+                "WIDTH: 634px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; BACKGROUND-COLOR: #99ccff; x-cell-content-align: top"
+                bgcolor="#99CCFF" valign="top" width="634">
+                    <p class="tab_header">Explanation</p>
+                </td>
+            </tr>
 
-<tr>
-<td style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=123>
-<p>UID</td>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=146>
-<p>UID</td>
-<td style="width: 634px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=634px>
-<p>User ID. The login name of the user logging in on the datasource.</td></tr>
+            <tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="123">
+                    <p>DSN</p>
+                </td>
 
-<tr>
-<td style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=123>
-<p>PWD</td>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=146>
-<p>PWD</td>
-<td style="width: 634px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=634px>
-<p>Password. Authentication of the user.</td></tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="146">
+                    <p>DSN</p>
+                </td>
 
-<tr>
-<td style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=123>
-<p>SERVER</td>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=146>
-<p>ServerName</td>
-<td style="width: 634px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=634px>
-<p>Oracle server. In effect the TNS connection string name.</td></tr>
+                <td style=
+                "WIDTH: 634px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="634">
+                    <p>Datasource name. This is the name application use to create a connection.</p>
+                </td>
+            </tr>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=123>
-<p>&nbsp;</td>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=146>
-<p>Driver</td>
-<td colspan=1
-	rowspan=1
-	style="width: 634px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=634px>
-<p>Full path to the EDO driver DLL</td></tr>
+            <tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="123">
+                    <p>UID</p>
+                </td>
 
-<tr>
-<td style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=123>
-<p>RDO</td>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=146>
-<p>ReadOnly</td>
-<td style="width: 634px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=634px>
-<p>Readonly access mode. 0=read/write mode 1=readonly mode</td></tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="146">
+                    <p>UID</p>
+                </td>
 
-<tr>
-<td style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=123>
-<p>ASY</td>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=146>
-<p>AsyncEnable</td>
-<td style="width: 634px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=634px>
-<p>Async enabled with multithreaded support (1) or async disabled (0) with 
- no multithreading.</td></tr>
+                <td style=
+                "WIDTH: 634px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="634">
+                    <p>User ID. The login name of the user logging in on the datasource.</p>
+                </td>
+            </tr>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=123>
-<p>AUT</td>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=146>
-<p>AutoCommit</td>
-<td colspan=1
-	rowspan=1
-	style="width: 634px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=634px>
-<p>Autocommit on(1) or off(0).</td></tr>
+            <tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="123">
+                    <p>PWD</p>
+                </td>
 
-<tr>
-<td style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=123>
-<p>OUT</td>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=146>
-<p>ConnectionTimeout</td>
-<td style="width: 634px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=634px>
-<p>Connection timeout in seconds</td></tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="146">
+                    <p>PWD</p>
+                </td>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=123>
-<p>MID</td>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=146>
-<p>MetaDataID</td>
-<td colspan=1
-	rowspan=1
-	style="width: 634px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=634px>
-<p>Metadata ID 1=catalog functions need exact identifier, 0=catalog functions 
- accept search patterns like 'AB%' or 'INVOICE___' </td></tr>
+                <td style=
+                "WIDTH: 634px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="634">
+                    <p>Password. Authentication of the user.</p>
+                </td>
+            </tr>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=123>
-<p>CUR</td>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=146>
-<p>OdbcCursor</td>
-<td colspan=1
-	rowspan=1
-	style="width: 634px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=634px>
-<p style="margin-bottom: 0pt;">Cursor support of the driver. Option 2 guarantees 
- the highest speed and is default.</p>
-<p style="margin-bottom: 0pt;">0 = Use cursor library if needed</p>
-<p style="margin-bottom: 0pt;">1 = Use ODBC cursor library</p>
-<p style="margin-bottom: 0pt;">2 = Use Driver/RDBMS cursor library</td></tr>
+            <tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="123">
+                    <p>SERVER</p>
+                </td>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=123>
-<p>PAS</td>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=146>
-<p>PacketSize</td>
-<td colspan=1
-	rowspan=1
-	style="width: 634px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=634px>
-<p>Packet size (does nothing for now)</td></tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="146">
+                    <p>ServerName</p>
+                </td>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=123>
-<p>QUT</td>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=146>
-<p>QuietMode</td>
-<td colspan=1
-	rowspan=1
-	style="width: 634px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=634px>
-<p>Quiet mode. Driver does never display any dialog boxes or messages</td></tr>
+                <td style=
+                "WIDTH: 634px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="634">
+                    <p>Oracle server. In effect the TNS connection string name.</p>
+                </td>
+            </tr>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=123>
-<p>TRC</td>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=146>
-<p>TraceLevel</td>
-<td colspan=1
-	rowspan=1
-	style="width: 634px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=634px>
-<p>Trace on (1) or off (0)</td></tr>
+            <tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="123">
+                    <p>&nbsp;</p>
+                </td>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=123>
-<p>TRF</td>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=146>
-<p>TraceFile</td>
-<td colspan=1
-	rowspan=1
-	style="width: 634px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=634px>
-<p>Trace file for EDO driver trace if TraceLevel=1</td></tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="146">
+                    <p>Driver</p>
+                </td>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=123>
-<p>TRL</td>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=146>
-<p>TranslateLib</td>
-<td colspan=1
-	rowspan=1
-	style="width: 634px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=634px>
-<p>Translate library. Name of the DLL containing SQLDriverToDatasource 
- and vice versa.</td></tr>
+                <td style=
+                "WIDTH: 634px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="634">
+                    <p>Full path to the EDO driver DLL</p>
+                </td>
+            </tr>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=123>
-<p>TRO</td>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=146>
-<p>TranslateOption</td>
-<td colspan=1
-	rowspan=1
-	style="width: 634px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=634px>
-<p>Translate option, defined by the used translation library.</td></tr>
+            <tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="123">
+                    <p>RDO</p>
+                </td>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=123>
-<p>TRI</td>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=146>
-<p>TransactionIsolation</td>
-<td colspan=1
-	rowspan=1
-	style="width: 634px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=634px>
-<p>Transaction isolation. (does nothing for now)</td></tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="146">
+                    <p>ReadOnly</p>
+                </td>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=123>
-<p>STA</td>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=146>
-<p>StatisticsEnsure</td>
-<td colspan=1
-	rowspan=1
-	style="width: 634px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=634px>
-<p>Statistics ensure. Enables (1) or disables (0) the SQL_ENSURE option 
- of the SQLStatistics call. disabling allows for higher performance in 
- all situations.</td></tr>
+                <td style=
+                "WIDTH: 634px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="634">
+                    <p>Readonly access mode. 0=read/write mode 1=readonly mode</p>
+                </td>
+            </tr>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=123>
-<p>PFC</td>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=146>
-<p>PrefetchCount</td>
-<td colspan=1
-	rowspan=1
-	style="width: 634px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=634px>
-<p>Prefetch count. Number of records to prefetch and cache at once.</td></tr>
+            <tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="123">
+                    <p>ASY</p>
+                </td>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=123>
-<p>PFM</td>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=146>
-<p>PrefetchMemory</td>
-<td colspan=1
-	rowspan=1
-	style="width: 634px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=634px>
-<p>Prefetch memory. Number of bytes for prefetch cache memory </td></tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="146">
+                    <p>AsyncEnable</p>
+                </td>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=123>
-<p>FOC</td>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=146>
-<p>FailoverCount</td>
-<td colspan=1
-	rowspan=1
-	style="width: 634px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=634px>
-<p>Failover count. Number of times to retry connection to Oracle RAC cluster.</td></tr>
+                <td style=
+                "WIDTH: 634px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="634">
+                    <p>Async enabled with multithreaded support (1) or async disabled (0) with no multithreading.</p>
+                </td>
+            </tr>
 
-<tr>
-<td style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=123>
-<p>FOT</td>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=146>
-<p>FailoverTime</td>
-<td style="width: 634px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=634px>
-<p>Failover time. Number of seconds between failover retry to Oracle RAC 
- cluster.</td></tr>
+            <tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="123">
+                    <p>AUT</p>
+                </td>
 
-<tr>
-<td style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=123>
-<p>MCL</td>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=146>
-<p>ColumnMaxLength</td>
-<td style="width: 634px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=634px>
-<p>Max column length for static binds to long columns.</td></tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="146">
+                    <p>AutoCommit</p>
+                </td>
 
-<tr>
-<td style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=123>
-<p>ISU</td>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=146>
-<p>IntegerSpeedUp</td>
-<td style="width: 634px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=634px>
-<p>Integer speedup. If on (1) Oracle NUMBER with 0 precision and 0 scale 
- are treated as binary integetrs. If off (0) Oracle NUMBER's are treated 
- as DECIMAL's.</td></tr>
+                <td style=
+                "WIDTH: 634px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="634">
+                    <p>Autocommit on(1) or off(0).</p>
+                </td>
+            </tr>
 
-<tr>
-<td style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=123>
-<p>&nbsp;</td>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=146>
-<p>NLS_TYPE</td>
-<td style="width: 634px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=634px>
-<p style="margin-bottom: 0pt;">Type of National Language Support (NLS)</p>
-<p style="margin-bottom: 0pt;">0 = Use standard Oracle NLS</p>
-<p style="margin-bottom: 0pt;">1 = Use standard ODBC settings for NLS</p>
-<p style="margin-bottom: 0pt;">2 = Use specific user selected values for 
- NLS</p>
-<p style="margin-bottom: 0pt;">See the explanation about <a href="../Administration/NLS_Settings_of_the_datasource.htm">NLS 
- settings of the datasource</a></td></tr>
+            <tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="123">
+                    <p>OUT</p>
+                </td>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=123>
-<p>&nbsp;</td>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=146>
-<p>NLS_DATE_FORMAT</td>
-<td colspan=1
-	rowspan=1
-	style="width: 634px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=634px>
-<p class=tab_desc>String: Standard Oracle format for a date, as used in 
- the TO_DATE function.</td></tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="146">
+                    <p>ConnectionTimeout</p>
+                </td>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=123>
-<p>&nbsp;</td>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=146>
-<p>NLS_TIME_FORMAT</td>
-<td colspan=1
-	rowspan=1
-	style="width: 634px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=634px>
-<p>String: Standard Oracle format for a date, as used in the TO_TIMESTAMP 
- function.</td></tr>
+                <td style=
+                "WIDTH: 634px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="634">
+                    <p>Connection timeout in seconds</p>
+                </td>
+            </tr>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=123>
-<p>&nbsp;</td>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=146>
-<p>NLS_TIMESTAMP-_FORMAT</td>
-<td colspan=1
-	rowspan=1
-	style="width: 634px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=634px>
-<p class=tab_desc>String: Standard Oracle format for a date, as used in 
- the TO_TIMESTAMP function.</td></tr>
+            <tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="123">
+                    <p>MID</p>
+                </td>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=123>
-<p>&nbsp;</td>
-<td colspan=1
-	rowspan=1
-	style="x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=146>
-<p>NLS_TIMESTAMP-_TZ_FORMAT</td>
-<td colspan=1
-	rowspan=1
-	style="width: 634px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=634px>
-<p class=tab_desc>String: Standard Oracle format for a date, as used in 
- the TO_TIMESTAMP function for use with datatypes that do support timezones.</td></tr>
-</table>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="146">
+                    <p>MetaDataID</p>
+                </td>
 
-&nbsp;
+                <td style=
+                "WIDTH: 634px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="634">
+                    <p>Metadata ID 1=catalog functions need exact identifier, 0=catalog functions accept search patterns like
+                    'AB%' or 'INVOICE___'</p>
+                </td>
+            </tr>
 
+            <tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="123">
+                    <p>CUR</p>
+                </td>
+
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="146">
+                    <p>OdbcCursor</p>
+                </td>
+
+                <td style=
+                "WIDTH: 634px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="634">
+                    <p style="MARGIN-BOTTOM: 0pt">Cursor support of the driver. Option 2 guarantees the highest speed and is
+                    default.</p>
+
+                    <p style="MARGIN-BOTTOM: 0pt">0 = Use cursor library if needed</p>
+
+                    <p style="MARGIN-BOTTOM: 0pt">1 = Use ODBC cursor library</p>
+
+                    <p style="MARGIN-BOTTOM: 0pt">2 = Use Driver/RDBMS cursor library</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="123">
+                    <p>PAS</p>
+                </td>
+
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="146">
+                    <p>PacketSize</p>
+                </td>
+
+                <td style=
+                "WIDTH: 634px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="634">
+                    <p>Packet size (does nothing for now)</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="123">
+                    <p>QUT</p>
+                </td>
+
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="146">
+                    <p>QuietMode</p>
+                </td>
+
+                <td style=
+                "WIDTH: 634px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="634">
+                    <p>Quiet mode. Driver does never display any dialog boxes or messages</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="123">
+                    <p>TRC</p>
+                </td>
+
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="146">
+                    <p>TraceLevel</p>
+                </td>
+
+                <td style=
+                "WIDTH: 634px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="634">
+                    <p>Trace on (1) or off (0)</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="123">
+                    <p>TRF</p>
+                </td>
+
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="146">
+                    <p>TraceFile</p>
+                </td>
+
+                <td style=
+                "WIDTH: 634px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="634">
+                    <p>Trace file for EDO driver trace if TraceLevel=1</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="123">
+                    <p>TRL</p>
+                </td>
+
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="146">
+                    <p>TranslateLib</p>
+                </td>
+
+                <td style=
+                "WIDTH: 634px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="634">
+                    <p>Translate library. Name of the DLL containing SQLDriverToDatasource and vice versa.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="123">
+                    <p>TRO</p>
+                </td>
+
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="146">
+                    <p>TranslateOption</p>
+                </td>
+
+                <td style=
+                "WIDTH: 634px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="634">
+                    <p>Translate option, defined by the used translation library.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="123">
+                    <p>TRI</p>
+                </td>
+
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="146">
+                    <p>TransactionIsolation</p>
+                </td>
+
+                <td style=
+                "WIDTH: 634px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="634">
+                    <p>Transaction isolation. (does nothing for now)</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="123">
+                    <p>STA</p>
+                </td>
+
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="146">
+                    <p>StatisticsEnsure</p>
+                </td>
+
+                <td style=
+                "WIDTH: 634px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="634">
+                    <p>Statistics ensure. Enables (1) or disables (0) the SQL_ENSURE option of the SQLStatistics call.
+                    disabling allows for higher performance in all situations.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="123">
+                    <p>PFC</p>
+                </td>
+
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="146">
+                    <p>PrefetchCount</p>
+                </td>
+
+                <td style=
+                "WIDTH: 634px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="634">
+                    <p>Prefetch count. Number of records to prefetch and cache at once.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="123">
+                    <p>PFM</p>
+                </td>
+
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="146">
+                    <p>PrefetchMemory</p>
+                </td>
+
+                <td style=
+                "WIDTH: 634px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="634">
+                    <p>Prefetch memory. Number of bytes for prefetch cache memory</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="123">
+                    <p>FOC</p>
+                </td>
+
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="146">
+                    <p>FailoverCount</p>
+                </td>
+
+                <td style=
+                "WIDTH: 634px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="634">
+                    <p>Failover count. Number of times to retry connection to Oracle RAC cluster.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="123">
+                    <p>FOT</p>
+                </td>
+
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="146">
+                    <p>FailoverTime</p>
+                </td>
+
+                <td style=
+                "WIDTH: 634px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="634">
+                    <p>Failover time. Number of seconds between failover retry to Oracle RAC cluster.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="123">
+                    <p>MCL</p>
+                </td>
+
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="146">
+                    <p>ColumnMaxLength</p>
+                </td>
+
+                <td style=
+                "WIDTH: 634px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="634">
+                    <p>Max column length for static binds to long columns.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="123">
+                    <p>ISU</p>
+                </td>
+
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="146">
+                    <p>IntegerSpeedUp</p>
+                </td>
+
+                <td style=
+                "WIDTH: 634px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="634">
+                    <p>Integer speedup. If on (1) Oracle NUMBER with 0 precision and 0 scale are treated as binary integetrs.
+                    If off (0) Oracle NUMBER's are treated as DECIMAL's.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="123">
+                    <p>&nbsp;</p>
+                </td>
+
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="146">
+                    <p>NLS_TYPE</p>
+                </td>
+
+                <td style=
+                "WIDTH: 634px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="634">
+                    <p style="MARGIN-BOTTOM: 0pt">Type of National Language Support (NLS)</p>
+
+                    <p style="MARGIN-BOTTOM: 0pt">0 = Use standard Oracle NLS</p>
+
+                    <p style="MARGIN-BOTTOM: 0pt">1 = Use standard ODBC settings for NLS</p>
+
+                    <p style="MARGIN-BOTTOM: 0pt">2 = Use specific user selected values for NLS</p>
+
+                    <p style="MARGIN-BOTTOM: 0pt">See the explanation about <a href=
+                    "../Administration/NLS_Settings_of_the_datasource.htm">NLS settings of the datasource</a></p>
+                </td>
+            </tr>
+
+            <tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="123">
+                    <p>&nbsp;</p>
+                </td>
+
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="146">
+                    <p>NLS_DATE_FORMAT</p>
+                </td>
+
+                <td style=
+                "WIDTH: 634px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="634">
+                    <p class="tab_desc">String: Standard Oracle format for a date, as used in the TO_DATE function.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="123">
+                    <p>&nbsp;</p>
+                </td>
+
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="146">
+                    <p>NLS_TIME_FORMAT</p>
+                </td>
+
+                <td style=
+                "WIDTH: 634px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="634">
+                    <p>String: Standard Oracle format for a date, as used in the TO_TIMESTAMP function.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="123">
+                    <p>&nbsp;</p>
+                </td>
+
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="146">
+                    <p>NLS_TIMESTAMP-_FORMAT</p>
+                </td>
+
+                <td style=
+                "WIDTH: 634px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="634">
+                    <p class="tab_desc">String: Standard Oracle format for a date, as used in the TO_TIMESTAMP function.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="123">
+                    <p>&nbsp;</p>
+                </td>
+
+                <td style=
+                "PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="146">
+                    <p>NLS_TIMESTAMP-_TZ_FORMAT</p>
+                </td>
+
+                <td style=
+                "WIDTH: 634px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; x-cell-content-align: top"
+                valign="top" width="634">
+                    <p class="tab_desc">String: Standard Oracle format for a date, as used in the TO_TIMESTAMP function for use
+                    with datatypes that do support timezones.</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>&nbsp;
 </body>
-
 </html>

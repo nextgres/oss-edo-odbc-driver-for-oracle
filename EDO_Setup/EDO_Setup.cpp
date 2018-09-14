@@ -76,6 +76,19 @@ GetDatasource(CString attrib)
 }
 
 BOOL INSTAPI
+ConfigDriver(HWND    hwndParent,
+             WORD    fRequest,
+             LPCSTR  lpszDriver,
+             LPCSTR  lpszArgs,
+             LPSTR   lpszMsg,
+             WORD    cchMsgMax,
+             WORD*   pcchMsgOut)
+{
+  return FALSE;
+}
+
+
+BOOL INSTAPI
 ConfigDSN(HWND   hwndParent
          ,WORD   request
          ,LPCSTR lpszDriver

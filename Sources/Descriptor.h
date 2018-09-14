@@ -115,8 +115,8 @@ public:
                                    ,SQLSMALLINT  Precision
                                    ,SQLSMALLINT  Scale
                                    ,SQLPOINTER   Data
-                                   ,SQLINTEGER*  StringLength
-                                   ,SQLINTEGER*  Indicator) = 0;
+                                   ,SQLLEN*      StringLength
+                                   ,SQLLEN*      Indicator) = 0;
 
   // Get statement for witch this descriptor was auto created
   // Return statement object for witch this object was implicitly allocated

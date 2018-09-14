@@ -127,8 +127,8 @@ ConversionFunctions ConversionFunctionToODBC_SQL[]=
 SQLRETURN 
 DatasourceToDriver(SQLSMALLINT       ODBC_Type
                   ,SQLPOINTER        DataPtr
-                  ,int               DataLen
-                  ,SQLINTEGER*       StrLen_or_IndPtr
+                  ,SQLLEN            DataLen
+                  ,SQLLEN*           StrLen_or_IndPtr
                   ,OracleItems&      Holder
                   ,ODBCErrorHolder&  ociError
                   ,ODBCStatement*    p_statement
@@ -271,7 +271,7 @@ ConvertToSQL_C_CHAR(SQLPOINTER         DataPtr
                                   SQLRETURN ret = (**p_statement->m_SQLDataSourceToDriver)(options
                                                                                           ,type
                                                                                           ,str
-                                                                                          ,strlen(str)
+                                                                                          ,(int)strlen(str)
                                                                                           ,str
                                                                                           ,DataLen
                                                                                           ,(SDWORD*)ResultLen
@@ -1191,7 +1191,7 @@ ConvertToSQL_C_TYPE_DATE(SQLPOINTER         DataPtr
                                                           ,Holder.Value.string_val);
                             OCIDateFromText(ociError.GetOwnerErrorObject()
                                            ,(OraText*)Str
-                                           ,strlen(Str)
+                                           ,(int)strlen(Str)
                                            ,(OraText*)conn->GetNLSDateFormat().GetString()
                                            ,conn->GetNLSDateFormat().GetLength()
                                            ,NULL            // Language
@@ -2181,7 +2181,7 @@ ConvertToSQL_C_NUMERIC(SQLPOINTER        DataPtr
     ((Holder.m_desc_scale == 0) || (Holder.m_desc_scale == -127)))
   {
     // Take precision and scale from the string
-    int len = strlen(str);
+    int   len = (int)strlen(str);
     char* pos = strchr(str,'.');
     numeric->precision = len;
     numeric->scale     = 0;
@@ -2227,17 +2227,17 @@ ConvertToSQL_C_GUID(SQLPOINTER        DataPtr
     if(DataLen >= 16)
     {
       int scannum = scanf("%lX-%X-%X-%2.2X%2.2X-%2.2X%2.2X%2.2X%2.2X%2.2X%2.2X"
-                          ,guid->Data1 
-                          ,guid->Data2 
-                          ,guid->Data3 
-                          ,guid->Data4[0]
-                          ,guid->Data4[1]
-                          ,guid->Data4[2]
-                          ,guid->Data4[3]
-                          ,guid->Data4[4]
-                          ,guid->Data4[5]
-                          ,guid->Data4[6]
-                          ,guid->Data4[7]);
+                          ,&guid->Data1 
+                          ,&guid->Data2 
+                          ,&guid->Data3 
+                          ,&guid->Data4[0]
+                          ,&guid->Data4[1]
+                          ,&guid->Data4[2]
+                          ,&guid->Data4[3]
+                          ,&guid->Data4[4]
+                          ,&guid->Data4[5]
+                          ,&guid->Data4[6]
+                          ,&guid->Data4[7]);
       if(scannum == 11)
       {
         if(ResultLen)

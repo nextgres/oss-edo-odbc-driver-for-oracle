@@ -5,3 +5,4 @@ LIBRARY      "EDO_Setup"
 EXPORTS
     ; Explicit exports can go here
 ConfigDSN
+ConfigDriver

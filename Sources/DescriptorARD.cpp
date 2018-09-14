@@ -390,9 +390,9 @@ ODBC_ARD::SQLSetDescField(SQLSMALLINT RecNumber
                                               }
                                               break;
     case SQL_DESC_DATETIME_INTERVAL_PRECISION:break;
-    case SQL_DESC_INDICATOR_PTR:              record->m_desc_indicator_ptr = (SQLINTEGER*)Value;
+    case SQL_DESC_INDICATOR_PTR:              record->m_desc_indicator_ptr = (SQLLEN*)Value;
                                               break;
-    case SQL_DESC_LENGTH:                     record->m_desc_length = (SQLINTEGER)Value;
+    case SQL_DESC_LENGTH:                     record->m_desc_length = (SQLLEN)Value;
                                               break;
     case SQL_DESC_NUM_PREC_RADIX:             break;
     case SQL_DESC_OCTET_LENGTH:               // ? IRD?
@@ -441,8 +441,8 @@ ODBC_ARD::SQLSetDescRec(SQLSMALLINT /*RecNumber    */
                        ,SQLSMALLINT /*Precision    */
                        ,SQLSMALLINT /*Scale        */
                        ,SQLPOINTER  /*Data         */
-                       ,SQLINTEGER* /*StringLength */
-                       ,SQLINTEGER* /*Indicator    */)
+                       ,SQLLEN*     /*StringLength */
+                       ,SQLLEN*     /*Indicator    */)
 {
   return SQL_ERROR;
 }

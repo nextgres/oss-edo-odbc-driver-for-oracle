@@ -40,12 +40,13 @@
 #include "ODBCTypes.h"
 #include "Utility.h"
 #include <oci.h>
+#include <intrin.h>
 
 #ifdef _DEBUG
 void DriverCall()
 {
   // Use this to set a breakpoint for all interface calls
-  _asm nop;   
+  __nop();
 }
 #else
 #define DriverCall()
@@ -560,11 +561,11 @@ SQLBindParameter(SQLHSTMT     StatementHandle
                 ,SQLSMALLINT  InputOutputType
                 ,SQLSMALLINT  ValueType
                 ,SQLSMALLINT  ParameterType
-                ,SQLUINTEGER  ColumnSize
+                ,SQLLEN       ColumnSize
                 ,SQLSMALLINT  DecimalDigits
                 ,SQLPOINTER   ParameterValuePtr
-                ,SQLINTEGER   BufferLength
-                ,SQLINTEGER*  StrLen_or_IndPtr)
+                ,SQLLEN       BufferLength
+                ,SQLLEN*      StrLen_or_IndPtr)
 {
   DriverCall();
 	ODBCBaseObject *Obj=(ODBCBaseObject*)StatementHandle;	
@@ -590,10 +591,10 @@ SQLBindParam(SQLHSTMT     StatementHandle
             ,SQLUSMALLINT ParameterNumber
             ,SQLSMALLINT  ValueType
             ,SQLSMALLINT  ParameterType
-            ,SQLUINTEGER  ColumnSize
+            ,SQLLEN       ColumnSize
             ,SQLSMALLINT  DecimalDigits
             ,SQLPOINTER   ParameterValuePtr
-            ,SQLINTEGER*  StrLen_or_IndPtr)
+            ,SQLLEN*      StrLen_or_IndPtr)
 {
   DriverCall();
 	ODBCBaseObject *Obj=(ODBCBaseObject*)StatementHandle;	
@@ -735,7 +736,7 @@ SQLDescribeCol(SQLHSTMT     StatementHandle
               ,SQLSMALLINT  BufferLength
               ,SQLSMALLINT* NameLength
               ,SQLSMALLINT* DataType
-              ,SQLUINTEGER* ColumnSize
+              ,SQLULEN*     ColumnSize
               ,SQLSMALLINT* DecimalDigits
               ,SQLSMALLINT* Nullable)
 {
@@ -833,8 +834,8 @@ SQLGetData(SQLHSTMT     StatementHandle
           ,SQLUSMALLINT ColumnNumber
           ,SQLSMALLINT  TargetType
           ,SQLPOINTER   TargetValue
-          ,SQLINTEGER   BufferLength
-          ,SQLINTEGER*  StrLen_or_Ind)
+          ,SQLLEN       BufferLength
+          ,SQLLEN*      StrLen_or_Ind)
 {
   DriverCall();
   WRITELOG("SQLGetData(%p,%d,%d,%p,%d,%p)",StatementHandle,ColumnNumber,TargetType,TargetValue,BufferLength,StrLen_or_Ind);
@@ -868,8 +869,8 @@ SQLMoreResults(SQLHSTMT StatementHandle)
 }
 
 SQLRETURN SQL_API 
-SQLRowCount(SQLHSTMT    StatementHandle
-           ,SQLINTEGER* RowCount)
+SQLRowCount(SQLHSTMT  StatementHandle
+           ,SQLLEN*   RowCount)
 {
   DriverCall();
   WRITELOG("SQLRowCount(%p,%p)",StatementHandle,RowCount);
@@ -907,7 +908,7 @@ SQLColAttribute(SQLHSTMT     StatementHandle
                                    ,(SQLCHAR*)CharacterAttribute
                                    ,BufferLength
                                    ,StringLength
-                                   ,(SQLINTEGER*)NumericAttribute);
+                                   ,(SQLLEN*)NumericAttribute);
 }
 
 // Maps old-style SQLColAttributes (ODBC 2.x) to SQLColAttribute (ODBC 3.x)
@@ -956,7 +957,7 @@ SQLColAttributes(SQLHSTMT     StatementHandle
     default: WRITELOG("SQLColAttributes(%p). Invalid fDescType translation (%d)",fDescType);
              return SQL_ERROR;
   }
-  return statement->SQLColAttribute(icol,FieldIdentifier,(SQLCHAR*)rgbDesc,cbDescMax,pcbDesc,pfDesc);
+  return statement->SQLColAttribute(icol,FieldIdentifier,(SQLCHAR*)rgbDesc,cbDescMax,pcbDesc,(SQLLEN*)pfDesc);
 }
   
 SQLRETURN SQL_API
@@ -1075,7 +1076,7 @@ SQLSetDescRec(SQLHDESC    DescriptorHandle
     descriptor->GetOCIErrorObject()->AddError("HY016");
     return SQL_ERROR;
   }
-  return descriptor->SQLSetDescRec(RecNumber,Type,SubType,Length,Precision,Scale,Data,StringLength,Indicator);
+  return descriptor->SQLSetDescRec(RecNumber,Type,SubType,(SQLINTEGER)Length,Precision,Scale,Data,StringLength,Indicator);
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -1622,7 +1623,7 @@ SQLGetCursorName(SQLHSTMT     StatementHandle
 }
 
 SQLRETURN SQL_API
-SQLParamOptions(SQLHSTMT hstmt, SQLULEN crow, SQLULEN *pirow)
+SQLParamOptions(SQLHSTMT hstmt, SQLULEN crow, SQLULEN* pirow)
 {
   DriverCall();
   WRITELOG("SQLParamOptions(%p,%d,%p)",hstmt,crow,pirow);
@@ -1779,7 +1780,7 @@ SQLSetParam(SQLHSTMT     StatementHandle
     case SQL_WCHAR:
     case SQL_WVARCHAR:
     case SQL_LONGVARCHAR:
-    case SQL_WLONGVARCHAR:  length = strlen((char*)ParameterValue);
+    case SQL_WLONGVARCHAR:  length = (int)strlen((char*)ParameterValue);
   }
   return statement->SQLBindParameter(ParameterNumber
                                     ,SQL_PARAM_INPUT   // Old style 1.0 is always param input

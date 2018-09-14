@@ -1,0 +1,123 @@
+Microsoft HTML Help Compiler 4.74.8702
+
+Compiling d:\Develop\EDO\Documentation\EDO_Documentation.chm
+
+About_EDO.htm
+Administration\Creating_a_datasource.htm
+Administration\Defining_the_datasource.htm
+Administration\NLS_Settings_of_the_datasource.htm
+Administration\ODBC_Settings_of_the_datasource.htm
+Administration\Oracle_settings_of_the_datasource.htm
+Administration\Testing_the_TNS_connect.htm
+Administration\Tracing_and_translation.htm
+Contacting_EDO.htm
+default.css
+Differences\Binding_to_a_NUMBER.htm
+Differences\Catalog_functions.htm
+Differences\Conversion_support.htm
+Differences\Database_naming.htm
+Differences\Datatypes_discovery.htm
+Differences\Differences_with_Oracle_ODBC.htm
+Differences\ODBC_Escape_syntax.htm
+Differences\ODBC_Functions.htm
+Differences\RDBMS_Implementation.htm
+Differences\SQL_NUMERIC_STRUCT.htm
+EDO_Documentation.brs
+EDO_s_license.htm
+Images\Edo_castle.jpg
+Installation\Installation_of_EDO.htm
+Installation\Network_installation.htm
+ODBCQuickReference\Elements\Datatypes.htm
+ODBCQuickReference\Elements\OBJECT PRIVILEGES.htm
+ODBCQuickReference\Elements\Operators.htm
+ODBCQuickReference\Elements\Privileges.htm
+ODBCQuickReference\Elements\Pseudocolumns.htm
+ODBCQuickReference\Functions\Conversion Functions.htm
+ODBCQuickReference\Functions\Group Functions.htm
+ODBCQuickReference\Functions\Numeric_functions.htm
+ODBCQuickReference\Functions\String_functions.htm
+ODBCQuickReference\Functions\System_functions.htm
+ODBCQuickReference\Functions\Time_Date_Interval_Functions.htm
+ODBCQuickReference\ODBC_SQL_Reference.htm
+ODBCQuickReference\SQL_Elements\base-table-name.htm
+ODBCQuickReference\SQL_Elements\column-name.htm
+ODBCQuickReference\SQL_Elements\data-type.htm
+ODBCQuickReference\SQL_Elements\expression.htm
+ODBCQuickReference\SQL_Elements\pattern.htm
+ODBCQuickReference\SQL_Elements\referenced-table-name.htm
+ODBCQuickReference\SQL_Elements\search-condition.htm
+ODBCQuickReference\Statements\ALTER TABLE.htm
+ODBCQuickReference\Statements\COMMIT.htm
+ODBCQuickReference\Statements\CREATE INDEX.htm
+ODBCQuickReference\Statements\CREATE SCHEMA.htm
+ODBCQuickReference\Statements\CREATE TABLE.htm
+ODBCQuickReference\Statements\CREATE VIEW.htm
+ODBCQuickReference\Statements\DELETE.htm
+ODBCQuickReference\Statements\DROP INDEX.htm
+ODBCQuickReference\Statements\DROP TABLE.htm
+ODBCQuickReference\Statements\DROP VIEW.htm
+ODBCQuickReference\Statements\GRANT (Object Privileges).htm
+ODBCQuickReference\Statements\GRANT (System Privileges and Roles).htm
+ODBCQuickReference\Statements\INSERT.htm
+ODBCQuickReference\Statements\REVOKE_(Object_Privileges).htm
+ODBCQuickReference\Statements\REVOKE_(System_Privileges).htm
+ODBCQuickReference\Statements\ROLLBACK.htm
+ODBCQuickReference\Statements\SELECT.htm
+ODBCQuickReference\Statements\UPDATE.htm
+Programmers\Connection_attributes.htm
+Programmers\EDO_extra_connection_attributes.htm
+Programmers\Not_supported_in_EDO.htm
+Programmers\ODBC_Programming.htm
+RoboHHRE.lng
+Welcome.htm
+EDO_Documentation.hhc
+EDO_Documentation.hhk
+Images\ODBC_manager.jpg
+Images\ODBC_driver.jpg
+Images\EDO_1.jpg
+Images\EDO_2.jpg
+Images\EDO_Login.jpg
+Images\Login_OK.jpg
+Images\Login_refuse.jpg
+Images\Login_no_database.jpg
+Images\ODBC_NLS.gif
+Images\ODBC_settings.gif
+Images\ODBC_Oracle.gif
+Images\TNS_ping.jpg
+Images\TNS_non_ping.jpg
+Images\ODBC_Tracing_translation.gif
+Images\ReInstall warning.jpg
+Images\Install_welcome.jpg
+Images\Install_license.jpg
+Images\Install_directory.jpg
+Images\Install_ready.jpg
+Images\delete-24x24.bmp
+Images\accept-24x24.bmp
+ODBC_Reference.css
+ODBCQuickReference\Pictures\Real_datatypes.bmp
+ODBCQuickReference\Pictures\Grant.bmp
+ODBCQuickReference\Pictures\PseudoColumns.bmp
+ODBCQuickReference\Pictures\Conversion_functions.bmp
+ODBCQuickReference\Pictures\Table_names.bmp
+ODBCQuickReference\Pictures\Data_types.bmp
+ODBCQuickReference\Pictures\Alter_table.bmp
+ODBCQuickReference\Pictures\Index.bmp
+ODBCQuickReference\Pictures\Create_schema.bmp
+ODBCQuickReference\Pictures\Create_table.bmp
+ODBCQuickReference\Pictures\Create_view.bmp
+ODBCQuickReference\Pictures\Delete.bmp
+ODBCQuickReference\Pictures\Drop_table.bmp
+ODBCQuickReference\Pictures\Drop_view.bmp
+ODBCQuickReference\Pictures\Insert.bmp
+ODBCQuickReference\Pictures\Revoke.bmp
+ODBCQuickReference\Pictures\Select.bmp
+
+Compile time: 0 minutes, 2 seconds
+72	Topics
+324	Local links
+5	Internet links
+19	Graphics
+
+
+Created d:\Develop\EDO\Documentation\EDO_Documentation.chm, 1,139,584 bytes
+Compression decreased file by 6,796,982 bytes.

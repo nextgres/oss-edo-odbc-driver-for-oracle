@@ -1,0 +1,13 @@
+SDK Package Information 
+======================= 
+Sun Oct 30 08:06:12 CDT 2011
+Client Shared Library 32-bit - 11.2.0.3.0
+
+Windows NT Version V5.2 Service Pack 2 
+CPU                 : 2 - type 586, 1 Physical Cores
+Process Affinity    : 0x0x00000000
+Memory (Avail/Total): Ph:7185M/7799M, Ph+PgF:11206M/11690M, VA:1965M/2047M 
+Operating in ORACLE_HOME environment.
+Small timezone file = C:\ADE\aime_77291\oracle\oracore\zoneinfo\timezone_14.dat
+Large timezone file = C:\ADE\aime_77291\oracle\oracore\zoneinfo\timezlrg_14.dat
+

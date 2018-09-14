@@ -258,8 +258,8 @@ public:
                            ,SQLSMALLINT  Precision
                            ,SQLSMALLINT  Scale
                            ,SQLPOINTER   Data
-                           ,SQLINTEGER*  StringLength
-                           ,SQLINTEGER*  Indicator);
+                           ,SQLLEN*      StringLength
+                           ,SQLLEN*      Indicator);
 private:
   // Reset the VarArray
   void DoneVarArray();

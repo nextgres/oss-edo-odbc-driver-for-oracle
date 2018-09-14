@@ -1,2 +1,23 @@
+Release 1.2.1
+=============
+- Fixed problem with reading GUID's from ODBC sources.
+- Fixed problem with double's and floating point values,
+  where we trim off trailing zero's.
+  Thanks to Dann Corbit
+
+Release 1.2.0
+=============
+- New feature: 32 bits **AND** 64 bits version
+- Fixed problem with SQL_DIAG_CURSOR_ROW_COUNT attribute in SQLGetDiagField
+
+Release 1.1.0
+=============
+- Release tested for Oracle 12c
+- Fixed problem with SQLForeignKey meta-data query
+
 Initial release 1.0.0
 =====================
+
+This is the initial 1.0.0 release of EDO (Edo's Driver for Oracle)
+It is a MS-Windows based ODBC driver for Oracle with many features
+not found in the official Oracle release.

@@ -94,8 +94,8 @@ extern ConversionFunctions ConversionFunctionFromODBC_SQL[];
 SQLRETURN 
 DatasourceToDriver(SQLSMALLINT      ODBC_Type
                   ,SQLPOINTER       DataPtr
-                  ,int              DataLen
-                  ,SQLINTEGER*      StrLen_or_IndPtr
+                  ,SQLLEN           DataLen
+                  ,SQLLEN*          StrLen_or_IndPtr
                   ,OracleItems&     Holder
                   ,ODBCErrorHolder& ociError
                   ,ODBCStatement*   p_statement
@@ -104,8 +104,8 @@ DatasourceToDriver(SQLSMALLINT      ODBC_Type
 SQLRETURN 
 DriverToDatasource(SQLSMALLINT      ODBC_Type
                   ,SQLPOINTER       DataPtr
-                  ,int              DataLen
-                  ,SQLINTEGER*      StrLen_or_IndPtr
+                  ,SQLLEN           DataLen
+                  ,SQLLEN*          StrLen_or_IndPtr
                   ,OracleItems&     Holder
                   ,ODBCErrorHolder& ociError
                   ,ODBCStatement*   p_statement

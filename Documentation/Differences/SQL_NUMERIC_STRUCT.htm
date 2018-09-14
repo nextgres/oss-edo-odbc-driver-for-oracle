@@ -1,114 +1,79 @@
-<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 
 <html>
 
 <!--(==============================================================)-->
+
 <!--(Document created with RoboEditor. )============================-->
+
 <!--(==============================================================)-->
 
 <head>
-
-<title>SQL_NUMERIC_STRUCT</title>
-
-<!--(Meta)==========================================================-->
-
-<meta http-equiv=content-type content="text/html; charset=windows-1252">
-<meta name=generator content="RoboHELP by eHelp Corporation - www.ehelp.com">
-<meta name=generator-major-version content=0.1>
-<meta name=generator-minor-version content=1>
-<meta name=filetype content=kadov>
-<meta name=filetype-version content=1>
-<meta name=page-count content=1>
-<meta name=layout-height content=788>
-<meta name=layout-width content=968>
-
-
-<!--(Links)=========================================================-->
-
-<link rel="StyleSheet" href="..\default.css">
-
-
-
+    <title>SQL_NUMERIC_STRUCT</title>
+    <!--(Meta)==========================================================-->
+    <meta http-equiv="content-type" content="text/html; charset=us-ascii">
+    <meta name="generator" content="RoboHELP by eHelp Corporation - www.ehelp.com">
+    <meta name="generator-major-version" content="0.1">
+    <meta name="generator-minor-version" content="1">
+    <meta name="filetype" content="kadov">
+    <meta name="filetype-version" content="1">
+    <meta name="page-count" content="1">
+    <meta name="layout-height" content="788">
+    <meta name="layout-width" content="968">
+    <!--(Links)=========================================================-->
+    <link rel="StyleSheet" href="../default.css" type="text/css">
 </head>
-
 <!--(Body)==========================================================-->
 
-
 <body>
+    <h1>SQL_NUMERIC_STRUCT</h1>
 
-<h1>SQL_NUMERIC_STRUCT</h1>
+    <p>To accommodate the ISO datatype DECIMAL with a maximum of 32 digits precision and scale, the ODBC standard introduced a
+    new datatype in version 3.x. This datatype is named SQL_NUMERIC_STRUCT and is defined as follows:</p>
 
-<p>To accommodate the ISO datatype DECIMAL with a maximum of 32 digits 
- precision and scale, the ODBC standard introduced a new datatype in version 
- 3.x. This datatype is named SQL_NUMERIC_STRUCT and is defined as follows:</p>
+    <p style="margin-bottom: 0pt;"><span class="Code">#define SQL_MAX_NUMERIC_LEN 16</span></p>
 
-<p style="margin-bottom: 0pt;"><span class=Code>#define SQL_MAX_NUMERIC_LEN 
- 16 </span></p>
+    <p style="margin-bottom: 0pt;"><span class="Code">typedef struct tagSQL_NUMERIC_STRUCT</span></p>
 
-<p style="margin-bottom: 0pt;"><span class=Code>typedef struct tagSQL_NUMERIC_STRUCT 
- </span></p>
+    <p style="margin-bottom: 0pt;"><span class="Code">{</span></p>
 
-<p style="margin-bottom: 0pt;"><span class=Code>{</span></p>
+    <p style="margin-left: 40px; margin-bottom: 0pt;"><span class="Code">SQLCHAR 
+    <!--kadov_tag{{<spaces>}}-->&nbsp; 
+    <!--kadov_tag{{</spaces>}}-->precision;</span></p>
 
-<p style="margin-left: 40px; margin-bottom: 0pt;"><span class=Code>SQLCHAR 
- <!--kadov_tag{{<spaces>}}-->&nbsp;<!--kadov_tag{{</spaces>}}-->precision;</span></p>
+    <p style="margin-left: 40px; margin-bottom: 0pt;"><span class="Code"><span class="Code">SQLSCHAR scale;</span></span></p>
 
-<p style="margin-left: 40px; margin-bottom: 0pt;"><span class=Code><span 
- class=Code>SQLSCHAR scale;</span></span></p>
+    <p style="margin-left: 40px; margin-bottom: 0pt;"><span class="Code">SQLCHAR 
+    <!--kadov_tag{{<spaces>}}-->&nbsp; 
+    <!--kadov_tag{{</spaces>}}-->sign; /* 1 if positive, 0 if negative */</span></p>
 
-<p style="margin-left: 40px; margin-bottom: 0pt;"><span class=Code>SQLCHAR 
- <!--kadov_tag{{<spaces>}}-->&nbsp;<!--kadov_tag{{</spaces>}}-->sign; /* 
- 1 if positive, 0 if negative */</span></p>
+    <p style="margin-left: 40px; margin-bottom: 0pt;"><span class="Code">SQLCHAR 
+    <!--kadov_tag{{<spaces>}}-->&nbsp; 
+    <!--kadov_tag{{</spaces>}}-->val[SQL_MAX_NUMERIC_LEN];</span></p>
 
-<p style="margin-left: 40px; margin-bottom: 0pt;"><span class=Code>SQLCHAR 
- <!--kadov_tag{{<spaces>}}-->&nbsp;<!--kadov_tag{{</spaces>}}-->val[SQL_MAX_NUMERIC_LEN];</span></p>
+    <p style="margin-bottom: 0pt;"><span class="Code">}</span></p>
 
-<p style="margin-bottom: 0pt;"><span class=Code>} </span></p>
+    <p style="margin-bottom: 0pt;"><span class="Code">SQL_NUMERIC_STRUCT;</span></p>
 
-<p style="margin-bottom: 0pt;"><span class=Code>SQL_NUMERIC_STRUCT;</span></p>
+    <p style="margin-bottom: 0pt;">&nbsp;</p>
 
-<p style="margin-bottom: 0pt;">&nbsp;</p>
+    <p style="margin-bottom: 0pt;">This structure allows for storage of the precision and scale and the sign of the number. The
+    actual mantissa of the number is stored in the 'val' part of the structure. It's stored with a radix of 256, so no bits of
+    information are wasted. The 'precision' member holds the number of valid bytes in the 'val' member. This allows for the
+    maximum number of: 3.4028236692093846346337460743177e+38</p>
 
-<p style="margin-bottom: 0pt;">This structure allows for storage of the 
- precision and scale and the sign of the number. The actual mantissa of 
- the number is stored in the 'val' part of the structure. It's stored with 
- a radix of 256, so no bits of information are wasted. The 'precision' 
- member holds the number of valid bytes in the 'val' member. This allows 
- for the maximum number of: 3.4028236692093846346337460743177e+38</p>
+    <p style="margin-bottom: 0pt;">&nbsp;</p>
 
-<p style="margin-bottom: 0pt;">&nbsp;</p>
+    <p style="margin-bottom: 0pt;"><img src="../Images/delete-24x24.bmp" x-maintain-ratio="TRUE" style=
+    "border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width="24" height="24"
+    border="0"> The official Oracle driver does not support this datatype. Binding a column to this datatype will yield strange
+    and unpredicted results.</p>
 
-<p style="margin-bottom: 0pt;"><img src="../Images/delete-24x24.bmp"
-									x-maintain-ratio=TRUE
-									style="border: none;
-											width: 24px;
-											height: 24px;
-											float: none;
-											border-style: none;
-											border-style: none;"
-									width=24
-									height=24
-									border=0> The official Oracle driver 
- does not support this datatype. Binding a column to this datatype will 
- yield strange and unpredicted results.</p>
-
-<p style="margin-bottom: 0pt;"><img src="../Images/accept-24x24.bmp"
-									x-maintain-ratio=TRUE
-									style="border: none;
-											width: 24px;
-											height: 24px;
-											float: none;
-											border-style: none;
-											border-style: none;"
-									width=24
-									height=24
-									border=0> The EDO ODBC driver uses 
- the SQL_NUMERIC_STRUCT as the primary way to pass on NUMBERS from the 
- database. That is, if the numbers are not bound to other approximate number 
- types such as SQL_FLOAT, SQL_REAL, SQL_DOUBLE or exact number types like 
- SQL_SHORT, SQL_LONG or SQL_SBIGINT. How this is done, is described in 
- the '<a href="Binding_to_a_NUMBER.htm">binding to a number</a>' page.</p>
-
+    <p style="margin-bottom: 0pt;"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE" style=
+    "border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width="24" height="24"
+    border="0"> The EDO ODBC driver uses the SQL_NUMERIC_STRUCT as the primary way to pass on NUMBERS from the database. That
+    is, if the numbers are not bound to other approximate number types such as SQL_FLOAT, SQL_REAL, SQL_DOUBLE or exact number
+    types like SQL_SHORT, SQL_LONG or SQL_SBIGINT. How this is done, is described in the '<a href=
+    "Binding_to_a_NUMBER.htm">binding to a number</a>' page.</p>
 </body>
-
 </html>

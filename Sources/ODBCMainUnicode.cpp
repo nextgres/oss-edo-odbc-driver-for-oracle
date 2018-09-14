@@ -40,12 +40,13 @@
 #include "ODBCTypes.h"
 #include <oci.h>
 #include "Unicode.h"
+#include <intrin.h>
 
 #ifdef _DEBUG
 void UnicodeCall()
 {
   // Use this to set a breakpoint for all interface calls
-  _asm nop;   
+  __nop();
 }
 #else
 #define UnicodeCall()
@@ -228,12 +229,12 @@ SQLColAttributesW(SQLHSTMT     StatementHandle
 
 SQLRETURN SQL_API 
 SQLConnectW(SQLHDBC     ConnectionHandle
-            ,SQLWCHAR*   ServerName
-            ,SQLSMALLINT NameLength1
-            ,SQLWCHAR*   UserName
-            ,SQLSMALLINT NameLength2
-            ,SQLWCHAR*   Authentication
-            ,SQLSMALLINT NameLength3)
+           ,SQLWCHAR*   ServerName
+           ,SQLSMALLINT NameLength1
+           ,SQLWCHAR*   UserName
+           ,SQLSMALLINT NameLength2
+           ,SQLWCHAR*   Authentication
+           ,SQLSMALLINT NameLength3)
 {
   UnicodeCall();
   WRITELOG("SQLConnectW(%p,%p,%d,%p,%d,%p,%d)",ConnectionHandle
@@ -260,7 +261,7 @@ SQLDescribeColW(SQLHSTMT     StatementHandle
                ,SQLSMALLINT  BufferLength
                ,SQLSMALLINT* NameLength
                ,SQLSMALLINT* DataType
-               ,SQLUINTEGER* ColumnSize
+               ,SQLULEN*     ColumnSize
                ,SQLSMALLINT* DecimalDigits
                ,SQLSMALLINT* Nullable)
 {
@@ -931,7 +932,7 @@ SQLColAttributeW(SQLHSTMT     StatementHandle
                                          ,(SQLCHAR*)characterAttribute
                                          ,characterAttribute
                                          ,StringLength
-                                         ,(SQLINTEGER*)NumericAttribute);
+                                         ,(SQLLEN*)NumericAttribute);
       }
   }
   return statement->SQLColAttribute(ColumnNumber
@@ -939,7 +940,7 @@ SQLColAttributeW(SQLHSTMT     StatementHandle
                                    ,(SQLCHAR*)CharacterAttribute
                                    ,BufferLength
                                    ,StringLength
-                                   ,(SQLINTEGER*)NumericAttribute);
+                                   ,(SQLLEN*)NumericAttribute);
 }
 
 SQLRETURN SQL_API 

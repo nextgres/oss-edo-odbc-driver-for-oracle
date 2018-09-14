@@ -123,8 +123,8 @@ ConversionFunctions ConversionFunctionFromODBC_SQL[]=
 SQLRETURN 
 DriverToDatasource(SQLSMALLINT       ODBC_Type
                   ,SQLPOINTER        DataPtr
-                  ,int               DataLen
-                  ,SQLINTEGER*       StrLen_or_IndPtr
+                  ,SQLLEN            DataLen
+                  ,SQLLEN*           StrLen_or_IndPtr
                   ,OracleItems&      Holder
                   ,ODBCErrorHolder&  ociError
                   ,ODBCStatement*    p_statement
@@ -152,7 +152,7 @@ DriverToDatasource(SQLSMALLINT       ODBC_Type
 		if(ConversionFunctionFromODBC_SQL[i].ODBC_Type == ODBC_Type)
     {
 			return ConversionFunctionFromODBC_SQL[i].ConversionFunction(DataPtr
-                                                                 ,DataLen
+                                                                 ,(int) DataLen
                                                                  ,(int*)StrLen_or_IndPtr
                                                                  ,Holder
                                                                  ,ociError
@@ -229,7 +229,7 @@ ConvertFromSQL_C_CHAR(SQLPOINTER       DataPtr
                                           (**p_statement->m_SQLDriverToDataSource)(options
                                                                                   ,type
                                                                                   ,TextBuff
-                                                                                  ,strlen(TextBuff)
+                                                                                  ,(int)strlen(TextBuff)
                                                                                   ,TextBuff
                                                                                   ,DataLen
                                                                                   ,(SDWORD*)ResultLen
@@ -243,7 +243,7 @@ ConvertFromSQL_C_CHAR(SQLPOINTER       DataPtr
                                       }
                                       {
                                         OCIEnv* environment = p_statement->GetDBConnection()->GetOwnerODBCEnv()->GetOwnerEnv();
-                                        int length = strlen(TextBuff) + 1;
+                                        int length = (int)strlen(TextBuff) + 1;
                                         return CopyODBCStringToRDBMS(environment
                                                                     ,TextBuff
                                                                     ,length
@@ -1254,7 +1254,7 @@ ConvertFromSQL_C_INTERVAL_YEAR(SQLPOINTER       DataPtr
                             itoa(ValueBuff.intval.year_month.year,localBuffer,10);
                             return CopyODBCStringToRDBMS(p_statement->GetDBConnection()->GetOwnerODBCEnv()->GetOwnerEnv()
                                                         ,localBuffer
-                                                        ,strlen(localBuffer)
+                                                        ,(int)strlen(localBuffer)
                                                         ,ResultLen
                                                         ,&ociError
                                                         ,Holder
@@ -1301,7 +1301,7 @@ ConvertFromSQL_C_INTERVAL_MONTH(SQLPOINTER       DataPtr
                             itoa(ValueBuff.intval.year_month.month,localBuffer,10);
                             return CopyODBCStringToRDBMS(p_statement->GetDBConnection()->GetOwnerODBCEnv()->GetOwnerEnv()
                                                         ,localBuffer
-                                                        ,strlen(localBuffer)
+                                                        ,(int)strlen(localBuffer)
                                                         ,ResultLen
                                                         ,&ociError
                                                         ,Holder
@@ -1401,7 +1401,7 @@ ConvertFromSQL_C_INTERVAL_DAY(SQLPOINTER        DataPtr
                             itoa(ValueBuff.intval.day_second.hour,localBuffer,10);
                             return CopyODBCStringToRDBMS(p_statement->GetDBConnection()->GetOwnerODBCEnv()->GetOwnerEnv()
                                                         ,localBuffer
-                                                        ,strlen(localBuffer)
+                                                        ,(int)strlen(localBuffer)
                                                         ,ResultLen
                                                         ,&ociError
                                                         ,Holder
@@ -1454,7 +1454,7 @@ ConvertFromSQL_C_INTERVAL_HOUR(SQLPOINTER       DataPtr
                             itoa(ValueBuff.intval.day_second.hour,localBuffer,10);
                             return CopyODBCStringToRDBMS(p_statement->GetDBConnection()->GetOwnerODBCEnv()->GetOwnerEnv()
                                                         ,localBuffer
-                                                        ,strlen(localBuffer)
+                                                        ,(int)strlen(localBuffer)
                                                         ,ResultLen
                                                         ,&ociError
                                                         ,Holder
@@ -1509,7 +1509,7 @@ ConvertFromSQL_C_INTERVAL_MINUTE(SQLPOINTER       DataPtr
                             itoa(ValueBuff.intval.day_second.minute,localBuffer,10);
                             return CopyODBCStringToRDBMS(p_statement->GetDBConnection()->GetOwnerODBCEnv()->GetOwnerEnv()
                                                         ,localBuffer
-                                                        ,strlen(localBuffer)
+                                                        ,(int)strlen(localBuffer)
                                                         ,ResultLen
                                                         ,&ociError
                                                         ,Holder
@@ -1566,7 +1566,7 @@ ConvertFromSQL_C_INTERVAL_SECOND(SQLPOINTER       DataPtr
                             itoa(ValueBuff.intval.day_second.second,localBuffer,10);
                             return CopyODBCStringToRDBMS(p_statement->GetDBConnection()->GetOwnerODBCEnv()->GetOwnerEnv()
                                                         ,localBuffer
-                                                        ,strlen(localBuffer)
+                                                        ,(int)strlen(localBuffer)
                                                         ,ResultLen
                                                         ,&ociError
                                                         ,Holder

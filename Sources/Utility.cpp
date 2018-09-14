@@ -250,7 +250,7 @@ CopyODBCStringToApp(SQLCHAR*          Buffer
     // Older applications call for the real length
     // Should not happen in ODBC 3.52 sources, but there are 
     // far too many applications around that do this sort of things!!
-    *RealLength = strlen((char*)Source);
+    *RealLength = (int)strlen((char*)Source);
     return SQL_SUCCESS;
   }
   if(length < 0)
@@ -295,7 +295,7 @@ CopyODBCStringToApp(SQLCHAR*          Buffer
   {
     if(p_getData && p_oraItem)
     {
-      int actualLength = strlen(Source);
+      int actualLength = (int)strlen(Source);
       if(RealLength && (!p_maxLength || (actualLength < p_maxLength)))
       {
         *RealLength = actualLength;
@@ -588,7 +588,7 @@ DoubleToString(char* buffer,double value)
   {
     sprintf_s(buffer,40,"%.16lf",value);
     // Strip trailing "0000" or ".0000"
-    int len = strlen(buffer) - 1;
+    int len = (int) strlen(buffer) - 1;
     char* pnt = &buffer[len];
     while(*pnt=='0' && len-- >= 0)
     {
@@ -614,7 +614,7 @@ FloatToString(char* buffer,float value)
   {
     sprintf_s(buffer,40,"%.8f",value);
     // Strip trailing "0000" or ".0000"
-    int len = strlen(buffer) - 1;
+    int len = (int) strlen(buffer) - 1;
     char* pnt = &buffer[len];
     while(*pnt=='0' && len-- >= 0)
     {
@@ -1239,7 +1239,7 @@ CopyODBCStringToRDBMS(OCIEnv*           p_environment
   if(Length == SQL_NTS)
   {
     // Application flags this as an unbound buffer
-    length = strlen(Source);
+    length = (int)strlen(Source);
   }
   if(length <= 0)
   {
@@ -1405,7 +1405,7 @@ CopyODBCBufferToRDBMS(char*             p_buffer
   if(p_length == SQL_NTS)
   {
     // Application flags this as an unbound buffer
-    length = strlen(p_source) + 1;
+    length = (int) strlen(p_source) + 1;
   }
   if(length <= 0)
   {

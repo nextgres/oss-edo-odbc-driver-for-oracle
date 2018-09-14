@@ -629,7 +629,7 @@ MetaQuery metaQueries[] =
                "   AND c.owner           = i.table_owner\n"
                "   AND o.object_name     = i.table_name\n"
                "   AND o.owner           = i.table_owner\n"
-               "   AND c.constraint_name = i.index_name\n"
+               "   AND c.index_name      = i.index_name\n"
                "   AND c.constraint_type = 'P'\n"
                "   AND o.object_type     = 'TABLE'" }
  ,{ META_FOREIGNS, 0,

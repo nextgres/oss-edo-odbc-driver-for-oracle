@@ -93,17 +93,17 @@ public:
   SQLRETURN SQLBindCol        (SQLUSMALLINT ColumnNumber
                               ,SQLSMALLINT  TargetType
                               ,SQLPOINTER   TargetValue
-                              ,SQLINTEGER   BufferLength
-                              ,SQLINTEGER*  StrLen_or_Ind);
+                              ,SQLLEN       BufferLength
+                              ,SQLLEN*      StrLen_or_Ind);
   SQLRETURN SQLBindParameter  (SQLUSMALLINT ParameterNumber
                               ,SQLSMALLINT  InputOutputType
                               ,SQLSMALLINT  ValueType
                               ,SQLSMALLINT  ParameterType
-                              ,SQLUINTEGER  ColumnSize
+                              ,SQLLEN       ColumnSize
                               ,SQLSMALLINT  DecimalDigits
                               ,SQLPOINTER   ParameterValuePtr
-                              ,SQLINTEGER   BufferLength
-                              ,SQLINTEGER*  StrLen_or_IndPtr);
+                              ,SQLLEN       BufferLength
+                              ,SQLLEN*      StrLen_or_IndPtr);
   SQLRETURN SQLCancel         ();
   SQLRETURN SQLCloseCursor    ();
   SQLRETURN SQLColAttribute   (SQLUSMALLINT ColumnNumber
@@ -111,7 +111,7 @@ public:
                               ,SQLCHAR*     CharacterAttribute
                               ,SQLSMALLINT  BufferLength
                               ,SQLSMALLINT* StringLength
-                              ,SQLINTEGER*  NumericAttribute);
+                              ,SQLLEN*      NumericAttribute);
   SQLRETURN SQLColumnPrivileges(SQLCHAR*    szCatalogName
                               ,SQLSMALLINT  cbCatalogName
                               ,SQLCHAR*     szSchemaName
@@ -133,7 +133,7 @@ public:
                               ,SQLSMALLINT  BufferLength
                               ,SQLSMALLINT* NameLength
                               ,SQLSMALLINT* DataType
-                              ,SQLUINTEGER* ColumnSize
+                              ,SQLULEN*     ColumnSize
                               ,SQLSMALLINT* DecimalDigits
                               ,SQLSMALLINT* Nullable);
   SQLRETURN SQLDescribeParam  (SQLUSMALLINT ipar
@@ -168,8 +168,8 @@ public:
   SQLRETURN SQLGetData        (SQLUSMALLINT ColumnNumber
                               ,SQLSMALLINT  TargetType
                               ,SQLPOINTER   TargetValue
-                              ,SQLINTEGER   BufferLength
-                              ,SQLINTEGER*  StrLen_or_Ind);
+                              ,SQLLEN       BufferLength
+                              ,SQLLEN*      StrLen_or_Ind);
   SQLRETURN SQLGetStmtAttr    (SQLINTEGER   Attribute
                               ,SQLPOINTER   Value
                               ,SQLINTEGER   BufferLength
@@ -204,7 +204,7 @@ public:
                               ,SQLSMALLINT  cbProcName);
   SQLRETURN SQLPutData        (SQLPOINTER   Data
                               ,SQLLEN       StrLen_or_Ind);
-  SQLRETURN SQLRowCount       (SQLINTEGER*  RowCount);
+  SQLRETURN SQLRowCount       (SQLLEN*      RowCount);
   SQLRETURN SQLSetCursorName  (SQLCHAR*     p_cursorName);
   SQLRETURN SQLSetPos         (SQLSETPOSIROW irow
                               ,SQLUSMALLINT fOption
@@ -265,7 +265,7 @@ protected:
   // Set the prefetch parameters of the OCI for this statement
   void       SetPrefetch();
   // Do the fetch dance
-  SQLRETURN  InternalFetch(SQLINTEGER p_direction,SQLINTEGER p_irow,SQLULEN* p_gotten,SQLUSMALLINT* p_status_ptr);
+  SQLRETURN  InternalFetch(SQLINTEGER p_direction,SQLLEN p_irow,SQLULEN* p_gotten,SQLUSMALLINT* p_status_ptr);
 
   ODBCConnection* m_connection;     // Connection owner of this statement
   OCIStmt*    m_hStmt;              // OCI Statement 

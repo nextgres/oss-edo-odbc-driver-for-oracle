@@ -42,6 +42,7 @@
 #include "DescriptorARD.h"
 #include "Parser.h"
 #include "Utility.h"
+#include "Version.h"
 #include <odbcinst.h>
 #include <string.h>
 
@@ -936,11 +937,17 @@ ODBCConnection::SQLDriverConnect(SQLHWND      hwnd
   Guard guard(m_lock_mutex);
   m_ociError.Clear();
 
-  char dataSource[SQL_MAX_DSN_LENGTH + 1] = "";
- 	char serverName[100] = "";
-  char userName  [100] = "";
-  char passWord  [100] = "";
+  char dataSource[SQL_MAX_DSN_LENGTH    + 1];
+ 	char serverName[MAX_SESSION_NAMES_LEN + 1];
+  char userName  [MAX_SESSION_NAMES_LEN + 1];
+  char passWord  [MAX_SESSION_NAMES_LEN + 1];
   bool prompt = false;
+
+  // Init string at '0-terminated-string'
+  dataSource[0] = 0;
+  serverName[0] = 0;
+  userName  [0] = 0;
+  passWord  [0] = 0;
 
   if(!GetVariableFromConnectionString(connectString,"DSN=",dataSource,SQL_MAX_DSN_LENGTH))
   {
@@ -949,27 +956,27 @@ ODBCConnection::SQLDriverConnect(SQLHWND      hwnd
   }
   m_ociError.SetDSNName(dataSource);
 
-  if(!SQLGetPrivateProfileString(dataSource,"DSN","",dataSource,100,ODBCINI))
+  if(!SQLGetPrivateProfileString(dataSource,"DSN","",dataSource,MAX_SESSION_NAMES_LEN,ODBCINI))
   {
     m_ociError.AddError("HY000",156,"Selected DSN cannot be founded as a defined datasource in the registry");
     return SQL_ERROR;
   }
-  if(!SQLGetPrivateProfileString(dataSource,"ServerName","",serverName,100,ODBCINI))
+  if(!SQLGetPrivateProfileString(dataSource,"ServerName","",serverName,MAX_SESSION_NAMES_LEN,ODBCINI))
   {
     m_ociError.AddError("HY000",156,"The Oracle server cannot be found for the selected DSN in the registry");
     return SQL_ERROR;
   }
   // Get UID
-  if(!GetVariableFromConnectionString(connectString,"UID=",userName,100))
+  if(!GetVariableFromConnectionString(connectString,"UID=",userName,MAX_SESSION_NAMES_LEN))
   {
-    if(!SQLGetPrivateProfileString(dataSource,"UID","",userName,100,ODBCINI))
+    if(!SQLGetPrivateProfileString(dataSource,"UID","",userName,MAX_SESSION_NAMES_LEN,ODBCINI))
     {
        prompt = true;
     }
   }
-  if(!GetVariableFromConnectionString(connectString ,"PWD=",passWord,100))
+  if(!GetVariableFromConnectionString(connectString ,"PWD=",passWord,MAX_SESSION_NAMES_LEN))
   {
-    if(!SQLGetPrivateProfileString(dataSource,"PWD","",passWord,100,ODBCINI))
+    if(!SQLGetPrivateProfileString(dataSource,"PWD","",passWord,MAX_SESSION_NAMES_LEN,ODBCINI))
     {
       prompt = true;
     }
@@ -994,8 +1001,8 @@ ODBCConnection::SQLDriverConnect(SQLHWND      hwnd
     LogonDlg dlg(parent,dataSource,userName,passWord);
     if(dlg.DoModal() == IDOK)
     {
-      strncpy(userName,dlg.GetUser().GetString(),100);
-      strncpy(passWord,dlg.GetPassword().GetString(),100);
+      strncpy(userName,dlg.GetUser()    .GetString(),MAX_SESSION_NAMES_LEN);
+      strncpy(passWord,dlg.GetPassword().GetString(),MAX_SESSION_NAMES_LEN);
     }
     else
     {
@@ -1062,10 +1069,16 @@ ODBCConnection::SQLBrowseConnect(CString      connectString
   Guard guard(m_lock_mutex);
   m_ociError.Clear();
 
-  char dataSource[SQL_MAX_DSN_LENGTH + 1] = "";
-  char serverName[100] = "";
-  char userName  [100] = "";
-  char passWord  [100] = "";
+  char dataSource[SQL_MAX_DSN_LENGTH    + 1];
+  char serverName[MAX_SESSION_NAMES_LEN + 1];
+  char userName  [MAX_SESSION_NAMES_LEN + 1];
+  char passWord  [MAX_SESSION_NAMES_LEN + 1];
+
+  // Init string at '0-terminated-string'
+  dataSource[0] = 0;
+  serverName[0] = 0;
+  userName  [0] = 0;
+  passWord  [0] = 0;
 
   if(m_browseConnect == 0)
   {
@@ -1076,7 +1089,7 @@ ODBCConnection::SQLBrowseConnect(CString      connectString
       m_ociError.AddError("HY000",156,"DSN not set");
       return SQL_ERROR;
     }
-    if(!SQLGetPrivateProfileString(dataSource,"ServerName","",serverName,100,ODBCINI))
+    if(!SQLGetPrivateProfileString(dataSource,"ServerName","",serverName,MAX_SESSION_NAMES_LEN,ODBCINI))
     {
       m_ociError.AddError("HY000",156,"The Oracle server cannot be found for the selected DSN in the registry");
       return SQL_ERROR;
@@ -1091,23 +1104,23 @@ ODBCConnection::SQLBrowseConnect(CString      connectString
     // Application: do your stuff!
     return SQL_NEED_DATA;
   }
-  if(!GetVariableFromConnectionString(connectString,"SERVER=",serverName,100))
+  if(!GetVariableFromConnectionString(connectString,"SERVER=",serverName,MAX_SESSION_NAMES_LEN))
   {
     m_ociError.AddError("HY000",156,"Database server not set");
     return SQL_ERROR;
   }
   // Get UID
-  if(!GetVariableFromConnectionString(connectString,"UID=",userName,100))
+  if(!GetVariableFromConnectionString(connectString,"UID=",userName,MAX_SESSION_NAMES_LEN))
   {
-    if(!SQLGetPrivateProfileString(dataSource,"UID","",userName,100,ODBCINI))
+    if(!SQLGetPrivateProfileString(dataSource,"UID","",userName,MAX_SESSION_NAMES_LEN,ODBCINI))
     {
       m_ociError.AddError("HY000",156,"User identity not set");
       return SQL_ERROR;
     }
   }
-  if(!GetVariableFromConnectionString(connectString ,"PWD=",passWord,100))
+  if(!GetVariableFromConnectionString(connectString ,"PWD=",passWord,MAX_SESSION_NAMES_LEN))
   {
-    if(!SQLGetPrivateProfileString(dataSource,"PWD","",passWord,100,ODBCINI))
+    if(!SQLGetPrivateProfileString(dataSource,"PWD","",passWord,MAX_SESSION_NAMES_LEN,ODBCINI))
     {
       m_ociError.AddError("HY000",156,"User password not set");
       return SQL_ERROR;
@@ -1441,9 +1454,9 @@ ODBCConnection::SQLGetInfo(SQLUSMALLINT InfoType
   //case SQL_DRIVER_HSTMT:                    IMPLEMENTED BY THE DM !!
     case SQL_DRIVER_NAME:                     string = (char*)m_attributes.m_driverName.GetString();
                                               break;
-    case SQL_DRIVER_ODBC_VER:                 string = "03.52";
+    case SQL_DRIVER_ODBC_VER:                 string = DISPLAY_VERSION_ODBC;
                                               break;
-    case SQL_DRIVER_VER:			                string = "01.00.0000";
+    case SQL_DRIVER_VER:			                string = DISPLAY_VERSION_NUMBER;
 		                                          break;
     case SQL_DROP_ASSERTION:                  // Fall through
     case SQL_DROP_CHARACTER_SET:              // Fall through

@@ -1,1390 +1,713 @@
-<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Frameset//EN">
 
 <html>
 
 <!--(==============================================================)-->
+
 <!--(Document created with RoboEditor. )============================-->
+
 <!--(==============================================================)-->
 
 <head>
-
-<title>RDBMS Implementation</title>
-
-<!--(Meta)==========================================================-->
-
-<meta http-equiv=content-type content="text/html; charset=windows-1252">
-<meta name=generator content="RoboHELP by eHelp Corporation - www.ehelp.com">
-<meta name=generator-major-version content=0.1>
-<meta name=generator-minor-version content=1>
-<meta name=filetype content=kadov>
-<meta name=filetype-version content=1>
-<meta name=page-count content=1>
-<meta name=layout-height content=2100>
-<meta name=layout-width content=968>
-
-
-<!--(Links)=========================================================-->
-
-<link rel="StyleSheet" href="..\default.css">
-
-
-
+    <title>RDBMS Implementation</title>
+    <!--(Meta)==========================================================-->
+    <meta http-equiv="content-type" content="text/html; charset=us-ascii">
+    <meta name="generator" content="RoboHELP by eHelp Corporation - www.ehelp.com">
+    <meta name="generator-major-version" content="0.1">
+    <meta name="generator-minor-version" content="1">
+    <meta name="filetype" content="kadov">
+    <meta name="filetype-version" content="1">
+    <meta name="page-count" content="1">
+    <meta name="layout-height" content="2100">
+    <meta name="layout-width" content="968">
+    <!--(Links)=========================================================-->
+    <link rel="StyleSheet" href="../default.css" type="text/css">
 </head>
-
 <!--(Body)==========================================================-->
 
-
 <body>
+    <h1>RDBMS Implementation</h1>
 
-<h1>RDBMS Implementation</h1>
+    <p>The implementation of the database can be discovered with the "SQLGetInfo" ODBC function. There are over 150 different
+    discovery attributes to this function. This table has only those points where EDO differs from the official ODBC driver.
+    For a more elaborate description of the "SQLGetInfo" function, please check <a title="MSDN on the SQLGetInfo function"
+    href="http://msdn.microsoft.com/en-us/library/ms711681.aspx">the Microsoft MSDN site on this subject</a>.</p>
+    <!--(Table)=========================================================-->
 
-<p>The implementation of the database can be discovered with the &quot;SQLGetInfo&quot; 
- ODBC function. There are over 150 different discovery attributes to this 
- function. This table has only those points where EDO differs from the 
- official ODBC driver. For a more elaborate description of the &quot;SQLGetInfo&quot; 
- function, please check <a title="MSDN on the SQLGetInfo function"
-							href="http://msdn.microsoft.com/en-us/library/ms711681.aspx">the 
- Microsoft MSDN site on this subject</a>.</p>
+    <table color="#99CCFF" x-use-null-cells="" style=
+    "width: 100%; x-border-left: 1px table-solid; x-border-top: 1px table-solid; x-border-right: 1px table-solid; x-border-bottom: 1px table-solid; border-collapse: separate; border-spacing: 0px; x-border-left: 1px table-solid; x-border-top: 1px table-solid; x-border-right: 1px table-solid; x-border-bottom: 1px table-solid; border-collapse: separate; border-spacing: 0px;"
+    cellspacing="0" width="100%" border="1">
+        <col style="width: 190px;">
+        <col style="width: 559px;">
+        <col style="width: 79px;">
+        <col style="width: 74px;">
 
-<!--(Table)=========================================================-->
-<table color=#99ccff
-		x-use-null-cells
-		style="width: 100%;
-				x-border-left: 1px table-solid;
-				x-border-top: 1px table-solid;
-				x-border-right: 1px table-solid;
-				x-border-bottom: 1px table-solid;
-				border-collapse: separate;
-				border-spacing: 0px;
-				x-border-left: 1px table-solid;
-				x-border-top: 1px table-solid;
-				x-border-right: 1px table-solid;
-				x-border-bottom: 1px table-solid;
-				border-collapse: separate;
-				border-spacing: 0px;"
-		cellspacing=0
-		width=100%
-		border=1>
-<col style="width: 190px;">
-<col style="width: 559px;">
-<col style="width: 79px;">
-<col style="width: 74px;">
+        <tr>
+            <td style=
+            "width: 190px; background-color: #99ccff; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" bgcolor="#99CCFF" width="190px">
+                <p>Attribute</p>
+            </td>
 
-<tr>
-<td style="width: 190px;
-			background-color: #99ccff;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	bgcolor=#99CCFF
-	width=190px>
-<p>Attribute</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			background-color: #99ccff;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	bgcolor=#99CCFF
-	width=559px>
-<p class=tab_header>Description</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			background-color: #99ccff;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	bgcolor=#99CCFF
-	width=79px>
-<p class=tab_header>Oracle</td>
-<td style="width: 74px;
-			background-color: #99ccff;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	bgcolor=#99CCFF
-	width=74px>
-<p class=tab_header>EDO</td></tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; background-color: #99ccff; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" bgcolor="#99CCFF" width="559px">
+                <p class="tab_header">Description</p>
+            </td>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>SQL_ALTER_TABLE</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>Support for alter table statement. The oracle drivers erroneously reports 
- that it does not support the following capabilities:</p>
-<p style="margin-bottom: 0pt;">- Add column</p>
-<p style="margin-bottom: 0pt;">- Drop column</p>
-<p style="margin-bottom: 0pt;">- Drop a columns default</p>
-<p style="margin-bottom: 0pt;">- Drop a table constraint</p>
-<p style="margin-bottom: 0pt;">- Set a columns default</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p style="text-align: center;"
-	align=center><img src="../Images/delete-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; background-color: #99ccff; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" bgcolor="#99CCFF" width="79px">
+                <p class="tab_header">Oracle</p>
+            </td>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>SQL_CREATE_TABLE</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>Support for the create table statement. The oracle drivers erroneously 
- reports that it does not support the following capabilities:</p>
-<p style="margin-bottom: 0pt;">- Deleted rows preserved on commit in a 
- temporary table</p>
-<p style="margin-bottom: 0pt;">- Deleted rows are deleted on commit in 
- a temporary table</p>
-<p style="margin-bottom: 0pt;">- Global temporary tables can be created</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p style="text-align: center;"
-	align=center><img src="../Images/delete-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
+            <td style=
+            "width: 74px; background-color: #99ccff; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" bgcolor="#99CCFF" width="74px">
+                <p class="tab_header">EDO</p>
+            </td>
+        </tr>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>SQL_SQL92_FOREIGN_-KEY_DELETE_RULE</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>Support for the foreign-key relation at the deletion of a row from a 
- detail or master table in the database. The oracle drivers erroneously 
- reports that it does not support the following capabilities:</p>
-<p style="margin-bottom: 0pt;">- Cascaded delete of the details</p>
-<p style="margin-bottom: 0pt;">- No action at the deletion (no foreign 
- keys)</p>
-<p style="margin-bottom: 0pt;">- Default action </p>
-<p style="margin-bottom: 0pt;">- Nullify of the foreign key in the detail 
- table</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p style="text-align: center;"
-	align=center><img src="../Images/delete-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>SQL_ALTER_TABLE</p>
+            </td>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>SQL_DROP_SCHEMA</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>Oracle does not posses the drop schema statement, as it does not posses 
- a schema concept. But you can cascaded drop a user, and by this drop all 
- the objects of the user, and as such remove the user's schema. The oracle 
- drivers erroneously reports that it does not support the following capabilities:</p>
-<p style="margin-bottom: 0pt;">- Drop the user's schema</p>
-<p style="margin-bottom: 0pt;">- Drop the user's schema with the 'cascade' 
- option</p>
-<p style="margin-bottom: 0pt;">- Drop the user's schema with the 'restrict' 
- option</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p style="text-align: center;"
-	align=center><img src="../Images/delete-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>Support for alter table statement. The oracle drivers erroneously reports that it does not support the
+                following capabilities:</p>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>SQL_DROP_TABLE</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>Oracle does posses the capability to cascaded or restricted drop a table. 
- The oracle drivers erroneously reports that it does not support the following 
- capabilities:</p>
-<p style="margin-bottom: 0pt;">- Drop the table with the 'cascaded' option</p>
-<p style="margin-bottom: 0pt;">- Drop the table with the 'restricted' option</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p style="text-align: center;"
-	align=center><img src="../Images/delete-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
+                <p style="margin-bottom: 0pt;">- Add column</p>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>SQL_SQL92_GRANT</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>Oracle does posses the grant statement. The oracle drivers erroneously 
- reports that it does not support the following capabilities:</p>
-<p style="margin-bottom: 0pt;">- Grant rights to insert rows in a table</p>
-<p style="margin-bottom: 0pt;">- Grant rights to select rows from a table</p>
-<p style="margin-bottom: 0pt;">- Grant rights to update rows in a table</p>
-<p style="margin-bottom: 0pt;">- Grant rights to delete rows from a table</p>
-<p style="margin-bottom: 0pt;">- Grant rights to reference rows from another 
- table</p>
-<p style="margin-bottom: 0pt;">- Grant rights to insert on special columns 
- in a table</p>
-<p style="margin-bottom: 0pt;">- Grant rights to update on special columns 
- in a table</p>
-<p style="margin-bottom: 0pt;">- Grant rights to reference to special columns 
- in another table</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p style="text-align: center;"
-	align=center><img src="../Images/delete-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
+                <p style="margin-bottom: 0pt;">- Drop column</p>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>SQL_SQL92_REVOKE</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>Oracle does posses the revoke statement. The oracle drivers erroneously 
- reports that it does not support the following capabilities:- Grant rights 
- to insert rows in a table</p>
-<p style="margin-bottom: 0pt;">- Revoke rights to select rows from a table</p>
-<p style="margin-bottom: 0pt;">- Revoke rights to update rows in a table</p>
-<p style="margin-bottom: 0pt;">- Revoke rights to delete rows from a table</p>
-<p style="margin-bottom: 0pt;">- Revoke rights to reference rows from another 
- table</p>
-<p style="margin-bottom: 0pt;">- Revoke rights to insert on special columns 
- in a table</p>
-<p style="margin-bottom: 0pt;">- Revoke rights to update on special columns 
- in a table</p>
-<p style="margin-bottom: 0pt;">- Revoke rights to reference to special 
- columns in another table</p>
-<p style="margin-bottom: 0pt;">- Revoke rights in a cascaded way (grantings 
- revoked as well)</p>
-<p style="margin-bottom: 0pt;">- Revoke rights in a restricted way (grantings 
- restrict the revoke action)</p>
-<p style="margin-bottom: 0pt;">- Revoke the &quot;with grant option&quot;</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p style="text-align: center;"
-	align=center><img src="../Images/delete-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
+                <p style="margin-bottom: 0pt;">- Drop a columns default</p>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>SQL_INDEX_KEYWORDS</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>Oracle can create it's index in a ascending as well as in a descending 
- way. The oracle drivers erroneously reports that it does not support the 
- following capabilities:</p>
-<p>- Creating indexes in descending order</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p style="text-align: center;"
-	align=center><img src="../Images/delete-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
+                <p style="margin-bottom: 0pt;">- Drop a table constraint</p>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>SQL_SQL92_VALUE_-EXPRESSIONS</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>The oracle drivers erroneously reports that it does not support the 
- following capabilities in a SELECT statement:</p>
-<p style="margin-bottom: 0pt;">- CAST: Casting the value to another datatype</p>
-<p style="margin-bottom: 0pt;">- COALESCE: Function for the &quot;||&quot; 
- operator</p>
-<p style="margin-bottom: 0pt;">- NULLIF: Function to replace a value with 
- a NULL</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p style="text-align: center;"
-	align=center><img src="../Images/delete-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
+                <p style="margin-bottom: 0pt;">- Set a columns default</p>
+            </td>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>SQL_OJ_CAPABILITIES</p>
-<p>and </p>
-<p>SQL_SQL92_RELATIONAL_-JOIN_OPERATORS</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>In the FROM part of the SELECT statement, tables can be joined together 
- in the select. The oracle drivers erroneously reports that it does not 
- support the following capabilities:</p>
-<p style="margin-bottom: 0pt;">- INNER JOIN</p>
-<p style="margin-bottom: 0pt;">- NATURAL JOIN</p>
-<p style="margin-bottom: 0pt;">- LEFT OUTER JOIN</p>
-<p style="margin-bottom: 0pt;">- RIGHT OUTER JOIN</p>
-<p style="margin-bottom: 0pt;">- FULL OUTER JOIN</p>
-<p style="margin-bottom: 0pt;">- CROSS JOIN</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p style="text-align: center;"
-	align=center><img src="../Images/delete-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p style="text-align: center;" align="center"><img src="../Images/delete-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>SQL_SQL92_ FOREIGN_KEY-_UPDATE_RULE</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>Support for the foreign-key relation at the update of a row from a detail 
- or master table in the database. The oracle drivers erroneously reports 
- that it does not support the following capabilities:</p>
-<p style="margin-bottom: 0pt;">- Cascaded delete of the details</p>
-<p style="margin-bottom: 0pt;">- No action at the deletion (no foreign 
- keys)</p>
-<p style="margin-bottom: 0pt;">- Default action </p>
-<p style="margin-bottom: 0pt;">- Nullify of the foreign key in the detail 
- table</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p style="text-align: center;"
-	align=center><img src="../Images/delete-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+        </tr>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>SQL_CATALOG_NAME</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>The oracle drivers erroneously reports that it does not support catalog 
- names. But it does as in &quot;owner.table@catalog&quot; construct. Which 
- is something the official driver does report.</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p style="text-align: center;"
-	align=center><img src="../Images/delete-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>SQL_CREATE_TABLE</p>
+            </td>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>SQL_MAX_CATALOG_-NAME_LEN</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>The oracle drivers erroneously reports that a catalog name has a length 
- of zero (0) characters. In fact they can be 30 characters long.</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p style="text-align: center;"
-	align=center><img src="../Images/delete-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>Support for the create table statement. The oracle drivers erroneously reports that it does not support the
+                following capabilities:</p>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>SQL_COLLATION_SEQ</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>The oracle drivers erroneously does not report the name of the collation 
- sequence (character set) for the standard character fields. EDO does report 
- back the collation sequence of the database. e.g.: &quot;WE8MSWIN1252&quot; 
- for a database on a standard European MS-Windows operating system.</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p style="text-align: center;"
-	align=center><img src="../Images/delete-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
+                <p style="margin-bottom: 0pt;">- Deleted rows preserved on commit in a temporary table</p>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>SQL_NULL_COLLATION</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>Every database can have the NULL's fysically stored at another position 
- in a table column. The oracle drivers erroneously reports that it does 
- store nulls in the low end of a column. But in fact it does store them 
- in the high end (after the highest value). EDO does report &quot;SQL_NC_HIGH&quot; 
- here.</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p style="text-align: center;"
-	align=center><img src="../Images/delete-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
+                <p style="margin-bottom: 0pt;">- Deleted rows are deleted on commit in a temporary table</p>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>SQL_DATETIME_LITERALS</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>Datetime literals are a way to write dates, times and timestamps in 
- a SQL expression. The oracle drivers erroneously reports that it does 
- not support the following capabilities:</p>
-<p style="margin-bottom: 0pt;">- Dates</p>
-<p style="margin-bottom: 0pt;">- Times</p>
-<p style="margin-bottom: 0pt;">- Timestamps</p>
-<p style="margin-bottom: 0pt;">- Interval year to month</p>
-<p style="margin-bottom: 0pt;">- Interval day to second</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p style="text-align: center;"
-	align=center><img src="../Images/delete-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
+                <p style="margin-bottom: 0pt;">- Global temporary tables can be created</p>
+            </td>
 
-<tr>
-<td colspan=1
-	rowspan=1
-	style="width: 190px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=190px>
-<p>SQL_INTEGRITY</td>
-<td colspan=1
-	rowspan=1
-	style="width: 559px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=559px>
-<p>The oracle drivers erroneously reports that it does not support transaction 
- integrity!!</td>
-<td colspan=1
-	rowspan=1
-	style="width: 79px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=79px>
-<p style="text-align: center;"
-	align=center><img src="../Images/delete-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td>
-<td colspan=1
-	rowspan=1
-	style="width: 74px;
-			x-cell-content-align: top;
-			padding-left: 2px;
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 2px;"
-	valign=top
-	width=74px>
-<p style="text-align: center;"
-	align=center><img src="../Images/accept-24x24.bmp"
-						x-maintain-ratio=TRUE
-						style="border: none;
-								width: 24px;
-								height: 24px;
-								float: none;
-								border-style: none;
-								border-style: none;"
-						width=24
-						height=24
-						border=0></td></tr>
-</table>
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p style="text-align: center;" align="center"><img src="../Images/delete-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
 
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>SQL_SQL92_FOREIGN_-KEY_DELETE_RULE</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>Support for the foreign-key relation at the deletion of a row from a detail or master table in the database.
+                The oracle drivers erroneously reports that it does not support the following capabilities:</p>
+
+                <p style="margin-bottom: 0pt;">- Cascaded delete of the details</p>
+
+                <p style="margin-bottom: 0pt;">- No action at the deletion (no foreign keys)</p>
+
+                <p style="margin-bottom: 0pt;">- Default action</p>
+
+                <p style="margin-bottom: 0pt;">- Nullify of the foreign key in the detail table</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p style="text-align: center;" align="center"><img src="../Images/delete-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>SQL_DROP_SCHEMA</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>Oracle does not posses the drop schema statement, as it does not posses a schema concept. But you can
+                cascaded drop a user, and by this drop all the objects of the user, and as such remove the user's schema. The
+                oracle drivers erroneously reports that it does not support the following capabilities:</p>
+
+                <p style="margin-bottom: 0pt;">- Drop the user's schema</p>
+
+                <p style="margin-bottom: 0pt;">- Drop the user's schema with the 'cascade' option</p>
+
+                <p style="margin-bottom: 0pt;">- Drop the user's schema with the 'restrict' option</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p style="text-align: center;" align="center"><img src="../Images/delete-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>SQL_DROP_TABLE</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>Oracle does posses the capability to cascaded or restricted drop a table. The oracle drivers erroneously
+                reports that it does not support the following capabilities:</p>
+
+                <p style="margin-bottom: 0pt;">- Drop the table with the 'cascaded' option</p>
+
+                <p style="margin-bottom: 0pt;">- Drop the table with the 'restricted' option</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p style="text-align: center;" align="center"><img src="../Images/delete-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>SQL_SQL92_GRANT</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>Oracle does posses the grant statement. The oracle drivers erroneously reports that it does not support the
+                following capabilities:</p>
+
+                <p style="margin-bottom: 0pt;">- Grant rights to insert rows in a table</p>
+
+                <p style="margin-bottom: 0pt;">- Grant rights to select rows from a table</p>
+
+                <p style="margin-bottom: 0pt;">- Grant rights to update rows in a table</p>
+
+                <p style="margin-bottom: 0pt;">- Grant rights to delete rows from a table</p>
+
+                <p style="margin-bottom: 0pt;">- Grant rights to reference rows from another table</p>
+
+                <p style="margin-bottom: 0pt;">- Grant rights to insert on special columns in a table</p>
+
+                <p style="margin-bottom: 0pt;">- Grant rights to update on special columns in a table</p>
+
+                <p style="margin-bottom: 0pt;">- Grant rights to reference to special columns in another table</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p style="text-align: center;" align="center"><img src="../Images/delete-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>SQL_SQL92_REVOKE</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>Oracle does posses the revoke statement. The oracle drivers erroneously reports that it does not support the
+                following capabilities:- Grant rights to insert rows in a table</p>
+
+                <p style="margin-bottom: 0pt;">- Revoke rights to select rows from a table</p>
+
+                <p style="margin-bottom: 0pt;">- Revoke rights to update rows in a table</p>
+
+                <p style="margin-bottom: 0pt;">- Revoke rights to delete rows from a table</p>
+
+                <p style="margin-bottom: 0pt;">- Revoke rights to reference rows from another table</p>
+
+                <p style="margin-bottom: 0pt;">- Revoke rights to insert on special columns in a table</p>
+
+                <p style="margin-bottom: 0pt;">- Revoke rights to update on special columns in a table</p>
+
+                <p style="margin-bottom: 0pt;">- Revoke rights to reference to special columns in another table</p>
+
+                <p style="margin-bottom: 0pt;">- Revoke rights in a cascaded way (grantings revoked as well)</p>
+
+                <p style="margin-bottom: 0pt;">- Revoke rights in a restricted way (grantings restrict the revoke action)</p>
+
+                <p style="margin-bottom: 0pt;">- Revoke the "with grant option"</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p style="text-align: center;" align="center"><img src="../Images/delete-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>SQL_INDEX_KEYWORDS</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>Oracle can create it's index in a ascending as well as in a descending way. The oracle drivers erroneously
+                reports that it does not support the following capabilities:</p>
+
+                <p>- Creating indexes in descending order</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p style="text-align: center;" align="center"><img src="../Images/delete-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>SQL_SQL92_VALUE_-EXPRESSIONS</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>The oracle drivers erroneously reports that it does not support the following capabilities in a SELECT
+                statement:</p>
+
+                <p style="margin-bottom: 0pt;">- CAST: Casting the value to another datatype</p>
+
+                <p style="margin-bottom: 0pt;">- COALESCE: Function for the "||" operator</p>
+
+                <p style="margin-bottom: 0pt;">- NULLIF: Function to replace a value with a NULL</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p style="text-align: center;" align="center"><img src="../Images/delete-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>SQL_OJ_CAPABILITIES</p>
+
+                <p>and</p>
+
+                <p>SQL_SQL92_RELATIONAL_-JOIN_OPERATORS</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>In the FROM part of the SELECT statement, tables can be joined together in the select. The oracle drivers
+                erroneously reports that it does not support the following capabilities:</p>
+
+                <p style="margin-bottom: 0pt;">- INNER JOIN</p>
+
+                <p style="margin-bottom: 0pt;">- NATURAL JOIN</p>
+
+                <p style="margin-bottom: 0pt;">- LEFT OUTER JOIN</p>
+
+                <p style="margin-bottom: 0pt;">- RIGHT OUTER JOIN</p>
+
+                <p style="margin-bottom: 0pt;">- FULL OUTER JOIN</p>
+
+                <p style="margin-bottom: 0pt;">- CROSS JOIN</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p style="text-align: center;" align="center"><img src="../Images/delete-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>SQL_SQL92_ FOREIGN_KEY-_UPDATE_RULE</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>Support for the foreign-key relation at the update of a row from a detail or master table in the database.
+                The oracle drivers erroneously reports that it does not support the following capabilities:</p>
+
+                <p style="margin-bottom: 0pt;">- Cascaded delete of the details</p>
+
+                <p style="margin-bottom: 0pt;">- No action at the deletion (no foreign keys)</p>
+
+                <p style="margin-bottom: 0pt;">- Default action</p>
+
+                <p style="margin-bottom: 0pt;">- Nullify of the foreign key in the detail table</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p style="text-align: center;" align="center"><img src="../Images/delete-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>SQL_CATALOG_NAME</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>The oracle drivers erroneously reports that it does not support catalog names. But it does as in
+                "owner.table@catalog" construct. Which is something the official driver does report.</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p style="text-align: center;" align="center"><img src="../Images/delete-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>SQL_MAX_CATALOG_-NAME_LEN</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>The oracle drivers erroneously reports that a catalog name has a length of zero (0) characters. In fact they
+                can be 30 characters long.</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p style="text-align: center;" align="center"><img src="../Images/delete-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>SQL_COLLATION_SEQ</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>The oracle drivers erroneously does not report the name of the collation sequence (character set) for the
+                standard character fields. EDO does report back the collation sequence of the database. e.g.: "WE8MSWIN1252"
+                for a database on a standard European MS-Windows operating system.</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p style="text-align: center;" align="center"><img src="../Images/delete-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>SQL_NULL_COLLATION</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>Every database can have the NULL's fysically stored at another position in a table column. The oracle
+                drivers erroneously reports that it does store nulls in the low end of a column. But in fact it does store them
+                in the high end (after the highest value). EDO does report "SQL_NC_HIGH" here.</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p style="text-align: center;" align="center"><img src="../Images/delete-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>SQL_DATETIME_LITERALS</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>Datetime literals are a way to write dates, times and timestamps in a SQL expression. The oracle drivers
+                erroneously reports that it does not support the following capabilities:</p>
+
+                <p style="margin-bottom: 0pt;">- Dates</p>
+
+                <p style="margin-bottom: 0pt;">- Times</p>
+
+                <p style="margin-bottom: 0pt;">- Timestamps</p>
+
+                <p style="margin-bottom: 0pt;">- Interval year to month</p>
+
+                <p style="margin-bottom: 0pt;">- Interval day to second</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p style="text-align: center;" align="center"><img src="../Images/delete-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="1" rowspan="1" style=
+            "width: 190px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="190px">
+                <p>SQL_INTEGRITY</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 559px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="559px">
+                <p>The oracle drivers erroneously reports that it does not support transaction integrity!!</p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 79px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="79px">
+                <p style="text-align: center;" align="center"><img src="../Images/delete-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+
+            <td colspan="1" rowspan="1" style=
+            "width: 74px; x-cell-content-align: top; padding-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px;"
+            valign="top" width="74px">
+                <p style="text-align: center;" align="center"><img src="../Images/accept-24x24.bmp" x-maintain-ratio="TRUE"
+                style="border: none; width: 24px; height: 24px; float: none; border-style: none; border-style: none;" width=
+                "24" height="24" border="0"></p>
+            </td>
+        </tr>
+    </table>
 </body>
-
 </html>

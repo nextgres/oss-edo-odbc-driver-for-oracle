@@ -30,8 +30,8 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,0,0,0
- PRODUCTVERSION 1,0,0,0
+ FILEVERSION 1,2,0,0
+ PRODUCTVERSION 1,2,0,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -47,14 +47,14 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "Edwig's Driver for Oracle"
-            VALUE "FileDescription", "ODBC Driver for Oracle 9i databases"
-            VALUE "FileVersion", "1,0,0,0"
+            VALUE "FileDescription", "ODBC Driver for Oracle 12c databases"
+            VALUE "FileVersion", "1, 2, 0, 0"
             VALUE "InternalName", "EDO_Setup.dll"
-            VALUE "LegalCopyright", "2008 (c) ir. Edwig Huisman.  All rights reserved."
+            VALUE "LegalCopyright", "2015 (c) ir. Edwig Huisman.  All rights reserved."
             VALUE "LegalTrademarks", "EDO"
             VALUE "OriginalFilename", "EDO_Setup.dll"
             VALUE "ProductName", "EDO Oracle Driver"
-            VALUE "ProductVersion", "1,0,0,0"
+            VALUE "ProductVersion", "1, 2, 0, 0"
         END
     END
     BLOCK "VarFileInfo"

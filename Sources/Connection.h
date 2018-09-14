@@ -44,6 +44,9 @@
 #define MAX_SESSION_PARAMNAME_LEN  32
 #define MAX_SESSION_PARAMVALUE_LEN 62
 
+// Max length names for server/user/password
+#define MAX_SESSION_NAMES_LEN 100
+
 class ODBCStatement;
 class ODBCEnvironment;
 class ODBC_ARD;
@@ -158,23 +161,23 @@ protected:
   // Loads the NLS parameters
   void      GetNLSParameters();
 
-  Mutex   m_lock_mutex;       // Synchronization of Connection and all Statement object
-  ODBCEnvironment* m_lpEnv;   // ODBC EnvObject (Parent of the connection)
-  OCISvcCtx* m_hSvcCtx;       // OCI Connection object
-  CString m_dataSource;       // The datasource we are connecting to
-  CString m_server;           // The database server we are connecting to
-  CString m_user;             // The logged in user
-  CString m_oracleVersion;    // Version of the Oracle server
-  ODBCList m_statements;      // All connections list array
-  ODBCList m_descriptors;     // All application descriptors
+  Mutex             m_lock_mutex;       // Synchronization of Connection and all Statement object
+  ODBCEnvironment*  m_lpEnv;            // ODBC EnvObject (Parent of the connection)
+  OCISvcCtx*        m_hSvcCtx;          // OCI Connection object
+  CString           m_dataSource;       // The datasource we are connecting to
+  CString           m_server;           // The database server we are connecting to
+  CString           m_user;             // The logged in user
+  CString           m_oracleVersion;    // Version of the Oracle server
+  ODBCList          m_statements;       // All connections list array
+  ODBCList          m_descriptors;      // All application descriptors
   // Cache of statement allocated under creation
-  ODBCStatement* m_lpCacheStmtObjects[DB_STATMENT_CACHE_COUNT];
+  ODBCStatement*    m_lpCacheStmtObjects[DB_STATMENT_CACHE_COUNT];
   // Is currently transaction opened
-  bool m_transactionBegin;
+  bool              m_transactionBegin;
   // Number of iterations on SQLBrowseConnect
-  int  m_browseConnect;
+  int               m_browseConnect;
   // The translation library
-  HMODULE m_translateLib;
+  HMODULE           m_translateLib;
   // Datasource conversions
   TYPE_SQLDataSourceToDriver m_SQLDataSourceToDriver;
   TYPE_SQLDriverToDataSource m_SQLDriverToDataSource;

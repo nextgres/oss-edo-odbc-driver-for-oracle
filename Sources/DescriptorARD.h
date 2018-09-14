@@ -47,8 +47,8 @@ public:
 
   SQLSMALLINT m_desc_type;            // SQL_DESC_TYPE            m_valueType         Type of Value	(internal OraTypesEnumeration)
   SQLPOINTER  m_desc_data_ptr;        // SQL_DESC_DATA_PTR        m_value             ptr to ODBC Value                    
-  SQLINTEGER* m_desc_indicator_ptr;   // SQL_DESC_INDICATOR_PTR   m_indicator         Null or Len indicator for this value 
-  SQLINTEGER  m_desc_length;          // SQL_DESC_LENGTH          m_valueLen          Len of Value memory (BufferLength)   
+  SQLLEN*     m_desc_indicator_ptr;   // SQL_DESC_INDICATOR_PTR   m_indicator         Null or Len indicator for this value 
+  SQLLEN      m_desc_length;          // SQL_DESC_LENGTH          m_valueLen          Len of Value memory (BufferLength)   
   SQLSMALLINT m_desc_parameter_type;  // SQL_DESC_PARAMETER_TYPE  m_inputOutPutType   Input/Output indicator (For param)   
   SQLSMALLINT m_desc_param_type;      // SQL_DESC_TYPE of IPD!!   m_ODBCSQL_Type      ODBC SQL Type
   SQLUINTEGER m_desc_precision;       // SQL_DESC_PRECISION       m_columnSize        Column size
@@ -122,8 +122,8 @@ public:
                            ,SQLSMALLINT  Precision
                            ,SQLSMALLINT  Scale
                            ,SQLPOINTER   Data
-                           ,SQLINTEGER*  StringLength
-                           ,SQLINTEGER*  Indicator);
+                           ,SQLLEN*      StringLength
+                           ,SQLLEN*      Indicator);
 
 protected:
   ODBCItems* VarArray;    // All data

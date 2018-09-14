@@ -677,7 +677,7 @@ ODBCStatement::SQLNumResultCols(SQLSMALLINT* ColumnCount)
 }
 
 SQLRETURN 
-ODBCStatement::SQLRowCount(SQLINTEGER * RowCount)
+ODBCStatement::SQLRowCount(SQLLEN* RowCount)
 {
   STILL_EXECUTING;
   Guard guard(m_lock_mutex);
@@ -687,7 +687,7 @@ ODBCStatement::SQLRowCount(SQLINTEGER * RowCount)
 	ub4 RowAffected = 0;//Type of SQL command
 	sword ociRes;
 	ociRes = OCIAttrGet(m_hStmt,OCI_HTYPE_STMT,&RowAffected,NULL,OCI_ATTR_ROW_COUNT,m_ociError.GetOwnerErrorObject());
-	*RowCount = RowAffected;
+	*RowCount = (SQLLEN)RowAffected;
 	if(ociRes != OCI_SUCCESS)
 	{
 		m_ociError.GetErrorFromOCIHandle();		
@@ -889,7 +889,7 @@ ODBCStatement::SQLExecute()
 // Do the real fetch things
 SQLRETURN
 ODBCStatement::InternalFetch(SQLINTEGER    p_direction
-                            ,SQLINTEGER    p_irow
+                            ,SQLLEN        p_irow
                             ,SQLULEN*      p_gotten
                             ,SQLUSMALLINT* p_status_ptr)
 {
@@ -919,7 +919,7 @@ ODBCStatement::InternalFetch(SQLINTEGER    p_direction
                           ,m_ociError.GetOwnerErrorObject()
                           ,1                  // number of rows to process
                           ,(ub2)p_direction
-                          ,p_irow             // only: OCI_FETCH_ABSOLUTE || OCI_FETCH_RELATIVE
+                          ,(sb4)p_irow             // only: OCI_FETCH_ABSOLUTE || OCI_FETCH_RELATIVE
                           ,OCI_DEFAULT);
     // No data, at end of cursor
     if(ociRes == OCI_NO_DATA)	
@@ -978,8 +978,8 @@ ODBCStatement::InternalFetch(SQLINTEGER    p_direction
         {
           // Only do the bound columns!!
           SQLPOINTER  dataPointer = lpARColumn->m_desc_data_ptr;
-          SQLINTEGER* indiPointer = lpARColumn->m_desc_indicator_ptr;
-          indiPointer = (SQLINTEGER*)((char*)indiPointer + (row * sizeof(SQLINTEGER)));
+          SQLLEN*     indiPointer = lpARColumn->m_desc_indicator_ptr;
+          indiPointer = (SQLLEN*)((char*)indiPointer + (row * sizeof(SQLINTEGER)));
           if(m_ARD->GetArraySize())
           {
             // ROWWISE binding (calculate next row address)
@@ -1008,8 +1008,8 @@ ODBCStatement::InternalFetch(SQLINTEGER    p_direction
           // More bound columns then there are in the result set
 			    if(lpARColumn && lpARColumn->m_desc_indicator_ptr)
 			    {
-            SQLINTEGER* indiPointer = lpARColumn->m_desc_indicator_ptr;
-            indiPointer  = (SQLINTEGER*)((char*)indiPointer + (row * sizeof(SQLINTEGER)));
+            SQLLEN* indiPointer = lpARColumn->m_desc_indicator_ptr;
+            indiPointer  = (SQLLEN*)((char*)indiPointer + (row * sizeof(SQLINTEGER)));
 				    *indiPointer = SQL_NULL_DATA;
 			    }
 		    }		
@@ -1153,7 +1153,7 @@ ODBCStatement::SQLDescribeCol(SQLUSMALLINT ColumnNumber
                              ,SQLSMALLINT  BufferLength
                              ,SQLSMALLINT* NameLength
                              ,SQLSMALLINT* DataType
-                             ,SQLUINTEGER* ColumnSize
+                             ,SQLULEN*     ColumnSize
                              ,SQLSMALLINT* DecimalDigits
                              ,SQLSMALLINT* Nullable)
 {
@@ -1201,8 +1201,8 @@ SQLRETURN
 ODBCStatement::SQLGetData(SQLUSMALLINT ColumnNumber
                          ,SQLSMALLINT  TargetType
                          ,SQLPOINTER   TargetValue
-                         ,SQLINTEGER   BufferLength
-                         ,SQLINTEGER*  StrLen_or_Ind)
+                         ,SQLLEN       BufferLength
+                         ,SQLLEN*      StrLen_or_Ind)
 {
   Guard guard(m_lock_mutex);
 	m_ociError.Clear();
@@ -1227,7 +1227,7 @@ ODBCStatement::SQLGetData(SQLUSMALLINT ColumnNumber
       return CopyODBCLOBToApp(GetDBConnection()->GetOCIConnection()
                              ,TargetValue
                              ,record->Value.lob_val
-                             ,BufferLength
+                             ,(int) BufferLength
                              ,(int*)StrLen_or_Ind
                              ,m_ociError
                              ,record
@@ -1239,7 +1239,7 @@ ODBCStatement::SQLGetData(SQLUSMALLINT ColumnNumber
       return CopyODBCRAWToApp(GetDBConnection()->GetOwnerODBCEnv()->GetOwnerEnv()
                              ,record->Value.raw_val
                              ,TargetValue
-                             ,BufferLength
+                             ,(int) BufferLength
                              ,(int*)StrLen_or_Ind
                              ,&m_ociError
                              ,record
@@ -1249,7 +1249,7 @@ ODBCStatement::SQLGetData(SQLUSMALLINT ColumnNumber
     // Get the rest of the pending data for a string
     return CopyODBCStringToApp((SQLCHAR*)TargetValue
                               ,(char*)record->m_pendingOffset
-                              ,BufferLength
+                              ,(int) BufferLength
                               ,(int*)StrLen_or_Ind
                               ,&m_ociError
                               ,record
@@ -1271,8 +1271,8 @@ SQLRETURN
 ODBCStatement::SQLBindCol(SQLUSMALLINT ColumnNumber
                          ,SQLSMALLINT  TargetType
                          ,SQLPOINTER   TargetValue
-                         ,SQLINTEGER   BufferLength
-                         ,SQLINTEGER*  StrLen_or_Ind)
+                         ,SQLLEN       BufferLength
+                         ,SQLLEN*      StrLen_or_Ind)
 {
   STILL_EXECUTING;
   Guard guard(m_lock_mutex);
@@ -1300,11 +1300,11 @@ ODBCStatement::SQLBindParameter(SQLUSMALLINT ParameterNumber
                                ,SQLSMALLINT  InputOutputType
                                ,SQLSMALLINT  ValueType
                                ,SQLSMALLINT  ParameterType
-                               ,SQLUINTEGER  ColumnSize
+                               ,SQLLEN       ColumnSize
                                ,SQLSMALLINT  DecimalDigits
                                ,SQLPOINTER   ParameterValuePtr
-                               ,SQLINTEGER   BufferLength
-                               ,SQLINTEGER*  StrLen_or_IndPtr)
+                               ,SQLLEN       BufferLength
+                               ,SQLLEN*      StrLen_or_IndPtr)
 {
   STILL_EXECUTING;
   Guard guard(m_lock_mutex);
@@ -1335,7 +1335,7 @@ ODBCStatement::SQLBindParameter(SQLUSMALLINT ParameterNumber
 	lpColumn->m_desc_length         = BufferLength;
 	lpColumn->m_desc_parameter_type = InputOutputType;
 	lpColumn->m_desc_param_type     = ParameterType;
-	lpColumn->m_desc_precision      = ColumnSize;
+	lpColumn->m_desc_precision      = (SQLUINTEGER) ColumnSize;
 	lpColumn->m_desc_scale          = DecimalDigits;
 		
 	return SQL_SUCCESS;
@@ -1466,7 +1466,7 @@ ODBCStatement::SQLColAttribute(SQLUSMALLINT ColumnNumber
                               ,SQLCHAR*     CharacterAttribute
                               ,SQLSMALLINT  BufferLength
                               ,SQLSMALLINT* StringLength
-                              ,SQLINTEGER*  NumericAttribute)
+                              ,SQLLEN*      NumericAttribute)
 {
   STILL_EXECUTING;
   Guard guard(m_lock_mutex);
@@ -2278,7 +2278,7 @@ ODBCStatement::SQLPutData(SQLPOINTER Data
   }
   ub2  retCode = 0;
   sword ociRes = 0;
-  ub4   amount = StrLen_or_Ind;
+  ub4   amount = (ub4)StrLen_or_Ind;
   if(amount >= (ub4)record->m_pendingLength || record->m_pendingLength < 0)
   {
     m_needPiece = OCI_LAST_PIECE;

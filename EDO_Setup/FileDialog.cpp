@@ -68,7 +68,7 @@ DocFileDialog::DocFileDialog(bool    p_open        // true = open, false = SaveA
 
   m_ofn.lStructSize       = sizeof(OPENFILENAME);
   m_ofn.hwndOwner         = AfxGetApp()->GetMainWnd()->GetSafeHwnd();
-  m_ofn.hInstance         = (HINSTANCE) GetWindowLong(m_ofn.hwndOwner,GWL_HINSTANCE);
+  m_ofn.hInstance         = (HINSTANCE) GetWindowLongPtr(m_ofn.hwndOwner,GWLP_HINSTANCE);
   m_ofn.lpstrFile         = (LPSTR) m_filename;
   m_ofn.lpstrDefExt       = (LPSTR) m_defext;
   m_ofn.lpstrTitle        = (LPSTR) m_title;

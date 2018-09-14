@@ -273,7 +273,9 @@ ODBCErrorHolder::SQLGetDiagField(SQLSMALLINT   HandleType
     case SQL_DIAG_ROW_COUNT:            // Fall through
     case SQL_DIAG_CURSOR_ROW_COUNT:     if(statement)
                                         {
-                                          return statement->SQLRowCount(integer);
+                                          SQLLEN count;
+                                          statement->SQLRowCount(&count);
+                                          return (SQLRETURN)count;
                                         }
                                         return SQL_INVALID_HANDLE;
     case SQL_DIAG_DYNAMIC_FUNCTION:     if(statement)

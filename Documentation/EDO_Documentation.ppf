@@ -1,0 +1,112 @@
+<?xml version="1.0" ?>
+<!DOCTYPE polprojfile>
+<ppfml version="1.00" project="ODBC QueryTool">
+ <windowlist>
+ </windowlist>
+ <contextmap>
+ </contextmap>
+ <topiclist defaulttopic="Welcome.htm">
+  <topic>ODBCQuickReference\Elements\Datatypes.htm
+  </topic>
+  <topic>ODBCQuickReference\Elements\Pseudocolumns.htm
+  </topic>
+  <topic>ODBCQuickReference\Elements\Operators.htm
+  </topic>
+  <topic>ODBCQuickReference\ODBC_SQL_Reference.htm
+  </topic>
+  <topic>ODBCQuickReference\Elements\Privileges.htm
+  </topic>
+  <topic>ODBCQuickReference\Elements\OBJECT PRIVILEGES.htm
+  </topic>
+  <topic>ODBCQuickReference\Statements\CREATE INDEX.htm
+  </topic>
+  <topic>ODBCQuickReference\Statements\DROP INDEX.htm
+  </topic>
+  <topic>ODBCQuickReference\Statements\GRANT (Object Privileges).htm
+  </topic>
+  <topic>ODBCQuickReference\Statements\GRANT (System Privileges and Roles).htm
+  </topic>
+  <topic>ODBCQuickReference\Statements\CREATE TABLE.htm
+  </topic>
+  <topic>ODBCQuickReference\Statements\ALTER TABLE.htm
+  </topic>
+  <topic>ODBCQuickReference\Statements\DROP VIEW.htm
+  </topic>
+  <topic>ODBCQuickReference\Statements\CREATE VIEW.htm
+  </topic>
+  <topic>ODBCQuickReference\Statements\DROP TABLE.htm
+  </topic>
+  <topic>ODBCQuickReference\Statements\COMMIT.htm
+  </topic>
+  <topic>ODBCQuickReference\Statements\ROLLBACK.htm
+  </topic>
+  <topic>ODBCQuickReference\Functions\Conversion Functions.htm
+  </topic>
+  <topic>ODBCQuickReference\Statements\CREATE SCHEMA.htm
+  </topic>
+  <topic>ODBCQuickReference\Statements\SELECT.htm
+  </topic>
+  <topic>ODBCQuickReference\Statements\DELETE.htm
+  </topic>
+  <topic>ODBCQuickReference\Statements\INSERT.htm
+  </topic>
+  <topic>ODBCQuickReference\Statements\UPDATE.htm
+  </topic>
+  <topic>ODBCQuickReference\Statements\REVOKE_(Object_Privileges).htm
+  </topic>
+  <topic>ODBCQuickReference\Statements\REVOKE_(System_Privileges).htm
+  </topic>
+  <topic>ODBCQuickReference\Functions\Group Functions.htm
+  </topic>
+  <topic>ODBCQuickReference\Functions\System_functions.htm
+  </topic>
+  <topic>ODBCQuickReference\Functions\Numeric_functions.htm
+  </topic>
+  <topic>ODBCQuickReference\Functions\String_functions.htm
+  </topic>
+  <topic>ODBCQuickReference\Functions\Time_Date_Interval_Functions.htm
+  </topic>
+  <topic>ODBCQuickReference\SQL_Elements\base-table-name.htm
+  </topic>
+  <topic>ODBCQuickReference\SQL_Elements\referenced-table-name.htm
+  </topic>
+  <topic>ODBCQuickReference\SQL_Elements\data-type.htm
+  </topic>
+  <topic>ODBCQuickReference\SQL_Elements\search-condition.htm
+  </topic>
+  <topic>ODBCQuickReference\SQL_Elements\pattern.htm
+  </topic>
+  <topic>ODBCQuickReference\SQL_Elements\expression.htm
+  </topic>
+  <topic>ODBCQuickReference\SQL_Elements\column-name.htm
+  </topic>
+  <topic>Administration\Tracing_and_translation.htm
+  </topic>
+  <topic>Welcome.htm
+  </topic>
+  <topic>Appendices\About_EDO.htm
+  </topic>
+  <topic>Installation\Installation_of_EDO.htm
+  </topic>
+  <topic>Appendices\Contacting_EDO.htm
+  </topic>
+  <topic>Installation\Network_installation.htm
+  </topic>
+  <topic>Administration\Creating_a_datasource.htm
+  </topic>
+  <topic>Administration\Defining_the_datasource.htm
+  </topic>
+  <topic>Administration\ODBC_Settings_of_the_datasource.htm
+  </topic>
+  <topic>Administration\NLS_Settings_of_the_datasource.htm
+  </topic>
+  <topic>Administration\Oracle_settings_of_the_datasource.htm
+  </topic>
+  <topic>Administration\Testing_the_TNS_connect.htm
+  </topic>
+ </topiclist>
+ <projectincludes>
+ </projectincludes>
+ <filenamemap>
+ </filenamemap>
+</ppfml>

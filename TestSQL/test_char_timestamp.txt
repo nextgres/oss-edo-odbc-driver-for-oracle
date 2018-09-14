@@ -1,0 +1,27 @@
+:file append 'C:\TMP\ODBCTEST.txt';
+:print 'Test for a CHAR to TIMESTAMP';
+
+CREATE TABLE test_ts
+(
+  field timestamp
+);
+
+delete from test_ts;
+
+:variable1 input char;
+:variable1 = '15-10-1959 16:30:40';
+:rebind CHAR,TYPE TIMESTAMP;
+
+INSERT INTO test_ts VALUES (?);
+COMMIT;
+
+:variable1 = '-';
+:rebind reset;
+:select on;
+SELECT field FROM test_ts;
+
+:if variable1 <> '1959-10-15 16:30:40';
+:print 'ERROR in CHAR bind to TIMESTAMP';
+
+DROP TABLE test_ts;
+:file close;

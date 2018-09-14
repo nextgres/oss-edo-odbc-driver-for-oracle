@@ -1,0 +1,332 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#ifndef APSTUDIO_INVOKED
+#include "targetver.h"
+#endif
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,0
+ PRODUCTVERSION 1,0,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "CompanyName", "Edwig's Driver for Oracle"
+            VALUE "FileDescription", "ODBC Driver for Oracle 9i databases"
+            VALUE "FileVersion", "1,0,0,0"
+            VALUE "InternalName", "EDO_Setup.dll"
+            VALUE "LegalCopyright", "2008 (c) ir. Edwig Huisman.  All rights reserved."
+            VALUE "LegalTrademarks", "EDO"
+            VALUE "OriginalFilename", "EDO_Setup.dll"
+            VALUE "ProductName", "EDO Oracle Driver"
+            VALUE "ProductVersion", "1,0,0,0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_SETUP_DIALOG DIALOGEX 0, 0, 343, 194
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "EDO Oracle ODBC Driver configuration"
+FONT 10, "Tahoma", 400, 0, 0x0
+BEGIN
+    EDITTEXT        IDC_MODE,7,7,261,14,ES_AUTOHSCROLL | ES_READONLY | NOT WS_TABSTOP
+    LTEXT           "Datasource:",IDC_STATIC,7,26,50,8
+    EDITTEXT        IDC_DATASOURCE,57,23,211,14,ES_AUTOHSCROLL
+    LTEXT           "Description:",IDC_STATIC,7,42,50,8
+    EDITTEXT        IDC_DESCRIPTION,57,39,211,14,ES_AUTOHSCROLL
+    LTEXT           "TNS connect:",IDC_STATIC,7,58,50,8
+    EDITTEXT        IDC_TNS,57,55,211,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_TAB,"SysTabControl32",WS_TABSTOP,7,74,329,115
+    DEFPUSHBUTTON   "&OK",IDOK,272,7,64,14
+    PUSHBUTTON      "&Cancel",IDCANCEL,272,23,64,14
+    PUSHBUTTON      "&Help",IDHELP,272,39,64,14
+    PUSHBUTTON      "&Test connection",IDC_TEST,272,55,64,14
+END
+
+IDD_TABODBC DIALOGEX 0, 0, 315, 101
+STYLE DS_SETFONT | DS_CONTROL | WS_CHILD | WS_CAPTION
+CAPTION "ODBC"
+FONT 10, "Tahoma", 400, 0, 0x0
+BEGIN
+    GROUPBOX        "Flags",IDC_STATIC,7,7,115,87
+    CONTROL         "Read only connection:       ",IDC_READONLY,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,18,99,10,WS_EX_RIGHT
+    CONTROL         "Ensure statistics info:        ",IDC_ENSURE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,31,100,10,WS_EX_RIGHT
+    CONTROL         "Set MetaDataID to TRUE:   ",IDC_METADATAID,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,44,99,10,WS_EX_RIGHT
+    CONTROL         "Use integer speedup:         ",IDC_INTSPEEDUP,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,57,102,10,WS_EX_RIGHT
+    GROUPBOX        "Variables",IDC_STATIC,126,7,182,87
+    LTEXT           "Maximum length of columns:",IDC_STATIC,134,19,106,8
+    EDITTEXT        IDC_MAXLEN,243,16,57,14,ES_AUTOHSCROLL | ES_NUMBER
+END
+
+IDD_TABOORACLE DIALOGEX 0, 0, 315, 101
+STYLE DS_SETFONT | DS_CONTROL | WS_CHILD | WS_CAPTION
+CAPTION "Oracle"
+FONT 10, "Tahoma", 400, 0, 0x0
+BEGIN
+    GROUPBOX        "Prefetching",IDC_STATIC,7,7,142,87
+    CONTROL         "Use Oracle prefetching:",IDC_PREFETCH,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,16,88,10,WS_EX_RIGHT
+    LTEXT           "Prefetch row count:",IDC_STATIC,13,32,65,8
+    EDITTEXT        IDC_PRECOUNT,93,29,51,14,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "Prefetch memory:",IDC_STATIC,13,50,65,8
+    EDITTEXT        IDC_PREMEMORY,93,47,51,14,ES_AUTOHSCROLL | ES_NUMBER
+    GROUPBOX        "Failover support",IDC_STATIC,152,7,156,87
+    CONTROL         "Use Oracle failover support: ",IDC_FAILOVER,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,157,18,104,10,WS_EX_RIGHT
+    EDITTEXT        IDC_FO_RETRYCOUNT,254,29,49,14,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "Failover retry timeout:",IDC_STATIC,157,50,79,8
+    EDITTEXT        IDC_FO_RETRYTIME,254,47,49,14,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "Failover retry count:",IDC_STATIC,157,32,79,8
+END
+
+IDD_TABTRACE DIALOGEX 0, 0, 326, 101
+STYLE DS_SETFONT | DS_CONTROL | WS_CHILD | WS_CAPTION
+CAPTION "Tracing && Translation"
+FONT 10, "Tahoma", 400, 0, 0x0
+BEGIN
+    GROUPBOX        "Tracing",IDC_STATIC,7,7,312,39
+    CONTROL         "Use tracing:           ",IDC_TRACE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,16,75,10,WS_EX_RIGHT
+    LTEXT           "Tracefile:",IDC_STATIC,12,31,66,8
+    EDITTEXT        IDC_TRACEFILE,78,28,205,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "[ ... ]",IDC_CHOOSE,286,28,28,14
+    GROUPBOX        "Translation",IDC_STATIC,7,48,312,46
+    LTEXT           "Translation option:",IDC_STATIC,12,61,66,8
+    EDITTEXT        IDC_TRANSOPTION,78,58,49,14,ES_AUTOHSCROLL
+    LTEXT           "Translation library:",IDC_STATIC,12,77,66,8
+    EDITTEXT        IDC_TRANSLIB,78,75,205,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "[ ... ]",IDC_CHOOSELIB,286,75,28,14
+END
+
+IDD_TABNLS DIALOGEX 0, 0, 327, 112
+STYLE DS_SETFONT | DS_CONTROL | WS_CHILD | WS_CAPTION
+CAPTION "NLS"
+FONT 10, "Tahoma", 400, 0, 0x0
+BEGIN
+    GROUPBOX        "National Language Support",IDC_STATIC,7,7,313,92
+    COMBOBOX        IDC_NLSTYPE,12,17,103,44,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "&Session login",IDC_SESSION,118,15,64,14
+    EDITTEXT        IDC_NLSDATE,118,33,115,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_NLSTIME,118,49,115,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_NLSTIMESTAMP,118,65,115,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_NLSTIMESTAMPTZ,118,81,115,14,ES_AUTOHSCROLL
+    LTEXT           "Formatting of a date",IDC_STATIC,12,36,91,8
+    LTEXT           "Formatting of time",IDC_STATIC,12,52,91,8
+    LTEXT           "Formatting of timestamp",IDC_STATIC,12,69,91,8
+    LTEXT           "Timestamp + timezone",IDC_STATIC,12,84,91,8
+    EDITTEXT        IDC_EGDATE,238,33,72,14,ES_AUTOHSCROLL | ES_READONLY | NOT WS_TABSTOP
+    EDITTEXT        IDC_EGTIMESTAMP,238,65,72,14,ES_AUTOHSCROLL | ES_READONLY | NOT WS_TABSTOP
+    EDITTEXT        IDC_EGTIME,238,49,72,14,ES_AUTOHSCROLL | ES_READONLY | NOT WS_TABSTOP
+    EDITTEXT        IDC_EGTIMESTAMPTZ,238,81,72,14,ES_AUTOHSCROLL | ES_READONLY | NOT WS_TABSTOP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_SETUP_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 336
+        VERTGUIDE, 57
+        VERTGUIDE, 268
+        VERTGUIDE, 272
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 189
+    END
+
+    IDD_TABODBC, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 308
+        VERTGUIDE, 12
+        VERTGUIDE, 111
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 94
+    END
+
+    IDD_TABOORACLE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 308
+        VERTGUIDE, 13
+        VERTGUIDE, 93
+        VERTGUIDE, 144
+        VERTGUIDE, 157
+        VERTGUIDE, 254
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 94
+        HORZGUIDE, 43
+        HORZGUIDE, 61
+    END
+
+    IDD_TABTRACE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 319
+        VERTGUIDE, 12
+        VERTGUIDE, 78
+        VERTGUIDE, 283
+        VERTGUIDE, 286
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 94
+    END
+
+    IDD_TABNLS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 320
+        VERTGUIDE, 12
+        VERTGUIDE, 118
+        VERTGUIDE, 233
+        VERTGUIDE, 238
+        VERTGUIDE, 310
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 105
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_TABNLS DLGINIT
+BEGIN
+    IDC_NLSTYPE, 0x403, 24, 0
+0x7355, 0x2065, 0x7473, 0x6e61, 0x6164, 0x6472, 0x4f20, 0x6172, 0x6c63, 
+0x2065, 0x4c4e, 0x0053, 
+    IDC_NLSTYPE, 0x403, 24, 0
+0x7355, 0x2065, 0x7473, 0x6e61, 0x6164, 0x6472, 0x4f20, 0x4244, 0x2043, 
+0x6164, 0x6574, 0x0073, 
+    IDC_NLSTYPE, 0x403, 24, 0
+0x7355, 0x2065, 0x7073, 0x6365, 0x6669, 0x6369, 0x4f20, 0x6172, 0x6c63, 
+0x2065, 0x4c4e, 0x0053, 
+    0
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Dutch (Netherlands) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NLD)
+#ifdef _WIN32
+LANGUAGE LANG_DUTCH, SUBLANG_DUTCH
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#endif\r\n"
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#include ""res\\EDO_Setup.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""     // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // Dutch (Netherlands) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#include "res\EDO_Setup.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"     // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

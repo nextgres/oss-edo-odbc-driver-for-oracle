@@ -1,0 +1,27 @@
+:file append 'C:\TMP\ODBCTEST.txt';
+:print 'Test for a LONG to decimal datatype';
+
+CREATE TABLE test_decimal
+(
+  field DECIMAL(10,0)
+);
+
+delete from test_decimal;
+
+:variable1 input LONG;
+:variable1 = 12345678;
+:rebind LONG,DECIMAL;
+
+INSERT INTO test_decimal VALUES (?);
+COMMIT;
+
+:variable1 = '-';
+:select on;
+:rebind reset;
+SELECT field FROM test_decimal;
+
+:if variable1 <> 12345678;
+:print 'ERROR in LONG bind to DECIMAL(30,26)';
+
+DROP TABLE test_decimal;
+:file close;

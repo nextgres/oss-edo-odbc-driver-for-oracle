@@ -1,0 +1,134 @@
+ORACLE                      ODBC SQL
+
+Num Name                    Num Name
+--- ---------------         --- ------------------------
+  1 VARCHAR2                 12 SQL_VARCHAR
+  1 NVARCHAR2 charsetform=2  -9 SQL_WVARCHAR
+  2 NUMBER                    3 SQL_DECIMAL
+  2 NUMBER(prec -127)         8 SQL_DOUBLE (6 SQL_FLOAT / 7 SQL_REAL)
+  2 NUMBER(prec<11,scale=0)   4 SQL_INTEGER
+  2 NUMBER(prec<5, scale=0)   5 SQL_SMALLINT
+  8 LONG                     -1 SQL_LONGVARCHAR
+  9 VARCHAR                  12 SQL_VARCHAR
+  9 NCHAR VARYING charform=2 -9 SQL_WVARCHAR
+ 12 DATE                     11 SQL_TIMESTAMP  (93 SQL_TYPE_TIMESTAMP)
+                              9 SQL_DATETIME
+    RAW							SQL_BINARY
+ 23 RAW                      -3 SQL_VARBINARY
+ 24 LONG RAW                 -4 SQL_LONGVARBINARY
+ 58 <USER TYPE>               0 SQL_UNKNOWN_TYPE
+ 69 ROWID                     0 SQL_UNKNOWN_TYPE
+ 96 CHAR                      1 SQL_CHAR
+ 96 NCHAR (charsetform=2)    -8 SQL_WCHAR
+105 MSLABEL                   0 SQL_UNKNOWN_TYPE
+106 MSLABEL                   0 SQL_UNKNOWN_TYPE
+111 <USER TYPE>               0 SQL_UNKNOWN_TYPE
+112 CLOB                     -1 SQL_LONGVARCHAR
+112 NCLOB (charsetform=2)   -10 SQL_WLONGVARCHAR
+113 BLOB                     -4 SQL_LONGVARBINARY
+114 BFILE                     0 SQL_UNKNOWN_TYPE
+115 CFILE                     0 SQL_UNKNOWN_TYPE
+121 <USER TYPE>               0 SQL_UNKNOWN_TYPE
+122 <USER TYPE>               0 SQL_UNKNOWN_TYPE
+123 <USER TYPE>               0 SQL_UNKNOWN_TYPE
+178 TIME                     10 SQL_TIME (10 SQL_INTERVAL = zelfde)
+179 TIME WITH TIME ZONE      92 SQL_TYPE_TIME
+180 TIMESTAMP                11 SQL_TIMESTAMP
+181 TIMESTAMP WITH TZ        93 SQL_TYPE_TIMESTAMP
+231 TIMESTAMP WITH LTZ       93 SQL_TYPE_TIMESTAMP
+182 INTERVAL YEAR TO MONTH  107 SQL_INTERVAL_YEAR_TO_MONTH
+183 INTERVAL DAY TO SECOND  110 SQL_INTERVAL_DAY_TO_SECOND
+208 UROWID                    0 SQL_UNKNOWN_TYPE
+
+
+#define SQL_NUMERIC         2
+#define SQL_DATE            9
+
+#define SQL_BINARY         (-2)
+#define SQL_BIGINT         (-5)
+#define SQL_TINYINT        (-6)
+#define SQL_BIT            (-7)
+
+#define SQL_INTERVAL_YEAR                   (100 + 1 SQL_CODE_YEAR)
+#define SQL_INTERVAL_MONTH                  (100 + 2 SQL_CODE_MONTH)
+#define SQL_INTERVAL_DAY                    (100 + 3 SQL_CODE_DAY)
+#define SQL_INTERVAL_HOUR                   (100 + 4 SQL_CODE_HOUR)
+#define SQL_INTERVAL_MINUTE                 (100 + 5 SQL_CODE_MINUTE)
+#define SQL_INTERVAL_SECOND                 (100 + 6 SQL_CODE_SECOND)
+#define SQL_INTERVAL_DAY_TO_HOUR            (100 + 8 SQL_CODE_DAY_TO_HOUR)
+#define SQL_INTERVAL_DAY_TO_MINUTE          (100 + 9 SQL_CODE_DAY_TO_MINUTE)
+#define SQL_INTERVAL_HOUR_TO_MINUTE         (100 + 11 SQL_CODE_HOUR_TO_MINUTE)
+#define SQL_INTERVAL_HOUR_TO_SECOND         (100 + 12 SQL_CODE_HOUR_TO_SECOND)
+#define SQL_INTERVAL_MINUTE_TO_SECOND       (100 + 13 SQL_CODE_MINUTE_TO_SECOND)
+
+One-parameter shortcuts for date/time data types
+#define SQL_TYPE_DATE      91
+
+
+// CONCISE TYPE SUBFIELD
+
+#define SQL_CODE_YEAR               1
+#define SQL_CODE_MONTH              2
+#define SQL_CODE_DAY                3
+#define SQL_CODE_HOUR               4
+#define SQL_CODE_MINUTE             5
+#define SQL_CODE_SECOND             6
+#define SQL_CODE_YEAR_TO_MONTH      7
+#define SQL_CODE_DAY_TO_HOUR        8
+#define SQL_CODE_DAY_TO_MINUTE      9
+#define SQL_CODE_DAY_TO_SECOND     10
+#define SQL_CODE_HOUR_TO_MINUTE    11
+#define SQL_CODE_HOUR_TO_SECOND    12
+#define SQL_CODE_MINUTE_TO_SECOND  13
+
+
+
+BINDING
+
+                    ORACLE TYPES | C V N I D D T L C B R V L I I R
+                                 | H A U N O A I O L L A A O N N O
+                                 | A R M T U T M N O O W R N T T W
+                                 | R C B E B E E G B B   R G V V I
+                                 |   H E G L   S         A R A A D
+                                 |   A R E E   T         W A L L
+                                 |   R   R     A           W Y D
+                                 |             M             M S
+ODBC_C_TYPES                     |             P                
+------------------------------------------------------------------
+SQL_C_CHAR                       | X X X X X X X X X - - - - X X X
+SQL_C_NUMERIC                    | X X X X X - - - - - - - - - - -
+SQL_C_DATE                       | X X - - - X X - - - - - - - - -
+SQL_C_TYPE_DATE                  | X X - - - X X - - - - - - - - -
+SQL_C_TIME                       | X X - - - X X - - - - - - - - -
+SQL_C_TYPE_TIME                  | X X - - - X X - - - - - - - - -
+SQL_C_TIMESTAMP                  | X X - - - X X - - - - - - - - -
+SQL_C_TYPE_TIMESTAMP             | X X - - - X X - - - - - - - - -
+SQL_C_BINARY                     | - - - - - - - - - X X X X - - -
+SQL_C_SSHORT                     | X X X X X - - - - - - - - X X -
+SQL_C_SHORT                      | X X X X X - - - - - - - - X X -
+SQL_C_USHORT                     | X X X X X - - - - - - - - X X -
+SQL_C_SLONG                      | X X X X X - - - - - - - - X X -
+SQL_C_LONG                       | X X X X X - - - - - - - - X X -
+SQL_C_ULONG                      | X X X X X - - - - - - - - X X -
+SQL_C_FLOAT                      | X X X X X O - - - - - - - X X -
+SQL_C_DOUBLE                     | X X X X X O - - - - - - - X X -
+SQL_C_BIT                        | X X X X X - - - - - - - - - - - 
+SQL_C_STINYINT                   | X X X X X - - - - - - - - X X -
+SQL_C_TINYINT                    | X X X X X - - - - - - - - X X -
+SQL_C_UTINYINT                   | X X X X X - - - - - - - - X X -
+SQL_C_SBIGINT                    | X X X X X - - - - - - - - X X -
+SQL_C_UBIGINT                    | X X X X X - - - - - - - - X X -
+SQL_C_INTERVAL_YEAR              | O O O O O - - - - - - - - X - - 
+SQL_C_INTERVAL_MONTH             | O O O O O - - - - - - - - X - - 
+SQL_C_INTERVAL_DAY               | O O O O O - - - - - - - - - X - 
+SQL_C_INTERVAL_HOUR              | O O O O O - - - - - - - - - X - 
+SQL_C_INTERVAL_MINUTE            | O O O O O - - - - - - - - - X - 
+SQL_C_INTERVAL_SECOND            | O O O O O - - - - - - - - - X - 
+SQL_C_INTERVAL_YEAR_TO_MONTH     | O O - - - - - - - - - - - - X - 
+SQL_C_INTERVAL_DAY_TO_HOUR       | O O - - - - - - - - - - - - X - 
+SQL_C_INTERVAL_DAY_TO_MINUTE     | O O - - - - - - - - - - - - X - 
+SQL_C_INTERVAL_DAY_TO_SECOND     | O O - - - - - - - - - - - - X - 
+SQL_C_INTERVAL_HOUR_TO_MINUTE    | O O - - - - - - - - - - - - X - 
+SQL_C_INTERVAL_HOUR_TO_SECOND    | O O - - - - - - - - - - - - X - 
+SQL_C_INTERVAL_MINUTE_TO_SECOND  | O O - - - - - - - - - - - - X - 
+SQL_C_GUID                       | X X - - - - - - - - - - - - - -

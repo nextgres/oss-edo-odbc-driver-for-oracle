@@ -1,0 +1,59 @@
+LEARNING ABOUT ODBC AND THE DRIVER MANAGER
+==========================================
+
+TLA's:
+------
+ODBC     - Open DataBase Connectivity
+DM       - ODBC DriverManager
+ISO:9075 - The official SQL Standard
+CLI      - Call Level Interface
+OCI      - Oracle Call interface
+
+About Error diagnostic records
+==============================
+This is a behaviour I have seen many times in the past:
+- A database is down, but a connection says "SetConnectAttr failed"
+  and nothing else.
+What happens is this:
+- The internal error gets stored and later on asked with a combination
+  of SQLError, SQLGetDiagRec and SQLGetDiagField. If not all of the
+  sub-functions of the later (SQLGetDiagField) are not implemented
+  (notably GET_DIAG_CLASS_ORIGIN and GET_DIAG_SUBCLASS_ORIGIN)
+  then the whole error record gets discarded by the DriverManager.
+- Because the DM sorts all error records by severity, only the
+  informational warning about the connection attribute is left over
+  and shown to the user.!!
+- If everything is implemented correctly the real error appears
+  AND it is sorted above the informational errors from the DM:
+  
+  Connection:[SQLSTATE=HY000][NATIVE=12500][EDO][Open Oracle ODBC][mag_test]ORA-12500: TNS:luisterproces kon proces voor toegewijde server niet opstarten.
+  Connection:[SQLSTATE=IM006][NATIVE=0][Microsoft][ODBC-Stuurprogramma] SQLSetConnectAttr van het stuurprogramma mislukt
+
+About the beginning of the first connection
+===========================================
+An ODBC application typically calls ODBC functions in the following
+starting sequence:
+1) SQLAllocHandle for an SQL_HANDLE_ENV to get the environment
+2) SQLAllocHandle for an SQL_HANDLE_DBC to get a connection 
+3) SQLSetConnectAttr for the ODBC version (2 or 3)
+4) SQLConnect or SQLDriverConnect or SQLBrowseConnect
+But these calls are cached by the DM!!. The ODBC driver gets loaded
+only after the call 4) to one of the three connect functions!!
+The handle the application receives is not the driver handle, but the
+cached handle by the DM. Alsoo the answer of the SQLSetConnectAttr is not
+that of the driver, but a cached version from the DM!!!
+
+Trace file/DLL
+==============
+HKEY_CURRENT_USER\Software\ODBC\ODBC.INI\ODBC\TraceDll
+HKEY_CURRENT_USER\Software\ODBC\ODBC.INI\ODBC\TraceFile
+- Moet in de WINDOWS\System32 directory staan
+- Moet anders heten dan ODBCTRAC.DLL
+- Moet TRACExxxxx functies hebben + TraceReturn
+
+Still to implement
+==================
+SetPos
+BulkOperations
+(Functions are there but don't do anything usefull yet)
+

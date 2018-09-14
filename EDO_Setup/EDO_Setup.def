@@ -1,0 +1,7 @@
+; EDO_Setup.def : Declares the module parameters for the DLL.
+
+LIBRARY      "EDO_Setup"
+
+EXPORTS
+    ; Explicit exports can go here
+ConfigDSN

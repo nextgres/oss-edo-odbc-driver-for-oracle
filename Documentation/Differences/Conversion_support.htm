@@ -1,0 +1,2616 @@
+<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+
+<html>
+
+<!--(==============================================================)-->
+<!--(Document created with RoboEditor. )============================-->
+<!--(==============================================================)-->
+
+<head>
+
+<title>Conversion support</title>
+
+<!--(Meta)==========================================================-->
+
+<meta http-equiv=content-type content="text/html; charset=windows-1252">
+<meta name=generator content="RoboHELP by eHelp Corporation - www.ehelp.com">
+<meta name=generator-major-version content=0.1>
+<meta name=generator-minor-version content=1>
+<meta name=filetype content=kadov>
+<meta name=filetype-version content=1>
+<meta name=page-count content=1>
+<meta name=layout-height content=2162>
+<meta name=layout-width content=968>
+
+
+<!--(Links)=========================================================-->
+
+<link rel="StyleSheet" href="..\default.css">
+
+
+
+</head>
+
+<!--(Body)==========================================================-->
+
+
+<body>
+
+<h1>Conversion support (CAST and CONVERT)</h1>
+
+<p>There are two standard ODBC ways of data conversion: CAST and CONVERT.</p>
+
+<h2>CAST </h2>
+
+<p>Oracle: <img src="../Images/delete-24x24.bmp"
+				x-maintain-ratio=TRUE
+				style="border: none;
+						width: 24px;
+						height: 24px;
+						float: none;
+						border-style: none;
+						border-style: none;"
+				width=24
+				height=24
+				border=0> EDO: <img src="../Images/accept-24x24.bmp"
+									x-maintain-ratio=TRUE
+									style="border: none;
+											width: 24px;
+											height: 24px;
+											float: none;
+											border-style: none;
+											border-style: none;"
+									width=24
+									height=24
+									border=0></p>
+
+<p>The cast operator is the newer way to convert data values to another 
+ datatype. The cast operator does not work with the standard ODBC escape 
+ syntax. So there is no &quot;{ CAST&quot; syntax construction. Instead 
+ you can query the &quot;SQLGetInfo&quot; function for the SQL_SQL_92_EXPRESSIONS 
+ type. If this type returns the SQL_SVE_CAST bit as set, the RDBMS supports 
+ the following syntax</p>
+
+<p><span class=Code>CAST ( value-exp AS data-type)</span></p>
+
+<p>Whereas the data-type are de native RDBMS datatypes. This means of course 
+ that there is a drawback: you cannot write real portable SQL programs. 
+ But there is a second drawback as well. Oracle does support the CAST operator, 
+ but does **not** return the SQL_SVE_CAST bit. So there is no way of automatically 
+ determining the support for this operator by a real ODBC program.</p>
+
+<p>&nbsp;</p>
+
+<h2>CONVERT </h2>
+
+<p>Oracle: <img src="../Images/accept-24x24.bmp"
+				x-maintain-ratio=TRUE
+				style="border: none;
+						width: 24px;
+						height: 24px;
+						float: none;
+						border-style: none;
+						border-style: none;"
+				width=24
+				height=24
+				border=0> EDO: <img src="../Images/accept-24x24.bmp"
+									x-maintain-ratio=TRUE
+									style="border: none;
+											width: 24px;
+											height: 24px;
+											float: none;
+											border-style: none;
+											border-style: none;"
+									width=24
+									height=24
+									border=0></p>
+
+<p>The older and portable way of conversion is the &quot;CONVERT&quot; 
+ function. It <!--kadov_tag{{<spaces>}}-->&nbsp;<!--kadov_tag{{</spaces>}}-->is 
+ a way to transpose data from one datatype to another. It is used if no 
+ standard casting method exist for the RDBMS at hand. Basically you convert 
+ a value to another datatype. Everything is done in the standard ODBC escape 
+ syntax. A basic conversion to another datatype is described as:</p>
+
+<p><span class=Code>{ fn CONVERT( &lt;value&gt; , &lt;datatype&gt;) }</span> 
+ </p>
+
+<p>Which means that this is a valid way to convert a date to a string:</p>
+
+<p><span class=Code>SELECT { fn CONVERT( { fn CURDATE() }, SQL_CHAR) } 
+ FROM DUAL;</span></p>
+
+<p>The datatypes that you can use are similar to the ODBC macros, but there 
+ are some exceptions for the signed and unsigned variants. These are the 
+ datatypes that you can use in the CONVERT function.</p>
+
+<!--(Table)=========================================================-->
+<table color=#99ccff
+		x-use-null-cells
+		style="width: 100%;
+				x-border-left: 1px table-solid;
+				x-border-top: 1px table-solid;
+				x-border-right: 1px table-solid;
+				x-border-bottom: 1px table-solid;
+				border-collapse: separate;
+				border-spacing: 0px;
+				x-border-left: 1px table-solid;
+				x-border-top: 1px table-solid;
+				x-border-right: 1px table-solid;
+				x-border-bottom: 1px table-solid;
+				border-collapse: separate;
+				border-spacing: 0px;"
+		cellspacing=0
+		width=100%
+		border=1>
+<col>
+<col style="width: 589px;">
+<col style="width: 98px;">
+<col style="width: 95px;">
+
+<tr>
+<td style="background-color: #99ccff;
+			x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	bgcolor=#99CCFF
+	width=120px>
+<p>Datatype</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			background-color: #99ccff;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	bgcolor=#99CCFF
+	width=589px>
+<p class=tab_header>Conversion</td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			background-color: #99ccff;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	bgcolor=#99CCFF
+	width=98px>
+<p class=tab_header>Oracle</td>
+<td style="width: 95px;
+			background-color: #99ccff;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	bgcolor=#99CCFF
+	width=95px>
+<p>EDO</td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_BIT</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p>One bit (0 or 1) representing a logical boolean</td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td>
+<td colspan=1
+	rowspan=1
+	style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_TINYINT</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p>Signed tiny integer of 8 bits (-128 up to 127)</td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td>
+<td colspan=1
+	rowspan=1
+	style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_SMALLINT</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p>Signed small integer of 16 bits (-32768 up to 32767)</td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td>
+<td colspan=1
+	rowspan=1
+	style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_INT</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p>Signed integer of 32 bits (-2147483648 up to 2147483647)</td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p>&nbsp;</td>
+<td style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_INTEGER</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p>Signed integer of 32 bits (-2147483648 up to 2147483647)</td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td>
+<td style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_BIGINT</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p>Signed big integer of 64 (-9223372036854775808 up to 9223372036854775807)</td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td>
+<td colspan=1
+	rowspan=1
+	style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_FLOAT</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p>Signed, approximate, numeric value with a binary precision 24 (zero 
+ or absolute value 10[–38] to 10[38]). </td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td>
+<td style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_REAL</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p>Signed, approximate, numeric value with a binary precision 24 (zero 
+ or absolute value 10[–38] to 10[38]). </td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td>
+<td colspan=1
+	rowspan=1
+	style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_DOUBLE</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p>Signed, approximate, numeric value with a binary precision 53 (zero 
+ or absolute value 10[–308] to 10[308]).</td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td>
+<td colspan=1
+	rowspan=1
+	style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_DECIMAL</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p>Signed exact numeric value with a precision 1 &lt;= p &lt;= 32 and a 
+ scale of 0 &lt;= scale &lt;= p. The number has <span style="font-weight: bold;">at 
+ least</span> (precision, scale) physical storage.</td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td>
+<td colspan=1
+	rowspan=1
+	style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_NUMERIC</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p>Signed exact numeric value with a precision 1 &lt;= p &lt;= 32 and a 
+ scale of 0 &lt;= scale &lt;= p. The number has <span style="font-weight: bold;">exactly</span> 
+ (precision, scale) physical storage.</td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td>
+<td colspan=1
+	rowspan=1
+	style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_CHAR</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p>Character string of fixed length n characters</td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td>
+<td colspan=1
+	rowspan=1
+	style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_VARCHAR</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p>Character string of variable length of at most n characters.</td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td>
+<td colspan=1
+	rowspan=1
+	style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_LONGVARCHAR</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p>Character string of variable length. Maximum length is RDBMS dependent.</td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td>
+<td colspan=1
+	rowspan=1
+	style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_WCHAR</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p>Character wide string of fixed length n characters</td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td>
+<td colspan=1
+	rowspan=1
+	style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_WVARCHAR</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p>Character wide string of variable length of at most n characters</td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td>
+<td colspan=1
+	rowspan=1
+	style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_WLONGVARCHAR</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p>Character wide string of variable length. Maximum length is RDBMS dependent.</td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td>
+<td colspan=1
+	rowspan=1
+	style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_DATE</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p>Date (year, month, day) according to the Gregorian calendar.</td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td>
+<td colspan=1
+	rowspan=1
+	style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_TYPE_DATE</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p>Date (year, month, day) according to the Gregorian calendar.</td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td>
+<td colspan=1
+	rowspan=1
+	style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_TYPE_TIME</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p style="margin-bottom: 0pt;">Time (hour, minute, second, fractions with 
+ p precision).</p>
+<p style="margin-bottom: 0pt;">0 - 23 are valid hours</p>
+<p style="margin-bottom: 0pt;">0 - 59 are valid minutes</p>
+<p style="margin-bottom: 0pt;">0 - 61 are valid seconds (60,61 are leap 
+ seconds)</p>
+<p style="margin-bottom: 0pt;">0 - 6 is the typical precision for the seconds 
+ fractions</td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p><img src="../Images/delete-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td>
+<td colspan=1
+	rowspan=1
+	style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_TYPE_TIMESTAMP</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p>Combination of SQL_TYPE_DATE and SQL_TYPE_TIME</td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td>
+<td colspan=1
+	rowspan=1
+	style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_BINARY</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p>Binary data of fixed length n.</td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p><img src="../Images/delete-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td>
+<td colspan=1
+	rowspan=1
+	style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_VARBINARY</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p>Binary data of variable length of at most n bytes</td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p><img src="../Images/delete-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td>
+<td colspan=1
+	rowspan=1
+	style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_LONGVARBINARY</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p>Binary data of variable length. Maximum length is RDBMS dependent</td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p><img src="../Images/delete-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td>
+<td colspan=1
+	rowspan=1
+	style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_INTERVAL_YEAR</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p>Interval in years with p precision. There is no way to define this type 
+ of interval in Oracle. Use SQL_INTERVAL_YEAR_TO_MONTH instead.</td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p><img src="../Images/delete-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td>
+<td colspan=1
+	rowspan=1
+	style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/delete-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_INTERVAL_MONTH</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p>Interval in months with p precision. There is no way to define this 
+ type of interval in Oracle. Use SQL_INTERVAL_YEAR_TO_MONTH instead.</td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p><img src="../Images/delete-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td>
+<td colspan=1
+	rowspan=1
+	style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/delete-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_INTERVAL_DAY</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p>Interval in days with p precision. There is no way to define this type 
+ of interval in Oracle. Use SQL_INTERVAL_DAY_TO_SECOND instead.</td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p><img src="../Images/delete-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td>
+<td colspan=1
+	rowspan=1
+	style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/delete-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_INTERVAL_HOUR</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p>Interval in hours with p precision. There is no way to define this type 
+ of interval in Oracle. Use SQL_INTERVAL_DAY_TO_SECOND instead.</td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p><img src="../Images/delete-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td>
+<td colspan=1
+	rowspan=1
+	style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/delete-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_INTERVAL_MINUTE</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p>Interval in minutes with p precision. <!--kadov_tag{{<spaces>}}-->&nbsp;<!--kadov_tag{{</spaces>}}-->There 
+ is no way to define this type of interval in Oracle. Use SQL_INTERVAL_DAY_TO_SECOND 
+ instead.</td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p><img src="../Images/delete-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td>
+<td colspan=1
+	rowspan=1
+	style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/delete-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_INTERVAL_SECOND</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p>Interval in seconds with p precision. <!--kadov_tag{{<spaces>}}-->&nbsp;<!--kadov_tag{{</spaces>}}-->There 
+ is no way to define this type of interval in Oracle. Use SQL_INTERVAL_DAY_TO_SECOND 
+ instead.</td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p><img src="../Images/delete-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td>
+<td colspan=1
+	rowspan=1
+	style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/delete-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_INTERVAL_YEAR_TO_MONTH</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p>Interval in years and months with p precision for years.</td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p><img src="../Images/delete-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td>
+<td colspan=1
+	rowspan=1
+	style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_INTERVAL_DAY_TO_HOUR</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p>Interval in days and hours with p precision for days. <!--kadov_tag{{<spaces>}}-->&nbsp;<!--kadov_tag{{</spaces>}}-->There 
+ is no way to define this type of interval in Oracle. Use SQL_INTERVAL_DAY_TO_SECOND 
+ instead.</td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p><img src="../Images/delete-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td>
+<td colspan=1
+	rowspan=1
+	style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/delete-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_INTERVAL_DAY_TO_MINUTE</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p>Interval in days, hours and minutes. With p precision for days. There 
+ is no way to define this type of interval in Oracle. Use SQL_INTERVAL_DAY_TO_SECOND 
+ instead.</td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p><img src="../Images/delete-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td>
+<td colspan=1
+	rowspan=1
+	style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/delete-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_INTERVAL_DAY_TO_SECOND</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p>Interval in days, hours, minutes and seconds. With p precision for days.</td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p><img src="../Images/delete-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td>
+<td colspan=1
+	rowspan=1
+	style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/accept-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_INTERVAL_HOUR_TO_MINUTE</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p>Interval in hours and minutes, with p precision for hours. There is 
+ no way to define this type of interval in Oracle. Use SQL_INTERVAL_DAY_TO_SECOND 
+ instead.</td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p><img src="../Images/delete-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td>
+<td colspan=1
+	rowspan=1
+	style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/delete-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_INTERVAL_HOUR_TO_SECOND</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p>Interval in hours, minutes and seconds, with p precision for hours. 
+ There is no way to define this type of interval in Oracle. Use SQL_INTERVAL_DAY_TO_SECOND 
+ instead.</td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p><img src="../Images/delete-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td>
+<td colspan=1
+	rowspan=1
+	style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/delete-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 120px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=120px>
+<p>SQL_INTERVAL_MINUTE_TO_SECOND</td>
+<td colspan=1
+	rowspan=1
+	style="width: 589px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=589px>
+<p>Interval in minutes and seconds, with p precision for minutes. There 
+ is no way to define this type of interval in Oracle. Use SQL_INTERVAL_DAY_TO_SECOND 
+ instead.</td>
+<td colspan=1
+	rowspan=1
+	style="width: 98px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=98px>
+<p><img src="../Images/delete-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td>
+<td colspan=1
+	rowspan=1
+	style="width: 95px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=95px>
+<p><img src="../Images/delete-24x24.bmp"
+		x-maintain-ratio=TRUE
+		style="border: none;
+				width: 24px;
+				height: 24px;
+				float: none;
+				border-style: none;
+				border-style: none;"
+		width=24
+		height=24
+		border=0></td></tr>
+</table>
+
+<p>&nbsp;</p>
+
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+:FILE append 'c:\tmp\odbctest.txt';
+:print 'Test for a datetime in a DATE datatype';
+
+CREATE TABLE test_date
+(
+  field date
+)
+/
+
+DELETE FROM test_date;
+:variable1 INPUT TYPE TIMESTAMP;
+:variable1 = '1991-08-16 23:55:00';
+
+INSERT INTO test_date VALUES(?);
+COMMIT;
+
+:variable1 = '1900-1-1 00:00:00';
+:SELECT ON;
+
+SELECT field FROM test_date;
+
+:IF variable1 <> '1991-08-16 23:55:00';
+:print 'ERROR datetime in a date not loaded';
+
+DROP  TABLE test_date;
+
+:FILE CLOSE;

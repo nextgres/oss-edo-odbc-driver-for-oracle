@@ -1,0 +1,32 @@
+:FILE append 'c:\tmp\odbctest.txt';
+:print 'Test for a 'normal' LONGRAW datatype';
+
+CREATE TABLE test_longraw
+(
+    oid   INTEGER
+   ,field LONG RAW
+)
+/
+
+DELETE FROM test_longraw;
+
+:variable1 INPUT BINARY;
+:variable1 = 'aabbcc010203';
+:atexec variable1 0;
+:print 'VARBINARY maps to LONG RAW';
+:rebind BINARY,VARBINARY;
+
+
+INSERT INTO test_longraw VALUES (1,?);
+COMMIT;
+
+:select on;
+:rebind reset;
+:variable1 = '-';
+SELECT field FROM test_longraw;
+
+:if variable1 <> 'AABBCC010203';
+:print 'ERROR LONG RAW not loaded';
+
+DROP TABLE test_longraw;
+:file close;

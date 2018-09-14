@@ -1,0 +1,29 @@
+:file append 'C:\TMP\ODBCTEST.txt';
+:print 'Test for a CHAR to DATE (datatime)';
+
+CREATE TABLE test_date
+(
+  field date
+);
+
+delete from test_date;
+
+:variable1 input char;
+:variable1 = '15-10-1959 16:30:40';
+:rebind CHAR,DATE;
+
+INSERT INTO test_date VALUES (?);
+COMMIT;
+
+:variable1 = '-';
+:rebind reset;
+:select on;
+:rebind TYPE DATE,TYPE TIMESTAMP;
+SELECT field FROM test_date;
+
+:if variable1 <> '1959-10-15 16:30:40';
+:print 'ERROR in CHAR bind to DATE (datepart)';
+
+DROP TABLE test_date;
+:rebind reset;
+:file close;

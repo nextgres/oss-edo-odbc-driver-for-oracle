@@ -1,0 +1,27 @@
+:file append 'C:\TMP\ODBCTEST.txt';
+:print 'Test for a normal decimal datatype';
+
+CREATE TABLE test_decimal
+(
+  field DECIMAL(30,26)
+);
+
+delete from test_decimal;
+
+:variable1 input char;
+:variable1 = '20.1234567890123456789012345';
+:rebind CHAR,DECIMAL;
+
+INSERT INTO test_decimal VALUES (?);
+COMMIT;
+
+:variable1 = '-';
+:rebind reset;
+:select on;
+SELECT field FROM test_decimal;
+
+:if variable1 <> '20.12345678901234567890123450';
+:print 'ERROR in CHAR bind to DECIMAL(30,26)';
+
+DROP TABLE test_decimal;
+:file close;

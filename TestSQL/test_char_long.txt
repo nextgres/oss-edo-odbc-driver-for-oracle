@@ -1,0 +1,27 @@
+:file append 'C:\TMP\ODBCTEST.txt';
+:print 'Test for a CHAR to INTEGER datatype';
+
+CREATE TABLE test_decimal
+(
+  field DECIMAL(10,0)
+);
+
+delete from test_decimal;
+
+:variable1 input char;
+:variable1 = '98765432';
+:rebind CHAR,LONG;
+
+INSERT INTO test_decimal VALUES (?);
+COMMIT;
+
+:variable1 = '-';
+:select on;
+:rebind reset;
+SELECT field FROM test_decimal;
+
+:if variable1 <> '98765432';
+:print 'ERROR in CHAR bind to LONG (decimal(10,0))';
+
+DROP TABLE test_decimal;
+:file close;

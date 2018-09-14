@@ -1,0 +1,245 @@
+<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+
+<html>
+
+<!--(==============================================================)-->
+<!--(Document created with RoboEditor. )============================-->
+<!--(==============================================================)-->
+
+<head>
+
+<title>Pseudocolumns</title>
+
+<!--(Meta)==========================================================-->
+
+<meta http-equiv=content-type content="text/html; charset=windows-1252">
+<meta name=generator content="RoboHELP by eHelp Corporation - www.ehelp.com">
+<meta name=generator-major-version content=0.1>
+<meta name=generator-minor-version content=1>
+<meta name=filetype content=kadov>
+<meta name=filetype-version content=1>
+<meta name=page-count content=1>
+<meta name=layout-height content=782>
+<meta name=layout-width content=852>
+
+
+<!--(Links)=========================================================-->
+
+<link href="..\..\ODBC_Reference.css" type="text/css" rel="stylesheet">
+
+
+
+</head>
+
+<!--(Body)==========================================================-->
+
+
+<body>
+
+<h1>Pseudocolumns </h1>
+
+<p>Pseudocolumns are similar to table columns. You can query any of these 
+ pseudocolumns, but you cannot change their values with DML statements. 
+ Which pseudo columns are used is highly dependent on the RDBMS you are 
+ using. Here are some well known pseudo's:</p>
+
+<!--(Table)=========================================================-->
+<table color=#99ccff
+		x-use-null-cells
+		style="width: 100%;
+				x-border-left: 1px table-solid;
+				x-border-top: 1px table-solid;
+				x-border-right: 1px table-solid;
+				x-border-bottom: 1px table-solid;
+				border-collapse: separate;
+				border-spacing: 0px;
+				x-border-left: 1px table-solid;
+				x-border-top: 1px table-solid;
+				x-border-right: 1px table-solid;
+				x-border-bottom: 1px table-solid;
+				border-collapse: separate;
+				border-spacing: 0px;"
+		cellspacing=0
+		width=100%
+		border=1>
+
+<tr>
+<td style="background-color: #99ccff;
+			x-cell-content-align: top;
+			width: 184px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	bgcolor=#99CCFF
+	width=184px>
+<p class=tab_header>Column name</td>
+<td style="background-color: #99ccff;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	bgcolor=#99CCFF>
+<p class=tab_header>Value</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 184px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=184px>
+<p class=tab_func><em style="font-style: italic;">sequence</em>.CURRVAL</td>
+<td style="x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top>
+<p class=tab_desc>ORACLE: Current value of sequence for the current session 
+ (sequence.NEXTVAL must be referenced first.) </td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 184px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=184px>
+<p class=tab_func><em style="font-style: italic;">sequence</em>.NEXTVAL</td>
+<td style="x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top>
+<p class=tab_desc>ORACLE: Next value of sequence for the current session</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 184px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=184px>
+<p class=tab_func>[<em>table</em>.]LEVEL</td>
+<td style="x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top>
+<p class=tab_desc>ORACLE: 1 for a root node, 2 for a child of a root, and 
+ so on. Used in the SELECT statement during tree-structured queries.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 184px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=184px>
+<p class=tab_func>[<em>table</em>.]ROWID</td>
+<td style="x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top>
+<p class=tab_desc>ORACLE: Value that uniquely identifies a single row among 
+ other rows in the table. ROWID values are of datatype ROWID, not NUMBER 
+ or CHAR. </td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 184px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=184px>
+<p class=tab_func>[<em>table</em>.]ROWID</td>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top>
+<p class=tab_desc>INFORMIX: Integer value that uniquely indentifies a single 
+ row among other rows in a table segement on a per dbspace basis.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 184px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=184px>
+<p class=tab_func>ROWNUM</td>
+<td style="x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top>
+<p class=tab_desc>ORACLE: Position of a single row among other rows selected 
+ by a query. Oracle server selects rows in an arbitrary order and evaluates 
+ ROWNUM before sorting rows for an ORDER BY clause. </td></tr>
+</table>
+
+&nbsp; 
+
+<!--begin!kadov{{--><br><!--}}end!kadov--><!--kadov_tag{{<implicit_p>}}-->In 
+ the &quot;Open ODBCQueryTool&quot; program you can find out which pseudo 
+ columns are supported. Look up a table in the ODBC object list and look 
+ up the 'Special columns': 
+
+<!--begin!kadov{{--><br><!--}}end!kadov--><!--kadov_tag{{<implicit_p>}}-->&nbsp; 
+ 
+
+<!--begin!kadov{{--><br><!--}}end!kadov--><!--kadov_tag{{<implicit_p>}}--><img 
+ src="..\Pictures\PseudoColumns.bmp"
+	x-maintain-ratio=TRUE
+	style="border: none;
+			width: 224px;
+			height: 236px;
+			float: none;
+			border-style: none;"
+	width=224
+	height=236
+	border=0> 
+
+<!--begin!kadov{{--><br><!--}}end!kadov--><!--kadov_tag{{<implicit_empty_p>}}-->&nbsp;<br><!--kadov_tag{{</implicit_empty_p>}}-->
+
+
+<!--(HR)============================================================-->
+<hr style="float: aligncenter; height: 1px;"
+	align=center
+	size=1>
+
+
+<p class=footer>This SQL Reference is not the complete documentation for 
+ your SQL language. For more detailed information see the documentation 
+ of your RDBMS.</p>
+
+</body>
+
+</html>

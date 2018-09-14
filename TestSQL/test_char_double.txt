@@ -1,0 +1,27 @@
+:file append 'C:\TMP\ODBCTEST.txt';
+:print 'Test for a CHAR to DOUBLE PRECISION datatype';
+
+CREATE TABLE test_double
+(
+  field DOUBLE PRECISION
+);
+
+delete from test_double;
+
+:variable1 input char;
+:variable1 = '98765432.123456';
+:rebind CHAR,DOUBLE;
+
+INSERT INTO test_double VALUES (?);
+COMMIT;
+
+:variable1 = '-';
+:rebind reset;
+:select on;
+SELECT field FROM test_double;
+
+:if variable1 <> '98765432.123456';
+:print 'ERROR in CHAR bind to DOUBLE PRECISION';
+
+DROP TABLE test_double;
+:file close;

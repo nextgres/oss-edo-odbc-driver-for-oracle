@@ -1,0 +1,96 @@
+[OPTIONS]
+Compiled File=EDO_Documentation.chm
+Title=EDO's Driver for Oracle
+Contents File=EDO_Documentation.hhc
+Index File=EDO_Documentation.hhk
+Default topic=Welcome.htm
+Default Window=NewWindow
+Error log file=
+Display compile progress=No
+Display compile notes=No
+Full-text search=Yes
+Binary Index=Yes
+Auto Index=No
+Enhanced decompilation=No
+Binary TOC=No
+Flat=No
+
+[WINDOWS]
+NewWindow="EDO's Driver for Oracle","EDO_Documentation.hhc","EDO_Documentation.hhk","Welcome.htm","Welcome.htm","ODBCQuickReference\ODBC_SQL_Reference.htm","SQL",,,0x21420,0,0x4204e,[0,0,1024,768],0xb0000,0x0,,0,0,0
+
+[FILES]
+ODBCQuickReference\Elements\Operators.htm
+ODBCQuickReference\Elements\Pseudocolumns.htm
+ODBCQuickReference\Elements\Datatypes.htm
+ODBCQuickReference\ODBC_SQL_Reference.htm
+ODBCQuickReference\Elements\Privileges.htm
+ODBCQuickReference\Elements\OBJECT PRIVILEGES.htm
+ODBCQuickReference\Statements\CREATE INDEX.htm
+ODBCQuickReference\Statements\DROP INDEX.htm
+ODBCQuickReference\Statements\GRANT (System Privileges and Roles).htm
+ODBCQuickReference\Statements\GRANT (Object Privileges).htm
+ODBCQuickReference\Statements\CREATE TABLE.htm
+ODBCQuickReference\Statements\ALTER TABLE.htm
+ODBCQuickReference\Statements\DROP VIEW.htm
+ODBCQuickReference\Statements\CREATE VIEW.htm
+ODBCQuickReference\Statements\DROP TABLE.htm
+ODBCQuickReference\Statements\COMMIT.htm
+ODBCQuickReference\Statements\ROLLBACK.htm
+ODBCQuickReference\Functions\Conversion Functions.htm
+ODBCQuickReference\Statements\CREATE SCHEMA.htm
+ODBCQuickReference\Statements\UPDATE.htm
+ODBCQuickReference\Statements\INSERT.htm
+ODBCQuickReference\Statements\DELETE.htm
+ODBCQuickReference\Statements\SELECT.htm
+ODBCQuickReference\Functions\System_functions.htm
+ODBCQuickReference\Functions\Group Functions.htm
+ODBCQuickReference\Statements\REVOKE_(Object_Privileges).htm
+ODBCQuickReference\Statements\REVOKE_(System_Privileges).htm
+ODBCQuickReference\SQL_Elements\search-condition.htm
+ODBCQuickReference\SQL_Elements\pattern.htm
+ODBCQuickReference\SQL_Elements\column-name.htm
+ODBCQuickReference\SQL_Elements\expression.htm
+ODBCQuickReference\Functions\String_functions.htm
+ODBCQuickReference\SQL_Elements\data-type.htm
+ODBCQuickReference\Functions\Time_Date_Interval_Functions.htm
+ODBCQuickReference\SQL_Elements\base-table-name.htm
+ODBCQuickReference\Functions\Numeric_functions.htm
+ODBCQuickReference\SQL_Elements\referenced-table-name.htm
+Administration\Tracing_and_translation.htm
+Administration\Oracle_settings_of_the_datasource.htm
+Administration\ODBC_Settings_of_the_datasource.htm
+Administration\Defining_the_datasource.htm
+Administration\Creating_a_datasource.htm
+Installation\Network_installation.htm
+Contacting_EDO.htm
+Installation\Installation_of_EDO.htm
+About_EDO.htm
+Administration\NLS_Settings_of_the_datasource.htm
+Welcome.htm
+Administration\Testing_the_TNS_connect.htm
+Programmers\Connection_attributes.htm
+Programmers\ODBC_Programming.htm
+Differences\ODBC_Escape_syntax.htm
+Differences\RDBMS_Implementation.htm
+Differences\Datatypes_discovery.htm
+Differences\Catalog_functions.htm
+Differences\Database_naming.htm
+Differences\SQL_NUMERIC_STRUCT.htm
+Programmers\EDO_extra_connection_attributes.htm
+Differences\Binding_to_a_NUMBER.htm
+Differences\Differences_with_Oracle_ODBC.htm
+Programmers\Not_supported_in_EDO.htm
+Differences\ODBC_Functions.htm
+EDO_s_license.htm
+Differences\Conversion_support.htm
+RoboHHRE.lng
+
+EDO_Documentation.brs
+[ALIAS]
+#include EDO_Documentation.ali
+
+[MAP]
+
+[TEXT POPUPS]
+
+

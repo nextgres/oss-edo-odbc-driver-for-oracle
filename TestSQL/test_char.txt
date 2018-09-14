@@ -1,0 +1,29 @@
+:FILE append 'c:\tmp\odbctest.txt';
+:print 'Test for a "normal" VARCHAR2 datatype';
+
+CREATE TABLE test_string
+(
+  field varchar2(200)
+)
+/
+
+DELETE FROM test_string;
+:variable1 INPUT CHAR  ;
+:variable1 = 'Dit is een kleine test';
+:atexec variable1 0;
+
+INSERT INTO test_string VALUES(?);
+COMMIT;
+
+:variable1 = 'leeg';
+:SELECT ON;
+
+SELECT field FROM test_string;
+
+:IF variable1 <> 'Dit is een kleine test';
+:print 'ERROR string(200) not loaded';
+
+DELETE FROM test_string;
+DROP  TABLE test_string;
+
+:FILE CLOSE;

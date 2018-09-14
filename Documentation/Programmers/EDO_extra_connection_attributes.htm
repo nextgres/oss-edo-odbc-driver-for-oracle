@@ -1,0 +1,288 @@
+<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+
+<html>
+
+<!--(==============================================================)-->
+<!--(Document created with RoboEditor. )============================-->
+<!--(==============================================================)-->
+
+<head>
+
+<title>EDO extra connection attributes</title>
+
+<!--(Meta)==========================================================-->
+
+<meta http-equiv=content-type content="text/html; charset=windows-1252">
+<meta name=generator content="RoboHELP by eHelp Corporation - www.ehelp.com">
+<meta name=generator-major-version content=0.1>
+<meta name=generator-minor-version content=1>
+<meta name=filetype content=kadov>
+<meta name=filetype-version content=1>
+<meta name=page-count content=1>
+<meta name=layout-height content=788>
+<meta name=layout-width content=968>
+
+
+<!--(Links)=========================================================-->
+
+<link rel="StyleSheet" href="..\default.css">
+
+
+
+</head>
+
+<!--(Body)==========================================================-->
+
+
+<body>
+
+<h1>EDO extra connection attributes</h1>
+
+<p>To be able to alter the EDO specific features after making a connection, 
+ there are a number of EDO driver specific attributes you can use in the 
+ calls to SQLGetConnectionAttr (to read them) or to SQLSetConnectionAttr 
+ (to set them). These function can be called with the values as listed 
+ in the table below in the second parameter to this function (Attribute).</p>
+
+<p>These attributes are enclosed in the installation package of the EDO 
+ driver in the file &quot;EDO_Attributes.h&quot; for use in your own programs.</p>
+
+<!--(Table)=========================================================-->
+<table color=#99ccff
+		x-use-null-cells
+		style="width: 88.362%;
+				x-border-left: 1px table-solid;
+				x-border-top: 1px table-solid;
+				x-border-right: 1px table-solid;
+				x-border-bottom: 1px table-solid;
+				border-spacing: 0px;
+				x-border-left: 1px table-solid;
+				x-border-top: 1px table-solid;
+				x-border-right: 1px table-solid;
+				x-border-bottom: 1px table-solid;
+				border-collapse: separate;
+				border-spacing: 0px;"
+		cellspacing=0
+		width=88.362%
+		border=1>
+<col>
+<col style="width: 630px;">
+
+<tr>
+<td style="background-color: #99ccff;
+			x-cell-content-align: top;
+			width: 184px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	bgcolor=#99CCFF
+	width=184px>
+<p>Attribute</td>
+<td style="width: 630px;
+			background-color: #99ccff;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	bgcolor=#99CCFF
+	width=630px>
+<p class=tab_header>Description</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 184px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=184px>
+<p>SQL_ATTR_EDO_ENSURE_STATISTICS</td>
+<td style="width: 630px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=630px>
+<p class=tab_desc>SQLUINTEGER value 0 to disable the ensure statistics 
+ mechanism or 1 to enable it.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 184px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=184px>
+<p class=tab_func>SQL_ATTR_EDO_PREFETCH_COUNT</td>
+<td style="width: 630px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=630px>
+<p class=tab_desc>SQLUINTEGER value. Number of rows to prefetch in the 
+ driver. The driver will use up to the amount of prefetch memory or the 
+ amount of prefetch rows, whichever boundary comes first.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 184px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=184px>
+<p class=tab_func>SQL_ATTR_EDO_PREFETCH_MEMORY</td>
+<td style="width: 630px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=630px>
+<p class=tab_desc>SQLUINTEGER value. Number of bytes of cache memory to 
+ use in the driver while prefetching rows. The driver will use up to the 
+ amount of prefetch memory or the amount of prefetch rows, whichever boundary 
+ comes first.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 184px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=184px>
+<p class=tab_func>SQL_ATTR_EDO_FAILOVER_COUNT</td>
+<td style="width: 630px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=630px>
+<p class=tab_desc>SQLUINTEGER value. Number of times to retry a connection 
+ to an Oracle RAC cluster after the program loses its connection.</td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 184px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=184px>
+<p class=tab_func>SQL_ATTR_EDO_FAILOVER_TIME</td>
+<td colspan=1
+	rowspan=1
+	style="width: 630px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=630px>
+<p class=tab_desc>SQLUINTEGER value. Number of seconds between retries 
+ to an Oracle RAC cluster after the program loses its connection.</td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 184px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=184px>
+<p class=tab_func>SQL_ATTR_EDO_TRACE</td>
+<td colspan=1
+	rowspan=1
+	style="width: 630px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=630px>
+<p class=tab_desc>SQLUINTEGER value. 0 to disable the EDO tracing mechanism 
+ or 1 to enable it.</td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 184px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=184px>
+<p class=tab_func>SQL_ATTR_EDO_TRACEFILE</td>
+<td colspan=1
+	rowspan=1
+	style="width: 630px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=630px>
+<p class=tab_desc>SQLCHAR* string. Name of the logfile to use for the EDO 
+ tracing mechanism.</td></tr>
+
+<tr>
+<td colspan=1
+	rowspan=1
+	style="x-cell-content-align: top;
+			width: 184px;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=184px>
+<p class=tab_func>SQL_ATTR_EDO_INTEGERSPEEDUP</td>
+<td colspan=1
+	rowspan=1
+	style="width: 630px;
+			x-cell-content-align: top;
+			padding-left: 2px;
+			padding-top: 2px;
+			padding-right: 2px;
+			padding-bottom: 2px;"
+	valign=top
+	width=630px>
+<p class=tab_desc>SQLUINTEGER value. 0 to disable the integer speedup mechanism 
+ or 1 to enable it. This can interpret NUMBER's with 0 precision and 0 
+ scale as binary integers.</td></tr>
+</table>
+
+<p>&nbsp;</p>
+
+</body>
+
+</html>

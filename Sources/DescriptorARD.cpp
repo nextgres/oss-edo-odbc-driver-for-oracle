@@ -3,7 +3,7 @@
 // EDO = Edo's Driver for Oracle
 // ORACLE ODBC DRIVER for ODBC 3.51
 //
-// Copyright (C) 2008 ir. Wicher Edo Huisman
+// Copyright (C) 2008-2015 ir. Wicher Edo Huisman
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -287,9 +287,9 @@ ODBC_ARD::SQLGetDescField(SQLSMALLINT RecNumber
                                       break;
     case SQL_DESC_ARRAY_SIZE:         number = m_desc_array_size;
                                       break;
-    case SQL_DESC_ARRAY_STATUS_PTR:   number = (SQLUINTEGER)m_desc_array_status_ptr;
+    case SQL_DESC_ARRAY_STATUS_PTR:   number = (SQLUINTEGER)((DWORD_PTR)m_desc_array_status_ptr);
                                       break;
-    case SQL_DESC_BIND_OFFSET_PTR:    number = (SQLUINTEGER)m_desc_bind_offset_ptr;
+    case SQL_DESC_BIND_OFFSET_PTR:    number = (SQLUINTEGER)((DWORD_PTR)m_desc_bind_offset_ptr);
                                       break;
     case SQL_DESC_BIND_TYPE:          number = m_desc_bind_type;
                                       break;
@@ -347,11 +347,11 @@ ODBC_ARD::SQLSetDescField(SQLSMALLINT RecNumber
   {
     case SQL_DESC_ARRAY_STATUS_PTR:   m_desc_array_status_ptr = (SQLUSMALLINT*)Value;
                                       return SQL_SUCCESS;
-    case SQL_DESC_COUNT:              m_desc_count = (SQLSMALLINT)Value;
+    case SQL_DESC_COUNT:              m_desc_count = (SQLSMALLINT)((DWORD_PTR)Value);
                                       return SetItemsCount(m_desc_count);
-    case SQL_DESC_ARRAY_SIZE:         m_desc_array_size = (SQLUINTEGER)Value;
+    case SQL_DESC_ARRAY_SIZE:         m_desc_array_size = (SQLUINTEGER)((DWORD_PTR)Value);
                                       return SQL_SUCCESS;
-    case SQL_DESC_BIND_OFFSET_PTR:    m_desc_bind_offset_ptr = (SQLINTEGER*)Value;
+    case SQL_DESC_BIND_OFFSET_PTR:    m_desc_bind_offset_ptr = (SQLINTEGER*)((DWORD_PTR)Value);
                                       return SQL_SUCCESS;
     case SQL_DESC_BIND_TYPE:          if(m_desc_count)
                                       {
@@ -359,7 +359,7 @@ ODBC_ARD::SQLSetDescField(SQLSMALLINT RecNumber
                                         m_ociError.AddError("HY010");
                                         return SQL_ERROR;
                                       }
-                                      m_desc_bind_type = (SQLUINTEGER)Value;
+                                      m_desc_bind_type = (SQLUINTEGER)((DWORD_PTR)Value);
                                       return SQL_SUCCESS;
     case SQL_DESC_ALLOC_TYPE:         // Read only. Cannot be set     
                                       m_ociError.AddError("HY016");
@@ -378,14 +378,14 @@ ODBC_ARD::SQLSetDescField(SQLSMALLINT RecNumber
   ODBCItems* record = GetItem(RecNumber-1);
   switch(FieldIdentifier)
   {
-    case SQL_DESC_CONCISE_TYPE:               record->m_desc_type = (SQLSMALLINT)Value;
+    case SQL_DESC_CONCISE_TYPE:               record->m_desc_type = (SQLSMALLINT)((DWORD_PTR)Value);
                                               break;
     case SQL_DESC_DATA_PTR:                   record->m_desc_data_ptr = Value;
                                               break;
-    case SQL_DESC_DATETIME_INTERVAL_CODE:     switch((SQLINTEGER)Value)
+    case SQL_DESC_DATETIME_INTERVAL_CODE:     switch((SQLINTEGER)((DWORD_PTR)Value))
                                               {
                                                   case SQL_INTERVAL_DAY_TO_SECOND:
-                                                  case SQL_INTERVAL_YEAR_TO_MONTH: record->m_desc_type = (SQLSMALLINT)Value;
+                                                  case SQL_INTERVAL_YEAR_TO_MONTH: record->m_desc_type = (SQLSMALLINT)((DWORD_PTR)Value);
                                                                                    break;
                                               }
                                               break;
@@ -398,11 +398,11 @@ ODBC_ARD::SQLSetDescField(SQLSMALLINT RecNumber
     case SQL_DESC_OCTET_LENGTH:               // ? IRD?
                                               break;
     case SQL_DESC_OCTET_LENGTH_PTR:           break;
-    case SQL_DESC_PRECISION:                  record->m_desc_precision = (SQLUINTEGER)Value;
+    case SQL_DESC_PRECISION:                  record->m_desc_precision = (SQLUINTEGER)((DWORD_PTR)Value);
                                               break;
-    case SQL_DESC_SCALE:                      record->m_desc_scale = (SQLSMALLINT)Value;
+    case SQL_DESC_SCALE:                      record->m_desc_scale = (SQLSMALLINT)((DWORD_PTR)Value);
                                               break;
-    case SQL_DESC_TYPE:                       record->m_desc_type = (SQLSMALLINT)Value;
+    case SQL_DESC_TYPE:                       record->m_desc_type = (SQLSMALLINT)((DWORD_PTR)Value);
                                               break;
 
     case SQL_DESC_AUTO_UNIQUE_VALUE:          // Does not exist in ARD

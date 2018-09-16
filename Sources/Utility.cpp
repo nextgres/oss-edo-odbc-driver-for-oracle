@@ -3,7 +3,7 @@
 // EDO = Edo's Driver for Oracle
 // ORACLE ODBC DRIVER for ODBC 3.51
 //
-// Copyright (C) 2008 ir. Wicher Edo Huisman
+// Copyright (C) 2008-2015 ir. Wicher Edo Huisman
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -302,7 +302,7 @@ CopyODBCStringToApp(SQLCHAR*          Buffer
       }
       // Next GetData must start at this source pointer
       // and has this much work left to do
-      p_oraItem->m_pendingOffset = (int)Source;
+      p_oraItem->m_pendingOffset  = (DWORD_PTR)Source;
       p_oraItem->m_pendingLength  = actualLength;
       return SQL_SUCCESS_WITH_INFO;
     }
@@ -539,7 +539,7 @@ CopyODBCRAWToApp(OCIEnv*           Environment
     return SQL_SUCCESS;
   }
   // Still more data pending on this binary 
-  p_oraItem->m_pendingOffset = (int)((char*)BinaryBuffer + copyLength);
+  p_oraItem->m_pendingOffset = (DWORD_PTR)((char*)BinaryBuffer + copyLength);
   p_oraItem->m_pendingLength  = BinaryLength - copyLength;
   // Binary data truncated
   ociError->AddError("01005");  
@@ -1178,11 +1178,10 @@ NumericToString(SQL_NUMERIC_STRUCT* sqlnum
   /* add zeros for negative scale */
   if (reqscale < 0)
   {
-    int i;
     reqscale *= -1;
-    for (i= 1; i <= calcprec; ++i)
+    for (int ind = 1;ind <= calcprec; ++ind)
     {
-      *(numstr + i - reqscale) = *(numstr + i);
+      *(numstr + ind - reqscale) = *(numstr + ind);
     }
     numstr -= reqscale;
     memset(numstr + calcprec + 1, '0', reqscale);

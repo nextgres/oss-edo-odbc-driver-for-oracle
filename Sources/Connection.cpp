@@ -3,7 +3,7 @@
 // EDO = Edo's Driver for Oracle
 // ORACLE ODBC DRIVER for ODBC 3.51
 //
-// Copyright (C) 2008 ir. Wicher Edo Huisman
+// Copyright (C) 2008-2015 ir. Wicher Edo Huisman
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -72,7 +72,7 @@ ODBCConnection::ConnectionAttributes::ConnectionAttributes()
 	m_currentCatalog    = "";
 	m_metaDataID        = SQL_FALSE;
 	m_ODBCCursor        = SQL_CUR_USE_DRIVER;
-	m_packetSize        = 1024*4;
+	m_packetSize        = ODBC_PACKET_SIZE;
 	m_quietMode         = NULL;
 	m_trace             = SQL_OPT_TRACE_OFF;
   m_traceFile         = "";
@@ -80,8 +80,8 @@ ODBCConnection::ConnectionAttributes::ConnectionAttributes()
 	m_translateOptions  = 0;
 	m_TXNIsolation      = 0;
   m_statisticsEnsure  = SQL_QUICK;
-  m_prefetchCount     = 100;        // Minimum of 100 rows
-  m_prefetchMemory    = 64 * 1024;  // Minimum of 64 kilobyte
+  m_prefetchCount     = ODBC_PREFETCH_COUNT;   // Minimum of 100 rows
+  m_prefetchMemory    = ODBC_PREFETCH_MEMORY;  // Minimum of 64 kilobyte
   m_failoverCount     = 0;
   m_failoverTime      = 0;
   m_maxColumnLength   = 0;
@@ -343,14 +343,14 @@ ODBCConnection::ConnectionAttributes::ReadConnectionRegistry(const char* p_dataS
     }
     if(m_NLS_TYPE == 3)
     {
-      // Specifice settings from the setup dll
-      sprintf_s(file,_MAX_PATH,"NLS_DATE_FORMAT=%s",m_dbNlsDateFormat);
+      // Specific settings from the setup dll
+      sprintf_s(file,_MAX_PATH,"NLS_DATE_FORMAT=%s",(LPCTSTR)m_dbNlsDateFormat);
       _putenv(file);
-      sprintf_s(file,_MAX_PATH,"NLS_TIME_FORMAT=%s",m_dbNlsTimeFormat);
+      sprintf_s(file,_MAX_PATH,"NLS_TIME_FORMAT=%s", (LPCTSTR)m_dbNlsTimeFormat);
       _putenv(file);
-      sprintf_s(file,_MAX_PATH,"NLS_TIMESTMP_FORMAT=%s",m_dbNlsTimestampFormat);
+      sprintf_s(file,_MAX_PATH,"NLS_TIMESTMP_FORMAT=%s", (LPCTSTR)m_dbNlsTimestampFormat);
       _putenv(file);
-      sprintf_s(file,_MAX_PATH,"NLS_TIMESTMP_TZ_FORMAT=%s",m_dbNlsTimestampTzFormat);
+      sprintf_s(file,_MAX_PATH,"NLS_TIMESTMP_TZ_FORMAT=%s", (LPCTSTR)m_dbNlsTimestampTzFormat);
       _putenv(file);
     }
   }
@@ -604,6 +604,10 @@ ODBCConnection::GetConnectionDead()
   return true;
 }
 
+// Shut up about deprecated ODBC features. We know this!!
+// We are generating warnings about it too!
+#pragma warning (disable: 4995)
+
 SQLRETURN 
 ODBCConnection::SQLSetConnectAttr(SQLINTEGER Attribute
                                  ,SQLPOINTER Value
@@ -614,7 +618,7 @@ ODBCConnection::SQLSetConnectAttr(SQLINTEGER Attribute
 	m_ociError.Clear();
 
   WRITELOG("Attribute: %s",ERROR_GetConnectAttribute(Attribute));
-  SQLUINTEGER Val = (SQLUINTEGER)Value;
+  SQLUINTEGER Val = (SQLUINTEGER)((DWORD_PTR)Value);
 	switch(Attribute)
 	{
   	case SQL_ATTR_ACCESS_MODE:          switch(Val)
@@ -1954,7 +1958,7 @@ ODBCConnection::SetTranslationDLL()
   {
     FreeLibrary(m_translateLib);
   }
-  HMODULE m_translateLib = LoadLibrary(m_attributes.m_translateLib.GetString());
+  m_translateLib = LoadLibrary(m_attributes.m_translateLib.GetString());
   if(m_translateLib)
   {
     m_SQLDataSourceToDriver = (TYPE_SQLDataSourceToDriver) GetProcAddress(m_translateLib,"SQLDataSourceToDriver");

@@ -3,7 +3,7 @@
 // EDO = Edo's Driver for Oracle
 // ORACLE ODBC DRIVER for ODBC 3.51
 //
-// Copyright (C) 2008 ir. Wicher Edo Huisman
+// Copyright (C) 2008-2015 ir. Wicher Edo Huisman
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -2218,7 +2218,7 @@ ConvertToSQL_C_GUID(SQLPOINTER        DataPtr
                    ,int*              ResultLen
                    ,OracleItems&      Holder
                    ,ODBCErrorHolder&  ociError
-                   ,ODBCStatement*    /*p_statement*/
+                   ,ODBCStatement*    p_statement
                    ,bool              /*p_getData*/)
 {
   if(Holder.m_valueType == STRING_TYPE)
@@ -2226,7 +2226,10 @@ ConvertToSQL_C_GUID(SQLPOINTER        DataPtr
     SQLGUID* guid = (SQLGUID*)DataPtr;
     if(DataLen >= 16)
     {
-      int scannum = scanf("%lX-%X-%X-%2.2X%2.2X-%2.2X%2.2X%2.2X%2.2X%2.2X%2.2X"
+      char* string = (char*)OCIStringPtr(p_statement->GetDBConnection()->GetOwnerODBCEnv()->GetOwnerEnv()
+                                        ,Holder.Value.string_val);
+      int scannum = sscanf(string
+                          ,"%lX-%hX-%hX-%hhX%hhX-%hhX%hhX%hhX%hhX%hhX%hhX"
                           ,&guid->Data1 
                           ,&guid->Data2 
                           ,&guid->Data3 

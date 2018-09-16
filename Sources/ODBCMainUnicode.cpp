@@ -3,7 +3,7 @@
 // EDO = Edo's Driver for Oracle
 // ORACLE ODBC DRIVER for ODBC 3.51
 //
-// Copyright (C) 2008 ir. Wicher Edo Huisman
+// Copyright (C) 2008-2015 ir. Wicher Edo Huisman
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -531,8 +531,8 @@ SQLSetConnectOptionW(SQLHDBC      ConnectionHandle
     case SQL_ATTR_TRANSLATE_LIB:
     {
       SQLINTEGER bufferLength = SQL_MAX_OPTION_STRING_LENGTH;
-      ConvertingString<> Value((SQLWCHAR *)Value,bufferLength);
-      return connection->SQLSetConnectAttr(Option,(SQLPOINTER)(SQLCHAR*)Value,Value);
+      ConvertingString<> valstring((SQLWCHAR *)Value,bufferLength);
+      return connection->SQLSetConnectAttr(Option,(SQLPOINTER)(SQLCHAR*)valstring,valstring);
     }
   }
   return connection->SQLSetConnectOption(Option,Value);

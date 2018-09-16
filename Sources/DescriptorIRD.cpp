@@ -3,7 +3,7 @@
 // EDO = Edo's Driver for Oracle
 // ORACLE ODBC DRIVER for ODBC 3.51
 //
-// Copyright (C) 2008 ir. Wicher Edo Huisman
+// Copyright (C) 2008-2015 ir. Wicher Edo Huisman
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -1111,11 +1111,11 @@ ODBC_IRD::SQLGetDescField(SQLSMALLINT RecNumber
   {
     case SQL_DESC_ALLOC_TYPE:         tiny = SQL_DESC_ALLOC_AUTO;
                                       break;
-    case SQL_DESC_ARRAY_STATUS_PTR:   number = (SQLUINTEGER)m_desc_array_status_ptr;
+    case SQL_DESC_ARRAY_STATUS_PTR:   number = (SQLUINTEGER)((DWORD_PTR)m_desc_array_status_ptr);
                                       break;
     case SQL_DESC_COUNT:              tiny = m_desc_count;
                                       break;
-    case SQL_DESC_ROWS_PROCESSED_PTR: number = (SQLUINTEGER)m_desc_rows_processed_ptr;
+    case SQL_DESC_ROWS_PROCESSED_PTR: number = (SQLUINTEGER)((DWORD_PTR)m_desc_rows_processed_ptr);
                                       break;
     case SQL_DESC_ARRAY_SIZE:         // Does not exist in IRD
     case SQL_DESC_BIND_OFFSET_PTR:    // Does not exist in IRD
@@ -1280,7 +1280,7 @@ ODBC_IRD::SQLSetDescField(SQLSMALLINT RecNumber
     case SQL_DESC_DATETIME_INTERVAL_PRECISION:  break;
     case SQL_DESC_NAME:                         record->SetDescName((const char*)Value,(int)strlen((char*)Value));
                                                 break;
-    case SQL_DESC_NUM_PREC_RADIX:               if((int)Value == 0)
+    case SQL_DESC_NUM_PREC_RADIX:               if((DWORD_PTR)Value == 0)
                                                 {
                                                   record->m_desc_precision = 0;
                                                   record->m_desc_scale = 0;
@@ -1290,11 +1290,11 @@ ODBC_IRD::SQLSetDescField(SQLSMALLINT RecNumber
                                                   // TODO: Don't know what to do with Numeric RADIX
                                                 }
                                                 break;
-    case SQL_DESC_OCTET_LENGTH:                 record->m_desc_octet_length = (int)Value;
+    case SQL_DESC_OCTET_LENGTH:                 record->m_desc_octet_length = (int)((DWORD_PTR)Value);
                                                 break;
-    case SQL_DESC_PRECISION:                    record->m_desc_precision = (sb2) Value;
+    case SQL_DESC_PRECISION:                    record->m_desc_precision = (sb2)((DWORD_PTR)Value);
                                                 break;
-    case SQL_DESC_SCALE:                        record->m_desc_scale = (sb1) Value;
+    case SQL_DESC_SCALE:                        record->m_desc_scale = (sb1)((DWORD_PTR)Value);
                                                 break;
     case SQL_DESC_AUTO_UNIQUE_VALUE:            // Oracle does not support auto-incrementing columns
                                                 m_ociError.AddError("HY016");

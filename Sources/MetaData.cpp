@@ -3,7 +3,7 @@
 // EDO = Edo's Driver for Oracle
 // ORACLE ODBC DRIVER for ODBC 3.51
 //
-// Copyright (C) 2008 ir. Wicher Edo Huisman
+// Copyright (C) 2008-2015 ir. Wicher Edo Huisman
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -67,7 +67,7 @@ MetaQuery metaQueries[] =
                "      ,0\n"             // UNSIGNED = FALSE
                "      ,0\n"             // FIXED_PRED_SCALE = FALSE
                "      ,0\n"             // AUTO_UNIQUE_VALUE = FALSE
-               "      ,'NVARCHAR2'\n"    // LOCAL_TYPE_NAME
+               "      ,'NVARCHAR2'\n"   // LOCAL_TYPE_NAME
                "      ,0\n"             // MINIMUM_SCALE = 0
                "      ,0\n"             // MAXIMUM_SCALE = 0
                "      ,-9\n"            // SQL_DATA_TYPE = SQL_WVARCHAR
@@ -202,7 +202,7 @@ MetaQuery metaQueries[] =
                "      ,6\n"             // INTERVAL_PRECISION
                "  FROM DUAL" }
  ,{ META_TYPE, SQL_TYPE_TIMESTAMP,
-               "SELECT 'TIMESTAMP'\n"        // TYPE_NAME
+               "SELECT 'TIMESTAMP'\n"   // TYPE_NAME
                "      ,91\n"            // DATA_TYPE = SQL_TYPE_TIMESTAMP
                "      ,26\n"            // COLUMN_SIZE (max)
                "      ,''''\n"          // LITERAL_PREFIX
@@ -249,7 +249,7 @@ MetaQuery metaQueries[] =
                "      ,0\n"             // COLUMN_SIZE (max)
                "      ,'INTERVAL'''\n"  // LITERAL_PREFIX
                "      ,''''\n"          // LITERAL_SUFFIX
-               "      ,'year'\n"            // CREATE_PARAMS
+               "      ,'year'\n"        // CREATE_PARAMS
                "      ,1\n"             // NULLABLE = SQL_NULLABLE
                "      ,0\n"             // CASE_SENSITIVE = TRUE
                "      ,2\n"             // SEARCHABLE = SQL_ALL_EXCEPT_LIKE
@@ -270,7 +270,7 @@ MetaQuery metaQueries[] =
                "      ,0\n"             // COLUMN_SIZE (max)
                "      ,'INTERVAL'''\n"  // LITERAL_PREFIX
                "      ,''''\n"          // LITERAL_SUFFIX
-               "      ,'day,second'\n"            // CREATE_PARAMS
+               "      ,'day,second'\n"  // CREATE_PARAMS
                "      ,1\n"             // NULLABLE = SQL_NULLABLE
                "      ,0\n"             // CASE_SENSITIVE = TRUE
                "      ,2\n"             // SEARCHABLE = SQL_ALL_EXCEPT_LIKE
@@ -319,7 +319,7 @@ MetaQuery metaQueries[] =
                "      ,0\n"             // UNSIGNED = FALSE
                "      ,0\n"             // FIXED_PRED_SCALE = FALSE
                "      ,0\n"             // AUTO_UNIQUE_VALUE = FALSE
-               "      ,'ROWID'\n"         // LOCAL_TYPE_NAME
+               "      ,'ROWID'\n"       // LOCAL_TYPE_NAME
                "      ,0\n"             // MINIMUM_SCALE = 0
                "      ,0\n"             // MAXIMUM_SCALE = 0
                "      ,-2\n"            // SQL_DATA_TYPE = SQL_VARBOOKMARK
@@ -340,7 +340,7 @@ MetaQuery metaQueries[] =
                "      ,0\n"             // UNSIGNED = FALSE
                "      ,0\n"             // FIXED_PRED_SCALE = FALSE
                "      ,0\n"             // AUTO_UNIQUE_VALUE = FALSE
-               "      ,'LONG RAW'\n"         // LOCAL_TYPE_NAME
+               "      ,'LONG RAW'\n"    // LOCAL_TYPE_NAME
                "      ,0\n"             // MINIMUM_SCALE = 0
                "      ,0\n"             // MAXIMUM_SCALE = 0
                "      ,-4\n"            // SQL_DATA_TYPE = SQL_LONGVARCHAR
@@ -510,7 +510,7 @@ MetaQuery metaQueries[] =
                "  FROM dba_db_links" }
  ,{ META_SCHEMAS, 0,
                "SELECT ''            as table_cat\n"
-// Querying of schemas in different catalogs is not supported by ODBC!
+// Querying of schemata in different catalogs is not supported by ODBC!
 //                "SELECT CASE '@@CATALOG'\n"
 //                "            WHEN '@' THEN (SELECT UPPER(value)\n"
 //                "                             FROM v$parameter\n"

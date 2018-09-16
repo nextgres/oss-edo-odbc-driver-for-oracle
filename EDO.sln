@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E2238D7E-D15C-42F3-BE68-03F1D817B09A}"
 	ProjectSection(SolutionItems) = preProject
 		history.txt = history.txt
@@ -11,12 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		types_mapping.txt = types_mapping.txt
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EDO", "EDO.vcproj", "{33CB138F-FAE3-43CA-980A-C0D8C8541257}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EDO", "EDO.vcxproj", "{33CB138F-FAE3-43CA-980A-C0D8C8541257}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EDO_Setup", "EDO_Setup.vcproj", "{5E122CFA-76BF-480D-93F7-E35960DB2302}"
-	ProjectSection(ProjectDependencies) = postProject
-		{33CB138F-FAE3-43CA-980A-C0D8C8541257} = {33CB138F-FAE3-43CA-980A-C0D8C8541257}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EDO_Setup", "EDO_Setup.vcxproj", "{5E122CFA-76BF-480D-93F7-E35960DB2302}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

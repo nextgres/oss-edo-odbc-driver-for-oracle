@@ -3,7 +3,7 @@
 ; File:         $Archive: $
 ; Authors:      ir. Wicher Edo Huisman
 ;
-; Copyright (c) 2008 - 2008 W.E. Huisman
+; Copyright (c) 2008 - 2015 W.E. Huisman
 ; All rights reserved
 ;
 ; Last change:       $JustDate:  $
@@ -11,8 +11,8 @@
 ; Versionumber:      $Revision: $
 ;-------------------------------------------------------
  !define PRODUCT_NAME                         "EDO Oracle ODBC Driver"
- !define PRODUCT_VERSION                      "1.2.1"
- !define PRODUCT_BUILDNUMBER                  "1001"
+ !define PRODUCT_VERSION                      "1.3.0"
+ !define PRODUCT_BUILDNUMBER                  "1003"
  !define PRODUCT_BITNESS                      "64Bits"
  !define PRODUCT_PUBLISHER                    "EDO"
  !define PRODUCT_DIR_REGKEY                   "Software\Microsoft\Windows\CurrentVersion\App Paths\EDO Oracle Driver"
@@ -25,7 +25,7 @@
   
  ; Directories where the files are
  !define RootDirectory                         ".."
- !define InputDirectory                        "..\x64\Release"
+ !define InputDirectory                        "..\Bin_Releasex64"
  !define DocumDirectory                        "..\Documentation"
 
 ;--------------------------------------------------------------------------------------------------------
@@ -38,7 +38,7 @@
  SetCompressorDictSize 8
 ;--------------------------------------------------------------------------------------------------------
  SetPluginUnload alwaysoff
- BrandingText /TRIMRIGHT "EDO Edo's Driver for Oracle ${PRODUCT_BITNESS}" 
+ BrandingText /TRIMRIGHT "EDO Driver for Oracle ${PRODUCT_BITNESS}"
  InstallColors 000000 FFFFFF
  XPStyle on
 ;--------------------------------------------------------------------------------------------------------

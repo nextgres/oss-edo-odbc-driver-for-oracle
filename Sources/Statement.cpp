@@ -3,7 +3,7 @@
 // EDO = Edo's Driver for Oracle
 // ORACLE ODBC DRIVER for ODBC 3.51
 //
-// Copyright (C) 2008 ir. Wicher Edo Huisman
+// Copyright (C) 2008-2015 ir. Wicher Edo Huisman
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -286,23 +286,23 @@ ODBCStatement::SQLGetStmtAttr(SQLINTEGER  Attribute
   SQLINTEGER val = 0;
   switch(Attribute)
 	{		
-	  case SQL_ATTR_APP_ROW_DESC:			    val = (SQLINTEGER) m_ARD;        break;
-	  case SQL_ATTR_APP_PARAM_DESC:		    val = (SQLINTEGER) m_APD;	       break;
-    case SQL_ATTR_ASYNC_ENABLE:         val = m_attributes.m_async;      break;
-    case SQL_ATTR_CONCURRENCY:          val = SQL_CONCUR_ROWVER;         break;
+	  case SQL_ATTR_APP_ROW_DESC:			    val = (SQLINTEGER) ((DWORD_PTR)m_ARD);  break;
+	  case SQL_ATTR_APP_PARAM_DESC:		    val = (SQLINTEGER) ((DWORD_PTR)m_APD);  break;
+    case SQL_ATTR_ASYNC_ENABLE:         val = m_attributes.m_async;             break;
+    case SQL_ATTR_CONCURRENCY:          val = SQL_CONCUR_ROWVER;                break;
     case SQL_ATTR_CURSOR_SCROLLABLE:    val = m_attributes.m_cursorScrollable;
                                         break;
-    case SQL_ATTR_CURSOR_SENSITIVITY:   val = SQL_INSENSITIVE;           break;
-    case SQL_ATTR_CURSOR_TYPE:          val = SQL_CURSOR_STATIC;         break;
-    case SQL_ATTR_ENABLE_AUTO_IPD:      val = SQL_FALSE;                 break;
-    case SQL_ATTR_FETCH_BOOKMARK_PTR:   val = 0;                         break;
-    case SQL_ATTR_IMP_PARAM_DESC:		    val = (SQLINTEGER) m_IPD;	       break;
-	  case SQL_ATTR_IMP_ROW_DESC:			    val = (SQLINTEGER) m_IRD;	       break;
-    case SQL_ATTR_KEYSET_SIZE:          val = 0;                         break;
-    case SQL_ATTR_MAX_LENGTH:           val = m_attributes.m_maxLength;  break;
-    case SQL_ATTR_MAX_ROWS:             val = m_attributes.m_maxRows;    break;
-    case SQL_ATTR_METADATA_ID:          val = m_attributes.m_metaDataID; break;
-    case SQL_ATTR_NOSCAN:               val = m_attributes.m_noscan;     break;
+    case SQL_ATTR_CURSOR_SENSITIVITY:   val = SQL_INSENSITIVE;                  break;
+    case SQL_ATTR_CURSOR_TYPE:          val = SQL_CURSOR_STATIC;                break;
+    case SQL_ATTR_ENABLE_AUTO_IPD:      val = SQL_FALSE;                        break;
+    case SQL_ATTR_FETCH_BOOKMARK_PTR:   val = 0;                                break;
+    case SQL_ATTR_IMP_PARAM_DESC:		    val = (SQLINTEGER) ((DWORD_PTR)m_IPD);  break;
+	  case SQL_ATTR_IMP_ROW_DESC:			    val = (SQLINTEGER) ((DWORD_PTR)m_IRD);  break;
+    case SQL_ATTR_KEYSET_SIZE:          val = 0;                                break;
+    case SQL_ATTR_MAX_LENGTH:           val = m_attributes.m_maxLength;         break;
+    case SQL_ATTR_MAX_ROWS:             val = m_attributes.m_maxRows;           break;
+    case SQL_ATTR_METADATA_ID:          val = m_attributes.m_metaDataID;        break;
+    case SQL_ATTR_NOSCAN:               val = m_attributes.m_noscan;            break;
     case SQL_ATTR_PARAM_BIND_OFFSET_PTR:m_APD->SQLGetDescField(0,SQL_DESC_BIND_OFFSET_PTR,   &val,0,0);  break;
     case SQL_ATTR_PARAM_BIND_TYPE:      m_APD->SQLGetDescField(0,SQL_DESC_BIND_TYPE,         &val,0,0);  break;
     case SQL_ATTR_PARAM_OPERATION_PTR:  m_APD->SQLGetDescField(0,SQL_DESC_ARRAY_STATUS_PTR,  &val,0,0);  break;
@@ -343,7 +343,7 @@ ODBCStatement::SQLSetStmtAttr(SQLINTEGER Attribute
   m_ociError.Clear();
 
   WRITELOG("Attribute %s",ERROR_GetStmtAttribute(Attribute));
-  SQLUINTEGER intval = (SQLUINTEGER)Value;
+  SQLUINTEGER intval = (SQLUINTEGER)((DWORD_PTR)Value);
   switch(Attribute)
   {
     case SQL_ATTR_APP_ROW_DESC:			    return SetNewARD(Value);

@@ -3,7 +3,7 @@
 // EDO = Edo's Driver for Oracle
 // ORACLE ODBC DRIVER for ODBC 3.51
 //
-// Copyright (C) 2008 ir. Wicher Edo Huisman
+// Copyright (C) 2008-2015 ir. Wicher Edo Huisman
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -140,7 +140,7 @@ ODBCEnvironment::SetEnvAttr(SQLINTEGER Attribute
   Guard guard(m_lock_mutex);
 	m_ociError.Clear();
 
-  SQLINTEGER Val=(SQLINTEGER)Value;
+  SQLINTEGER Val=(SQLINTEGER)((DWORD_PTR)Value);
   switch(Attribute)
 	{
   	case SQL_ATTR_ODBC_VERSION:       switch(Val)

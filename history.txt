@@ -1,3 +1,9 @@
+Release 1.3.0
+=============
+- Fixed a problem with reading GUIDS (again)
+- Ported driver to Visual Studio 2015
+- Fixed minor bugs after porting with 64 bits compatibility
+
 Release 1.2.1
 =============
 - Fixed problem with reading GUID's from ODBC sources.

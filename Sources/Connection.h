@@ -3,7 +3,7 @@
 // EDO = Edo's Driver for Oracle
 // ORACLE ODBC DRIVER for ODBC 3.51
 //
-// Copyright (C) 2008 ir. Wicher Edo Huisman
+// Copyright (C) 2008-2015 ir. Wicher Edo Huisman
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -46,6 +46,16 @@
 
 // Max length names for server/user/password
 #define MAX_SESSION_NAMES_LEN 100
+
+// ODBC PACKET SIZE = 4K network buffer
+#define ODBC_PACKET_SIZE 4096
+
+// Prefetch count of 100 rows
+#define ODBC_PREFETCH_COUNT 100
+
+// Prefetch memory for cursors = 64K memory
+// Lots of OLTP databases perform better with a setting 10 times bigger!!
+#define ODBC_PREFETCH_MEMORY (64 * 1024)
 
 class ODBCStatement;
 class ODBCEnvironment;

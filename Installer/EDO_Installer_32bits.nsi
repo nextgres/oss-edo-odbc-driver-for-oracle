@@ -11,8 +11,8 @@
 ; Versionumber:      $Revision: $
 ;-------------------------------------------------------
  !define PRODUCT_NAME                         "EDO Oracle ODBC Driver"
- !define PRODUCT_VERSION                      "1.2.1"   ; What users see.
- !define PRODUCT_BUILDNUMBER                  "1001"    ; Controls the version check!!
+ !define PRODUCT_VERSION                      "1.3.0"   ; What users see.
+ !define PRODUCT_BUILDNUMBER                  "1003"    ; Controls the version check!!
  !define PRODUCT_BITNESS                      "32Bits"
  !define PRODUCT_PUBLISHER                    "EDO"
  !define PRODUCT_DIR_REGKEY                   "Software\Microsoft\Windows\CurrentVersion\App Paths\EDO Oracle Driver"
@@ -25,7 +25,7 @@
   
  ; Directories where the files are
  !define RootDirectory                         ".."
- !define InputDirectory                        "..\Release"
+ !define InputDirectory                        "..\Bin_ReleaseWin32"
  !define DocumDirectory                        "..\Documentation"
 
 ;--------------------------------------------------------------------------------------------------------
@@ -38,7 +38,7 @@
  SetCompressorDictSize 8
 ;--------------------------------------------------------------------------------------------------------
  SetPluginUnload alwaysoff
- BrandingText /TRIMRIGHT "EDO Edo's Driver for Oracle ${PRODUCT_BITNESS}"
+ BrandingText /TRIMRIGHT "EDO Driver for Oracle ${PRODUCT_BITNESS}"
  InstallColors 000000 FFFFFF
  XPStyle on
 ;--------------------------------------------------------------------------------------------------------

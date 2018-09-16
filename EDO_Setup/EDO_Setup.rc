@@ -16,13 +16,11 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// English (U.S.) resources
+// English (United States) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
-#ifdef _WIN32
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 #pragma code_page(1252)
-#endif //_WIN32
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -30,8 +28,8 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,2,0,0
- PRODUCTVERSION 1,2,0,0
+ FILEVERSION 1,3,0,0
+ PRODUCTVERSION 1,3,0,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -48,13 +46,13 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "Edwig's Driver for Oracle"
             VALUE "FileDescription", "ODBC Driver for Oracle 12c databases"
-            VALUE "FileVersion", "1, 2, 0, 0"
+            VALUE "FileVersion", "1.3.0.0"
             VALUE "InternalName", "EDO_Setup.dll"
-            VALUE "LegalCopyright", "2015 (c) ir. Edwig Huisman.  All rights reserved."
+            VALUE "LegalCopyright", "2015 (c) ir. Wicher Edo Huisman.  All rights reserved."
             VALUE "LegalTrademarks", "EDO"
             VALUE "OriginalFilename", "EDO_Setup.dll"
             VALUE "ProductName", "EDO Oracle Driver"
-            VALUE "ProductVersion", "1, 2, 0, 0"
+            VALUE "ProductVersion", "1.3.0.0"
         END
     END
     BLOCK "VarFileInfo"
@@ -169,7 +167,7 @@ END
 //
 
 #ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO 
+GUIDELINES DESIGNINFO
 BEGIN
     IDD_SETUP_DIALOG, DIALOG
     BEGIN
@@ -254,7 +252,7 @@ BEGIN
     0
 END
 
-#endif    // English (U.S.) resources
+#endif    // English (United States) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
@@ -262,10 +260,8 @@ END
 // Dutch (Netherlands) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NLD)
-#ifdef _WIN32
 LANGUAGE LANG_DUTCH, SUBLANG_DUTCH
 #pragma code_page(1252)
-#endif //_WIN32
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
